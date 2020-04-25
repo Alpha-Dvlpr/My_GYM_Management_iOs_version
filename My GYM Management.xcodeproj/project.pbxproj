@@ -1,0 +1,386 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		931CE0B1244129BA00D2AD96 /* ExerciseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */; };
+		93C15AAA243BDF71008B6B0F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C15AA9243BDF71008B6B0F /* Constants.swift */; };
+		93CF7233243BB88600C53AED /* ExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7232243BB88600C53AED /* ExercisesViewController.swift */; };
+		93CF7235243BB8DE00C53AED /* RoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */; };
+		93CF7237243BB8F000C53AED /* MyRoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7236243BB8F000C53AED /* MyRoutinesViewController.swift */; };
+		93CF7239243BB90400C53AED /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7238243BB90400C53AED /* OthersViewController.swift */; };
+		93ECB1F42433B05100F4EF8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ECB1F32433B05100F4EF8E /* AppDelegate.swift */; };
+		93ECB1F92433B05100F4EF8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93ECB1F72433B05100F4EF8E /* Main.storyboard */; };
+		93ECB1FC2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93ECB1FA2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld */; };
+		93ECB1FE2433B05400F4EF8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93ECB1FD2433B05400F4EF8E /* Assets.xcassets */; };
+		93ECB2012433B05400F4EF8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93ECB1FF2433B05400F4EF8E /* LaunchScreen.storyboard */; };
+		93FEA80A244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FEA809244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift */; };
+		93FEA80C24464D3E00EAE2E0 /* RoutinesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FEA80B24464D3E00EAE2E0 /* RoutinesListViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewController.swift; sourceTree = "<group>"; };
+		93C15AA9243BDF71008B6B0F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		93CF7232243BB88600C53AED /* ExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesViewController.swift; sourceTree = "<group>"; };
+		93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesViewController.swift; sourceTree = "<group>"; };
+		93CF7236243BB8F000C53AED /* MyRoutinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutinesViewController.swift; sourceTree = "<group>"; };
+		93CF7238243BB90400C53AED /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
+		93ECB1F02433B05100F4EF8E /* My GYM Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My GYM Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93ECB1F32433B05100F4EF8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		93ECB1F82433B05100F4EF8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		93ECB1FB2433B05100F4EF8E /* My_GYM_Management.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = My_GYM_Management.xcdatamodel; sourceTree = "<group>"; };
+		93ECB1FD2433B05400F4EF8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		93ECB2002433B05400F4EF8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		93ECB2022433B05400F4EF8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93FEA809244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleGroupSelectorViewController.swift; sourceTree = "<group>"; };
+		93FEA80B24464D3E00EAE2E0 /* RoutinesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesListViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		93ECB1ED2433B05100F4EF8E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		93ECB1E72433B05100F4EF8E = {
+			isa = PBXGroup;
+			children = (
+				93ECB1F22433B05100F4EF8E /* My GYM Management */,
+				93ECB1F12433B05100F4EF8E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		93ECB1F12433B05100F4EF8E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				93ECB1F02433B05100F4EF8E /* My GYM Management.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		93ECB1F22433B05100F4EF8E /* My GYM Management */ = {
+			isa = PBXGroup;
+			children = (
+				93ECB1F32433B05100F4EF8E /* AppDelegate.swift */,
+				93CF7232243BB88600C53AED /* ExercisesViewController.swift */,
+				931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */,
+				93FEA809244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift */,
+				93CF7236243BB8F000C53AED /* MyRoutinesViewController.swift */,
+				93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */,
+				93FEA80B24464D3E00EAE2E0 /* RoutinesListViewController.swift */,
+				93CF7238243BB90400C53AED /* OthersViewController.swift */,
+				93ECB1FF2433B05400F4EF8E /* LaunchScreen.storyboard */,
+				93ECB1F72433B05100F4EF8E /* Main.storyboard */,
+				93ECB1FD2433B05400F4EF8E /* Assets.xcassets */,
+				93ECB2022433B05400F4EF8E /* Info.plist */,
+				93ECB1FA2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld */,
+				93C15AA9243BDF71008B6B0F /* Constants.swift */,
+			);
+			path = "My GYM Management";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		93ECB1EF2433B05100F4EF8E /* My GYM Management */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93ECB2052433B05400F4EF8E /* Build configuration list for PBXNativeTarget "My GYM Management" */;
+			buildPhases = (
+				93ECB1EC2433B05100F4EF8E /* Sources */,
+				93ECB1ED2433B05100F4EF8E /* Frameworks */,
+				93ECB1EE2433B05100F4EF8E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "My GYM Management";
+			productName = "My GYM Management";
+			productReference = 93ECB1F02433B05100F4EF8E /* My GYM Management.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		93ECB1E82433B05100F4EF8E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = AlphaDvlpr;
+				TargetAttributes = {
+					93ECB1EF2433B05100F4EF8E = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = 93ECB1EB2433B05100F4EF8E /* Build configuration list for PBXProject "My GYM Management" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 93ECB1E72433B05100F4EF8E;
+			productRefGroup = 93ECB1F12433B05100F4EF8E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				93ECB1EF2433B05100F4EF8E /* My GYM Management */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		93ECB1EE2433B05100F4EF8E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93ECB2012433B05400F4EF8E /* LaunchScreen.storyboard in Resources */,
+				93ECB1FE2433B05400F4EF8E /* Assets.xcassets in Resources */,
+				93ECB1F92433B05100F4EF8E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		93ECB1EC2433B05100F4EF8E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93ECB1F42433B05100F4EF8E /* AppDelegate.swift in Sources */,
+				93CF7233243BB88600C53AED /* ExercisesViewController.swift in Sources */,
+				93ECB1FC2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld in Sources */,
+				93CF7237243BB8F000C53AED /* MyRoutinesViewController.swift in Sources */,
+				93FEA80A244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift in Sources */,
+				931CE0B1244129BA00D2AD96 /* ExerciseInfoViewController.swift in Sources */,
+				93FEA80C24464D3E00EAE2E0 /* RoutinesListViewController.swift in Sources */,
+				93C15AAA243BDF71008B6B0F /* Constants.swift in Sources */,
+				93CF7235243BB8DE00C53AED /* RoutinesViewController.swift in Sources */,
+				93CF7239243BB90400C53AED /* OthersViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		93ECB1F72433B05100F4EF8E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93ECB1F82433B05100F4EF8E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		93ECB1FF2433B05400F4EF8E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93ECB2002433B05400F4EF8E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		93ECB2032433B05400F4EF8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		93ECB2042433B05400F4EF8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		93ECB2062433B05400F4EF8E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 49G7L7QASD;
+				INFOPLIST_FILE = "My GYM Management/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aaronyalberto.My-GYM-Management";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		93ECB2072433B05400F4EF8E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 49G7L7QASD;
+				INFOPLIST_FILE = "My GYM Management/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aaronyalberto.My-GYM-Management";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		93ECB1EB2433B05100F4EF8E /* Build configuration list for PBXProject "My GYM Management" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93ECB2032433B05400F4EF8E /* Debug */,
+				93ECB2042433B05400F4EF8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93ECB2052433B05400F4EF8E /* Build configuration list for PBXNativeTarget "My GYM Management" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93ECB2062433B05400F4EF8E /* Debug */,
+				93ECB2072433B05400F4EF8E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		93ECB1FA2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				93ECB1FB2433B05100F4EF8E /* My_GYM_Management.xcdatamodel */,
+			);
+			currentVersion = 93ECB1FB2433B05100F4EF8E /* My_GYM_Management.xcdatamodel */;
+			path = My_GYM_Management.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 93ECB1E82433B05100F4EF8E /* Project object */;
+}
