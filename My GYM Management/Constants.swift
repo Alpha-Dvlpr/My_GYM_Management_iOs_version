@@ -9,7 +9,7 @@
 import Foundation
 
 class Constants {
-    var emailAddresses: [String] = ["aarongranado98@gmail.com"]
+    var emailAddresses: [String] = ["aarongranado98@gmail.com", "albertomccaceres@gmail.com"]
     var emailSubject: String = "Email de contacto"
     var emailBody: String = "Contacta con nosotros y responderemos en la mayor brevedad posible.\n--------------\n"
     var privacyURL: String = "http://alpha-dvlpr.mozello.com/privacy-policy/"

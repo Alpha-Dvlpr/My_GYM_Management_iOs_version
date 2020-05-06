@@ -9,6 +9,7 @@
 import UIKit
 import MessageUI
 import CoreData
+import DLRadioButton
 
 class MyRoutinesViewController: UIViewController {
     
@@ -44,31 +45,21 @@ class MyRoutinesViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        showNewRoutineDialog(title: "AÑADIR RUTINA")
+        showNewRoutineDialog()
     }
     
     //MARK: Alerts
-    func showNewRoutineDialog(title: String) {
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    func showNewRoutineDialog() {
+        let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
+        let addRoutineDialog = storyboard.instantiateViewController(withIdentifier: "CustomAlertID") as! AddRoutineSBViewController
         
-        alertController.addTextField { (_nameTextField) in
-            _nameTextField.placeholder = "Nombre (*)"
-            self.nameTextField = _nameTextField
-        }
+        addRoutineDialog.providesPresentationContextTransitionStyle = true
+        addRoutineDialog.definesPresentationContext = true
+        addRoutineDialog.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        addRoutineDialog.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        addRoutineDialog.delegate = self
         
-        alertController.addTextField { (_descriptionTextField) in
-            _descriptionTextField.placeholder = "Descripción"
-            self.descriptionTextField = _descriptionTextField
-        }
-        
-        // Color checker
-        
-        // Days checker
-        
-        alertController.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Añadir", style: .default, handler: { (alert) in self.saveRoutine() }))
-        
-        self.present(alertController, animated: true, completion: nil)
+        self.present(addRoutineDialog, animated: true, completion: nil)
     }
     
     func showInfoAlert(message: String) {
@@ -77,28 +68,6 @@ class MyRoutinesViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    //MARK: Save to CD
-    func saveRoutine() {
-        // Check if there's a routine with the same name.
-        
-        if nameTextField.text != "" {
-            let routineToSave = Routine(context: AppDelegate.context)
-            
-            routineToSave.name = nameTextField.text
-            routineToSave.isUserCreated = true
-            
-            if descriptionTextField.text != "" { routineToSave.info = descriptionTextField.text }
-            
-            saveToCD()
-        } else {
-            showInfoAlert(message: "Todos los campos con (*) son obligatorios")
-        }
-    }
-    
-    func saveToCD() {
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
     //MARK: Navigation
@@ -113,7 +82,7 @@ class MyRoutinesViewController: UIViewController {
     }
 }
 
-extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CustomAlertDialogDelegate {
     //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -164,4 +133,9 @@ extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, 
             print("Unknown type")
         }
     }
+    
+    //MARK: CustomAlertDialogDelegate
+    func cancelButtonPressed() {}
+    
+    func addButtonPressed() {}
 }
