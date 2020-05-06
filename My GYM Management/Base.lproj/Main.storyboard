@@ -88,20 +88,7 @@
                         <viewLayoutGuide key="safeArea" id="Nf9-LF-RiT"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="RUTINAS" id="gca-dt-kL6">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Item" image="privacy" id="Ha9-LT-GR8">
-                                <connections>
-                                    <action selector="privacyButtonPressed:" destination="RZS-Bb-Zxy" id="2tl-bB-lNN"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="contact" id="7oI-YY-Y5X">
-                                <connections>
-                                    <action selector="contactButtonPressed:" destination="RZS-Bb-Zxy" id="BJO-lk-rZ9"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="RUTINAS" id="gca-dt-kL6"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="wic-pC-Vg6" kind="show" identifier="toMuscleGroupSelector" id="r25-p7-xBc"/>
@@ -291,35 +278,64 @@
                                     <action selector="updateDataButtonPressed:" destination="Ml6-2v-N2O" eventType="touchUpInside" id="lDS-QS-PnW"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHM-Y1-Smo">
+                                <rect key="frame" x="40" y="374" width="295" height="70"/>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="pvD-NR-bEb"/>
+                                </constraints>
+                                <state key="normal" title="POLÍTICA DE PRIVACIDAD">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="privacyButtonPressed:" destination="Ml6-2v-N2O" eventType="touchUpInside" id="YTa-DT-6Qj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hge-b2-kNn">
+                                <rect key="frame" x="40" y="464" width="295" height="70"/>
+                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="LnG-hn-SRk"/>
+                                </constraints>
+                                <state key="normal" title="CONTACTO">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="contactButtonPressed:" destination="Ml6-2v-N2O" eventType="touchUpInside" id="sOq-dA-kSe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.70196078431372544" green="0.97254901960784312" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Krt-Hz-bX0" firstAttribute="trailing" secondItem="oHM-Y1-Smo" secondAttribute="trailing" constant="40" id="91B-YN-T3L"/>
+                            <constraint firstItem="oHM-Y1-Smo" firstAttribute="top" secondItem="LJu-62-XmA" secondAttribute="bottom" constant="20" id="A9x-9F-jDc"/>
                             <constraint firstItem="Krt-Hz-bX0" firstAttribute="trailing" secondItem="042-fa-CKT" secondAttribute="trailing" constant="40" id="DGX-iw-gFN"/>
+                            <constraint firstItem="Krt-Hz-bX0" firstAttribute="trailing" secondItem="hge-b2-kNn" secondAttribute="trailing" constant="40" id="Kh3-b5-Yd9"/>
                             <constraint firstItem="LJu-62-XmA" firstAttribute="leading" secondItem="Krt-Hz-bX0" secondAttribute="leading" constant="40" id="L4U-KA-FQK"/>
+                            <constraint firstItem="hge-b2-kNn" firstAttribute="leading" secondItem="Krt-Hz-bX0" secondAttribute="leading" constant="40" id="Rd4-SL-xOT"/>
                             <constraint firstItem="Krt-Hz-bX0" firstAttribute="trailing" secondItem="LJu-62-XmA" secondAttribute="trailing" constant="40" id="UMA-GK-9p2"/>
                             <constraint firstItem="7Dr-6n-ojX" firstAttribute="leading" secondItem="Krt-Hz-bX0" secondAttribute="leading" constant="40" id="V06-Hf-NyC"/>
                             <constraint firstItem="7Dr-6n-ojX" firstAttribute="top" secondItem="042-fa-CKT" secondAttribute="bottom" constant="20" id="WLs-AR-zAn"/>
                             <constraint firstItem="Krt-Hz-bX0" firstAttribute="trailing" secondItem="7Dr-6n-ojX" secondAttribute="trailing" constant="40" id="cUc-Hf-6t7"/>
+                            <constraint firstItem="oHM-Y1-Smo" firstAttribute="leading" secondItem="Krt-Hz-bX0" secondAttribute="leading" constant="40" id="hiS-mF-Wf3"/>
                             <constraint firstItem="LJu-62-XmA" firstAttribute="top" secondItem="7Dr-6n-ojX" secondAttribute="bottom" constant="20" id="nsY-mJ-TNX"/>
+                            <constraint firstItem="hge-b2-kNn" firstAttribute="top" secondItem="oHM-Y1-Smo" secondAttribute="bottom" constant="20" id="qjy-FL-5aZ"/>
                             <constraint firstItem="042-fa-CKT" firstAttribute="leading" secondItem="Krt-Hz-bX0" secondAttribute="leading" constant="40" id="s3r-er-hMV"/>
                             <constraint firstItem="042-fa-CKT" firstAttribute="top" secondItem="Krt-Hz-bX0" secondAttribute="top" constant="40" id="tYq-VX-M86"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Krt-Hz-bX0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="OTROS" id="8mS-4a-fc8">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Item" image="privacy" id="BUQ-qh-0SR">
-                                <connections>
-                                    <action selector="privacyButtonPressed:" destination="Ml6-2v-N2O" id="Zch-Ie-S1N"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="contact" id="h1Q-2U-r1h">
-                                <connections>
-                                    <action selector="contactButtonPressed:" destination="Ml6-2v-N2O" id="ipx-pW-fez"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="OTROS" id="8mS-4a-fc8"/>
                     <connections>
                         <outlet property="locateGymButonOutlet" destination="7Dr-6n-ojX" id="wmO-Wn-z6H"/>
                     </connections>
@@ -335,23 +351,47 @@
                     <view key="view" contentMode="scaleToFill" id="fRb-As-SDP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2pS-x3-F0Y">
+                                <rect key="frame" x="0.0" y="64" width="375" height="510"/>
+                                <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="oaY-Ru-8fj" style="IBUITableViewCellStyleDefault" id="1n2-jX-nLD">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1n2-jX-nLD" id="Io6-RT-Yga">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oaY-Ru-8fj">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="drW-8O-I4d" id="jFQ-gi-fju"/>
+                                    <outlet property="delegate" destination="drW-8O-I4d" id="CKF-1G-abI"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.70125610447539655" green="0.97116994537880941" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="GZ6-H0-59a" firstAttribute="bottom" secondItem="2pS-x3-F0Y" secondAttribute="bottom" id="0cW-Pv-ORn"/>
+                            <constraint firstItem="GZ6-H0-59a" firstAttribute="trailing" secondItem="2pS-x3-F0Y" secondAttribute="trailing" id="88W-kB-9MH"/>
+                            <constraint firstItem="2pS-x3-F0Y" firstAttribute="leading" secondItem="GZ6-H0-59a" secondAttribute="leading" id="pae-rt-vbz"/>
+                            <constraint firstItem="2pS-x3-F0Y" firstAttribute="top" secondItem="GZ6-H0-59a" secondAttribute="top" id="zgE-Ij-frz"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="GZ6-H0-59a"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="MIS RUTINAS" id="uNI-mn-RvP">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Item" image="privacy" id="p4D-GS-Klj">
-                                <connections>
-                                    <action selector="privacyButtonPressed:" destination="drW-8O-I4d" id="0h9-ko-g54"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="contact" id="dwj-EN-Pj8">
-                                <connections>
-                                    <action selector="contactButtonPressed:" destination="drW-8O-I4d" id="0Ux-TV-9t4"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="f6Q-sQ-FGo">
                             <connections>
                                 <action selector="addButtonPressed:" destination="drW-8O-I4d" id="jos-Pf-Yso"/>
@@ -359,6 +399,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="2pS-x3-F0Y" id="y2y-Ws-W45"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3Q-wB-Fxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -412,18 +455,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="EJERCICIOS" id="9W9-IO-yt5">
-                        <leftBarButtonItems>
-                            <barButtonItem title="Item" image="privacy" id="PnN-FV-ebK">
-                                <connections>
-                                    <action selector="privacyButtonPressed:" destination="N7I-Vu-RXu" id="A9d-Pe-5KY"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Item" image="contact" id="osy-3r-nrN">
-                                <connections>
-                                    <action selector="contactButtonPressed:" destination="N7I-Vu-RXu" id="Enb-JM-u5T"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9oa-fc-o9k">
                             <connections>
                                 <action selector="addButtonPressed:" destination="N7I-Vu-RXu" id="OFB-ri-VQJ"/>
@@ -657,11 +688,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="contact" width="25" height="25"/>
         <image name="exercises" width="25" height="25"/>
         <image name="my_routines" width="25" height="25"/>
         <image name="others" width="25" height="25"/>
-        <image name="privacy" width="25" height="25"/>
         <image name="routines" width="25" height="25"/>
         <image name="send" width="25" height="25"/>
     </resources>

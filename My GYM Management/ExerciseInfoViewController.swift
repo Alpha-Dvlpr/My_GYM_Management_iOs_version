@@ -35,11 +35,20 @@ class ExerciseInfoViewController: UIViewController {
     }
     
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
-        print("edit button pressed")
+        showInfoAlert(message: "Próximamente")
     }
     
     @IBAction func sendButtonPressed(_ sender: UIBarButtonItem) {
-        print("send button pressed")
+        showInfoAlert(message: "Próximamente")
+    }
+    
+    //MARK: AlertDialog
+    func showInfoAlert(message: String) {
+        let infoAlert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        
+        infoAlert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        self.present(infoAlert, animated: true, completion: nil)
     }
     
     //MARK: Update UI

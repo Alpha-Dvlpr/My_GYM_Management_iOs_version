@@ -8,7 +8,13 @@
         <attribute name="muscles" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Routine" representedClassName="Routine" syncable="YES" codeGenerationType="class">
+        <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isUserCreated" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Exercise" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Routine" positionX="-63" positionY="27" width="128" height="90"/>
     </elements>
 </model>

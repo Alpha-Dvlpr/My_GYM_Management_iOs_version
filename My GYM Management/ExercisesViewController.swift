@@ -10,13 +10,12 @@ import UIKit
 import MessageUI
 import CoreData
 
-class ExercisesViewController: UIViewController, MFMailComposeViewControllerDelegate, NSFetchedResultsControllerDelegate, UITableViewDelegate, UITableViewDataSource {
+class ExercisesViewController: UIViewController {
 
     //MARK: UI elements connection
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: Variables and constants
-    var cons = Constants()
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
     var nameTextField: UITextField!
     var infoTextField: UITextField!
@@ -43,110 +42,10 @@ class ExercisesViewController: UIViewController, MFMailComposeViewControllerDele
         tableView.tableFooterView = UIView()
     }
     
-    //MARK: Email Delegate
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        if let _ = error {
-            controller.dismiss(animated: true)
-            return
-        }
-        
-        switch result {
-        case .cancelled:
-            print("Email cancelled")
-            break
-        case .failed:
-            print("Email failed")
-            break
-        case .saved:
-            print("Email saved")
-            break
-        case .sent:
-            print("Email sent")
-            break
-        }
-        
-        controller.dismiss(animated: true)
-    }
-    
-    //MARK: TableView DataSource
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.sections?[0].numberOfObjects ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let exercise = fetchedResultsController.object(at: indexPath) as! Exercise
-        
-        cell.textLabel?.text = exercise.name
-        
-        return cell
-    }
-    
-    //MARK: TableView Delegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        performSegue(withIdentifier: "toExerciseInfo", sender: indexPath)
-    }
-    
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let contactToDelete = fetchedResultsController.object(at: indexPath) as! Exercise
-        
-        if contactToDelete.isUserCreated == true {
-            AppDelegate.context.delete(contactToDelete)
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        } else {
-            showInfoAlert(message: "No puedes eliminar un ejercicio predefinido")
-            tableView.reloadData()
-        }
-    }
-    
-    //MARK: NSFetchedResultsControllerDelegate
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            tableView.insertRows(at: [newIndexPath!], with: .automatic)
-            break
-        case .delete:
-            tableView.deleteRows(at: [indexPath!], with: .automatic)
-            break
-        default:
-            print("Unknown type")
-        }
-    }
-    
     //MARK: IBActions
-    @IBAction func privacyButtonPressed(_ sender: UIBarButtonItem) {
-        guard let privacyURL = URL(string: cons.privacyURL) else { return }
-        
-        UIApplication.shared.open(privacyURL)
-    }
-    
-    @IBAction func contactButtonPressed(_ sender: UIBarButtonItem) {
-        showMailcomposer()
-    }
-    
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        showInputAlert(title: "Añadir ejercicio")
+        showInputAlert(title: "AÑADIR EJERCICIO")
     }
-    
-    //MARK: Helpers
-    func showMailcomposer() {
-        guard MFMailComposeViewController.canSendMail() else { return }
-        let composer = MFMailComposeViewController()
-        
-        composer.mailComposeDelegate = self
-        composer.setToRecipients(cons.emailAddresses)
-        composer.setSubject(cons.emailSubject)
-        composer.setMessageBody(cons.emailBody, isHTML: false)
-        
-        present(composer, animated: true)
-    }
-    
     
     //MARK: Alerts
     func showInputAlert(title: String) {
@@ -184,17 +83,17 @@ class ExercisesViewController: UIViewController, MFMailComposeViewControllerDele
     }
     
     func showInfoAlert(message: String) {
-        let alertController = UIAlertController(title: "Info", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "INFO", message: message, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        
-        
         
         self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: Save to CoreData
     func saveExercise() {
+        // Check if there's an exercise with the same name before saving
+        
         if nameTextField.text != "" && infoTextField.text != "" && executionTextField.text != "" {
             let exercise = Exercise(context: AppDelegate.context)
             
@@ -207,7 +106,7 @@ class ExercisesViewController: UIViewController, MFMailComposeViewControllerDele
             
             saveToCD()
         } else {
-            print("All fields are required")
+            showInfoAlert(message: "Todos los campos con (*) son obligatorios")
         }
     }
     
@@ -223,6 +122,59 @@ class ExercisesViewController: UIViewController, MFMailComposeViewControllerDele
             let exercise = fetchedResultsController.object(at: indexPath) as! Exercise
             
             infoVC.localExercise = exercise
+        }
+    }
+}
+
+extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+    //MARK: TableView Delegate
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "toExerciseInfo", sender: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let exerciseToDelete = fetchedResultsController.object(at: indexPath) as! Exercise
+        
+        if exerciseToDelete.isUserCreated == true {
+            AppDelegate.context.delete(exerciseToDelete)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        } else {
+            showInfoAlert(message: "No puedes eliminar un ejercicio predefinido")
+            tableView.reloadData()
+        }
+    }
+    
+    //MARK: TableView DataSource
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fetchedResultsController.sections?[0].numberOfObjects ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let exercise = fetchedResultsController.object(at: indexPath) as! Exercise
+        
+        cell.textLabel?.text = exercise.name
+        
+        return cell
+    }
+    
+    //MARK: NSFetchedResultsControllerDelegate
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .automatic)
+            break
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .automatic)
+            break
+        default:
+            print("Unknown type")
         }
     }
 }

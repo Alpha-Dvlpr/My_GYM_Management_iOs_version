@@ -23,13 +23,13 @@ class OthersViewController: UIViewController {
     }
     
     //MARK: IBActions
-    @IBAction func privacyButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func privacyButtonPressed(_ sender: UIButton) {
         guard let privacyURL = URL(string: cons.privacyURL) else { return }
-    
+        
         UIApplication.shared.open(privacyURL)
     }
     
-    @IBAction func contactButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func contactButtonPressed(_ sender: UIButton) {
         showMailcomposer()
     }
     
@@ -42,7 +42,7 @@ class OthersViewController: UIViewController {
     }
     
     @IBAction func updateDataButtonPressed(_ sender: UIButton) {
-    
+        print("Updating data....")
     }
     
     //MARK: Open Maps
@@ -69,6 +69,7 @@ class OthersViewController: UIViewController {
 }
 
 extension OthersViewController: MFMailComposeViewControllerDelegate{
+    //MARK: MailComposer Delegate
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         if let _ = error {
             controller.dismiss(animated: true)
