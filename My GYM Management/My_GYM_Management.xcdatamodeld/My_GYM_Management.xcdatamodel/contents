@@ -12,7 +12,7 @@
         <attribute name="color" attributeType="String" syncable="YES"/>
         <attribute name="days" attributeType="String" syncable="YES"/>
         <attribute name="difficulty" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="goal" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="exercises" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isUserCreated" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="load" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,6 +24,6 @@
     </entity>
     <elements>
         <element name="Exercise" positionX="-63" positionY="-18" width="128" height="30"/>
-        <element name="Routine" positionX="-63" positionY="27" width="128" height="30"/>
+        <element name="Routine" positionX="-63" positionY="27" width="128" height="225"/>
     </elements>
 </model>

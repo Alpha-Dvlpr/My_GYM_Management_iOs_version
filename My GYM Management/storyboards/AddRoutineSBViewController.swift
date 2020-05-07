@@ -36,6 +36,7 @@ class AddRoutineSBViewController: UIViewController {
     
     //MARK: Variables and constants
     var delegate: CustomRoutineAlertDialogDelegate?
+    var cons: Constants = Constants()
     var selectedDaysArray: [Bool] = [false, false, false, false, false, false, false]
     
     //MARK: Main functions
@@ -161,18 +162,18 @@ class AddRoutineSBViewController: UIViewController {
                 showInfoAlert(message: "Debes seleccionar al menos un día")
             } else {
                 let routineToSave: Routine = Routine(context: AppDelegate.context)
-                var checkedColor: String = "#3DFFEC"
+                var checkedColor: String = cons.predefinedRoutineColor
                 
                 if redRadioButton.isSelected {
-                    checkedColor = String("#FF0000")
+                    checkedColor = String(cons.routineColorOne)
                 }
                 
                 if greenRadioButton.isSelected {
-                    checkedColor = String("#00FF00")
+                    checkedColor = String(cons.routineColorTwo)
                 }
                 
                 if blueRadioButton.isSelected {
-                    checkedColor = String("#0000FF")
+                    checkedColor = String(cons.routineColorThree)
                 }
             
                 routineToSave.name = nameTextField.text
