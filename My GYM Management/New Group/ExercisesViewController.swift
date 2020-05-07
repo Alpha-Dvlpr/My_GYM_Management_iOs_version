@@ -17,17 +17,15 @@ class ExercisesViewController: UIViewController {
     
     //MARK: Variables and constants
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
-    var nameTextField: UITextField!
-    var infoTextField: UITextField!
-    var executionTextField: UITextField!
-    var linkTextField: UITextField!
-    var musclesTextField: UITextField!
     
     //MARK: Main function
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Exercise")
+        
+        // Show only the ones with 'isUserCreated' as true
+
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.context, sectionNameKeyPath: nil, cacheName: nil)
@@ -44,42 +42,21 @@ class ExercisesViewController: UIViewController {
     
     //MARK: IBActions
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        showInputAlert(title: "AÑADIR EJERCICIO")
+        showNewExerciseDialog()
     }
     
     //MARK: Alerts
-    func showInputAlert(title: String) {
-        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+    func showNewExerciseDialog() {
+        let storyboard = UIStoryboard(name: "AddExercise", bundle: nil)
+        let addExerciseDialog = storyboard.instantiateViewController(withIdentifier: "AddExerciseCustomDialog") as! AddExerciseSBViewController
         
-        alertController.addTextField { (_nameTextField) in
-            _nameTextField.placeholder = "Nombre (*)"
-            self.nameTextField = _nameTextField
-        }
+        addExerciseDialog.providesPresentationContextTransitionStyle = true
+        addExerciseDialog.definesPresentationContext = true
+        addExerciseDialog.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        addExerciseDialog.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        addExerciseDialog.delegate = self
         
-        alertController.addTextField { (_infoTextField) in
-            _infoTextField.placeholder = "Información (*)"
-            self.infoTextField = _infoTextField
-        }
-        
-        alertController.addTextField { (_executionTextField) in
-            _executionTextField.placeholder = "Ejecución (*)"
-            self.executionTextField = _executionTextField
-        }
-        
-        alertController.addTextField { (_linkTextField) in
-            _linkTextField.placeholder = "Enlace a YouTube"
-            self.linkTextField = _linkTextField
-        }
-        
-        alertController.addTextField { (_musclesTextField) in
-            _musclesTextField.placeholder = "Músculos"
-            self.musclesTextField = _musclesTextField
-        }
-        
-        alertController.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Añadir", style: .default, handler: { (alert) in self.saveExercise() }))
-        
-        self.present(alertController, animated: true, completion: nil)
+        self.present(addExerciseDialog, animated: true, completion: nil)
     }
     
     func showInfoAlert(message: String) {
@@ -88,30 +65,6 @@ class ExercisesViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
-    }
-    
-    //MARK: Save to CoreData
-    func saveExercise() {
-        // Check if there's an exercise with the same name before saving
-        
-        if nameTextField.text != "" && infoTextField.text != "" && executionTextField.text != "" {
-            let exercise = Exercise(context: AppDelegate.context)
-            
-            exercise.name = nameTextField.text
-            exercise.info = infoTextField.text
-            exercise.execution = executionTextField.text
-            exercise.isUserCreated = true
-            if linkTextField.text != "" { exercise.link = linkTextField.text }
-            if musclesTextField.text != "" { exercise.muscles = musclesTextField.text }
-            
-            saveToCD()
-        } else {
-            showInfoAlert(message: "Todos los campos con (*) son obligatorios")
-        }
-    }
-    
-    func saveToCD() {
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
     //MARK: Navigation
@@ -126,7 +79,7 @@ class ExercisesViewController: UIViewController {
     }
 }
 
-extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CustomExerciseAlertDialogDelegate {
     //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -177,4 +130,9 @@ extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, N
             print("Unknown type")
         }
     }
+    
+    //MARK: CustomAlertDialogDelegate
+    func cancelButtonPressed() {}
+    
+    func addButtonPressed() {}
 }

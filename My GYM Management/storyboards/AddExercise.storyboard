@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Add ExerciseSB View Controller-->
+        <scene sceneID="vwY-cR-8md">
+            <objects>
+                <viewController storyboardIdentifier="AddExerciseCustomDialog" id="C0v-lC-EuV" customClass="AddExerciseSBViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NEP-UU-E5v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5br-4J-vbg">
+                                <rect key="frame" x="36.5" y="70" width="302.5" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AÑADIR EJERCICIO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZw-Wz-34c">
+                                        <rect key="frame" x="64" y="16" width="174.5" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-hb-Dzp">
+                                        <rect key="frame" x="16" y="56" width="270.5" height="182"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9uD-r4-gRh">
+                                                <rect key="frame" x="0.0" y="0.0" width="270.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Información (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJg-GF-K2W">
+                                                <rect key="frame" x="0.0" y="38" width="270.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ejecución (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VC4-dL-cUf">
+                                                <rect key="frame" x="0.0" y="76" width="270.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enlace a YouTube" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3kx-fc-yfc">
+                                                <rect key="frame" x="0.0" y="114" width="270.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Músculos implicados" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lmn-GJ-Aoc">
+                                                <rect key="frame" x="0.0" y="152" width="270.5" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="enP-ov-5Tn">
+                                        <rect key="frame" x="0.0" y="254" width="302.5" height="38"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1l-N9-laF">
+                                                <rect key="frame" x="0.0" y="0.0" width="151" height="38"/>
+                                                <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                                <state key="normal" title="Cancelar">
+                                                    <color key="titleColor" red="1" green="0.1115198537" blue="0.10678885170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="C0v-lC-EuV" eventType="touchUpInside" id="1nv-9L-OZI"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcO-qd-sic">
+                                                <rect key="frame" x="151" y="0.0" width="151.5" height="38"/>
+                                                <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                                <state key="normal" title="Añadir"/>
+                                                <connections>
+                                                    <action selector="addButtonPressed:" destination="C0v-lC-EuV" eventType="touchUpInside" id="0eN-tB-VUW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ZV7-hb-Dzp" firstAttribute="leading" secondItem="5br-4J-vbg" secondAttribute="leading" constant="16" id="30H-25-lqi"/>
+                                    <constraint firstItem="CZw-Wz-34c" firstAttribute="leading" secondItem="5br-4J-vbg" secondAttribute="leading" constant="64" id="9tC-4F-jti"/>
+                                    <constraint firstItem="enP-ov-5Tn" firstAttribute="top" secondItem="ZV7-hb-Dzp" secondAttribute="bottom" constant="16" id="Amo-I2-ZvM"/>
+                                    <constraint firstItem="ZV7-hb-Dzp" firstAttribute="top" secondItem="CZw-Wz-34c" secondAttribute="bottom" constant="16" id="LXp-eK-paJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="CZw-Wz-34c" secondAttribute="trailing" constant="64" id="NEj-4X-Or4"/>
+                                    <constraint firstItem="enP-ov-5Tn" firstAttribute="leading" secondItem="5br-4J-vbg" secondAttribute="leading" id="Of8-Iy-sNO"/>
+                                    <constraint firstAttribute="trailing" secondItem="enP-ov-5Tn" secondAttribute="trailing" id="RJD-5f-dGn"/>
+                                    <constraint firstAttribute="bottom" secondItem="enP-ov-5Tn" secondAttribute="bottom" constant="8" id="mtd-L5-apj"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZV7-hb-Dzp" secondAttribute="trailing" constant="16" id="qRH-AT-jp6"/>
+                                    <constraint firstItem="CZw-Wz-34c" firstAttribute="top" secondItem="5br-4J-vbg" secondAttribute="top" constant="16" id="yjJ-8S-9GV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5br-4J-vbg" firstAttribute="centerX" secondItem="NEP-UU-E5v" secondAttribute="centerX" id="gNH-I6-fhj"/>
+                            <constraint firstItem="5br-4J-vbg" firstAttribute="top" secondItem="Ca2-w2-Bdd" secondAttribute="top" constant="50" id="s5v-Zj-fEx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ca2-w2-Bdd"/>
+                    </view>
+                    <connections>
+                        <outlet property="alertView" destination="5br-4J-vbg" id="jLd-9B-oKm"/>
+                        <outlet property="executionTextField" destination="VC4-dL-cUf" id="Qpu-Pv-cYh"/>
+                        <outlet property="infoTextField" destination="EJg-GF-K2W" id="K62-gh-JeC"/>
+                        <outlet property="linkTextField" destination="3kx-fc-yfc" id="tJa-Fd-0Nv"/>
+                        <outlet property="musclesTextField" destination="Lmn-GJ-Aoc" id="iIV-tV-VJ0"/>
+                        <outlet property="nameTextField" destination="9uD-r4-gRh" id="agf-rA-bCH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UbN-g8-2Al" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="125"/>
+        </scene>
+    </scenes>
+</document>

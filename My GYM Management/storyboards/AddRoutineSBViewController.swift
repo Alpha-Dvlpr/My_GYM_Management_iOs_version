@@ -9,7 +9,7 @@
 import UIKit
 import DLRadioButton
 
-protocol CustomAlertDialogDelegate: class {
+protocol CustomRoutineAlertDialogDelegate: class {
     func addButtonPressed()
     func cancelButtonPressed()
 }
@@ -26,9 +26,17 @@ class AddRoutineSBViewController: UIViewController {
     @IBOutlet weak var redRadioButton: DLRadioButton!
     @IBOutlet weak var greenRadioButton: DLRadioButton!
     @IBOutlet weak var blueRadioButton: DLRadioButton!
+    @IBOutlet weak var mondayCheckbox: UIButton!
+    @IBOutlet weak var tuesdayCheckbox: UIButton!
+    @IBOutlet weak var wednesdayCheckbox: UIButton!
+    @IBOutlet weak var thursdayCheckbox: UIButton!
+    @IBOutlet weak var fridayCheckbox: UIButton!
+    @IBOutlet weak var saturdayCheckbox: UIButton!
+    @IBOutlet weak var sundayCheckbox: UIButton!
     
     //MARK: Variables and constants
-    var delegate: CustomAlertDialogDelegate?
+    var delegate: CustomRoutineAlertDialogDelegate?
+    var selectedDaysArray: [Bool] = [false, false, false, false, false, false, false]
     
     //MARK: Main functions
     override func viewDidLoad() {
@@ -45,7 +53,6 @@ class AddRoutineSBViewController: UIViewController {
     
     //MARK: Helpers
     func setupView() {
-
         alertView.layer.cornerRadius = 15
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
@@ -57,6 +64,32 @@ class AddRoutineSBViewController: UIViewController {
             self.alertView.alpha = 1.0;
             self.alertView.frame.origin.y = self.alertView.frame.origin.y - 50
         })
+    }
+    
+    func checkIfAnyDayIsSelected() -> Bool {
+        var selectedDays = 0
+        
+        for day in selectedDaysArray {
+            if day == true { selectedDays += 1 }
+        }
+        
+        if selectedDays == 0 { return false }
+        
+        return true
+    }
+    
+    func createDaysString() -> String {
+        var daysString = ""
+        
+        daysString += selectedDaysArray[0] ? "MO" : ""
+        daysString += selectedDaysArray[1] ? (daysString.count == 0 ? "TU" : "-TU") : ""
+        daysString += selectedDaysArray[2] ? (daysString.count == 0 ? "WE" : "-WE") : ""
+        daysString += selectedDaysArray[3] ? (daysString.count == 0 ? "TH" : "-TH") : ""
+        daysString += selectedDaysArray[4] ? (daysString.count == 0 ? "FR" : "-FR") : ""
+        daysString += selectedDaysArray[5] ? (daysString.count == 0 ? "SA" : "-SA") : ""
+        daysString += selectedDaysArray[6] ? (daysString.count == 0 ? "SU" : "-SU") : ""
+        
+        return daysString
     }
     
     //MARK: IBActions
@@ -87,22 +120,73 @@ class AddRoutineSBViewController: UIViewController {
         redRadioButton.isSelected = false
     }
     
+    @IBAction func changeCheckBoxStatus(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
+    @IBAction func changeSelectedDay(_ sender: UIButton) {
+        switch sender.titleLabel?.text {
+        case "LU":
+            selectedDaysArray[0] = sender.isSelected
+            break
+        case "MA":
+            selectedDaysArray[1] = sender.isSelected
+            break
+        case "MI":
+            selectedDaysArray[2] = sender.isSelected
+            break
+        case "JU":
+            selectedDaysArray[3] = sender.isSelected
+            break
+        case "VI":
+            selectedDaysArray[4] = sender.isSelected
+            break
+        case "SA":
+            selectedDaysArray[5] = sender.isSelected
+            break
+        case "DO":
+            selectedDaysArray[6] = sender.isSelected
+            break
+        default:
+            break
+        }
+    }
+    
     //MARK: Save to CD
     func saveRoutine() {
         // Check if there's a routine with the same name.
         
         if nameTextField.text != "" {
-            let routineToSave = Routine(context: AppDelegate.context)
+            if !checkIfAnyDayIsSelected() {
+                showInfoAlert(message: "Debes seleccionar al menos un día")
+            } else {
+                let routineToSave: Routine = Routine(context: AppDelegate.context)
+                var checkedColor: String = "#3DFFEC"
+                
+                if redRadioButton.isSelected {
+                    checkedColor = String("#FF0000")
+                }
+                
+                if greenRadioButton.isSelected {
+                    checkedColor = String("#00FF00")
+                }
+                
+                if blueRadioButton.isSelected {
+                    checkedColor = String("#0000FF")
+                }
             
-            routineToSave.name = nameTextField.text
-            routineToSave.isUserCreated = true
-            
-            if descriptionTextField.text != "" { routineToSave.info = descriptionTextField.text }
-            
-            saveToCD()
-            self.dismiss(animated: true, completion: nil)
+                routineToSave.name = nameTextField.text
+                routineToSave.color = checkedColor
+                routineToSave.days = createDaysString()
+                routineToSave.isUserCreated = true
+                
+                if descriptionTextField.text != "" { routineToSave.info = descriptionTextField.text }
+                
+                saveToCD()
+                self.dismiss(animated: true, completion: nil)
+            }
         } else {
-            showInfoAlert(message: "Todos los campos con (*) son obligatorios")
+            showInfoAlert(message: "Debes introducir un nombre")
         }
     }
     

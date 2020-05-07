@@ -6,5 +6,5 @@ target 'My GYM Management' do
   use_frameworks!
 
   # Pods for My GYM Management
-  pod 'DLRadioButton', '~> 1.4'
+  pod 'DLRadioButton', '~> 1.4.12'
 end

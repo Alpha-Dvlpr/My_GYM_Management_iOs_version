@@ -18,8 +18,6 @@ class MyRoutinesViewController: UIViewController {
     
     //MARK: Variables and constants
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
-    var nameTextField: UITextField!
-    var descriptionTextField: UITextField!
     
     //MARK: Main function
     override func viewDidLoad() {
@@ -51,7 +49,7 @@ class MyRoutinesViewController: UIViewController {
     //MARK: Alerts
     func showNewRoutineDialog() {
         let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
-        let addRoutineDialog = storyboard.instantiateViewController(withIdentifier: "CustomAlertID") as! AddRoutineSBViewController
+        let addRoutineDialog = storyboard.instantiateViewController(withIdentifier: "AddRoutineCustomDialog") as! AddRoutineSBViewController
         
         addRoutineDialog.providesPresentationContextTransitionStyle = true
         addRoutineDialog.definesPresentationContext = true
@@ -73,16 +71,16 @@ class MyRoutinesViewController: UIViewController {
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRoutineInfo" {
-            //let indexPath = sender as! IndexPath
-            //let infoVC = segue.destination as! RoutineInfoViewController
-            //let routine = fetchedResultsController.object(at: indexPath) as! Routine
+            let indexPath = sender as! IndexPath
+            let infoVC = segue.destination as! RoutineInfoViewController
+            let routine = fetchedResultsController.object(at: indexPath) as! Routine
             
-            //infoVC.localRoutine = routine
+            infoVC.localRoutine = routine
         }
     }
 }
 
-extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CustomAlertDialogDelegate {
+extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CustomRoutineAlertDialogDelegate {
     //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -101,7 +99,7 @@ extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, 
             AppDelegate.context.delete(routineToDelete)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         } else {
-            showInfoAlert(message: "No puedes eliminar un ejercicio predefinido")
+            showInfoAlert(message: "No puedes eliminar una rutina predefinida")
             tableView.reloadData()
         }
     }

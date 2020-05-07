@@ -11,6 +11,9 @@
 		93BB036B2463093700D2F7C3 /* AddRoutine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93BB036A2463093700D2F7C3 /* AddRoutine.storyboard */; };
 		93BB036E24630E1D00D2F7C3 /* AddRoutineSBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BB036D24630E1D00D2F7C3 /* AddRoutineSBViewController.swift */; };
 		93C15AAA243BDF71008B6B0F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93C15AA9243BDF71008B6B0F /* Constants.swift */; };
+		93CE92A1246389BE002875AD /* AddExercise.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93CE92A0246389BE002875AD /* AddExercise.storyboard */; };
+		93CE92A324638C7E002875AD /* AddExerciseSBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE92A224638C7E002875AD /* AddExerciseSBViewController.swift */; };
+		93CE92A524639357002875AD /* RoutineInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE92A424639357002875AD /* RoutineInfoViewController.swift */; };
 		93CF7233243BB88600C53AED /* ExercisesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7232243BB88600C53AED /* ExercisesViewController.swift */; };
 		93CF7235243BB8DE00C53AED /* RoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */; };
 		93CF7237243BB8F000C53AED /* MyRoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7236243BB8F000C53AED /* MyRoutinesViewController.swift */; };
@@ -32,6 +35,9 @@
 		93BB036A2463093700D2F7C3 /* AddRoutine.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRoutine.storyboard; sourceTree = "<group>"; };
 		93BB036D24630E1D00D2F7C3 /* AddRoutineSBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineSBViewController.swift; sourceTree = "<group>"; };
 		93C15AA9243BDF71008B6B0F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		93CE92A0246389BE002875AD /* AddExercise.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddExercise.storyboard; sourceTree = "<group>"; };
+		93CE92A224638C7E002875AD /* AddExerciseSBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseSBViewController.swift; sourceTree = "<group>"; };
+		93CE92A424639357002875AD /* RoutineInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineInfoViewController.swift; sourceTree = "<group>"; };
 		93CF7232243BB88600C53AED /* ExercisesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesViewController.swift; sourceTree = "<group>"; };
 		93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesViewController.swift; sourceTree = "<group>"; };
 		93CF7236243BB8F000C53AED /* MyRoutinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutinesViewController.swift; sourceTree = "<group>"; };
@@ -71,12 +77,25 @@
 		93BB036C2463095500D2F7C3 /* storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				93CE92A0246389BE002875AD /* AddExercise.storyboard */,
 				93BB036A2463093700D2F7C3 /* AddRoutine.storyboard */,
 				93ECB1FF2433B05400F4EF8E /* LaunchScreen.storyboard */,
 				93ECB1F72433B05100F4EF8E /* Main.storyboard */,
+				93CE92A224638C7E002875AD /* AddExerciseSBViewController.swift */,
 				93BB036D24630E1D00D2F7C3 /* AddRoutineSBViewController.swift */,
 			);
 			path = storyboards;
+			sourceTree = "<group>";
+		};
+		93CE929F2463898E002875AD /* list_interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */,
+				93FEA809244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift */,
+				93FEA80B24464D3E00EAE2E0 /* RoutinesListViewController.swift */,
+				93CE92A424639357002875AD /* RoutineInfoViewController.swift */,
+			);
+			path = list_interfaces;
 			sourceTree = "<group>";
 		};
 		93E79C302462FE5600AD6355 /* main_interface */ = {
@@ -84,8 +103,8 @@
 			children = (
 				93CF7232243BB88600C53AED /* ExercisesViewController.swift */,
 				93CF7236243BB8F000C53AED /* MyRoutinesViewController.swift */,
-				93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */,
 				93CF7238243BB90400C53AED /* OthersViewController.swift */,
+				93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */,
 			);
 			name = main_interface;
 			path = "New Group";
@@ -112,16 +131,14 @@
 		93ECB1F22433B05100F4EF8E /* My GYM Management */ = {
 			isa = PBXGroup;
 			children = (
-				93BB036C2463095500D2F7C3 /* storyboards */,
-				93E79C302462FE5600AD6355 /* main_interface */,
 				93ECB1F32433B05100F4EF8E /* AppDelegate.swift */,
 				93C15AA9243BDF71008B6B0F /* Constants.swift */,
-				931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */,
-				93FEA809244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift */,
-				93FEA80B24464D3E00EAE2E0 /* RoutinesListViewController.swift */,
 				93ECB1FD2433B05400F4EF8E /* Assets.xcassets */,
-				93ECB2022433B05400F4EF8E /* Info.plist */,
 				93ECB1FA2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld */,
+				93ECB2022433B05400F4EF8E /* Info.plist */,
+				93BB036C2463095500D2F7C3 /* storyboards */,
+				93E79C302462FE5600AD6355 /* main_interface */,
+				93CE929F2463898E002875AD /* list_interfaces */,
 			);
 			path = "My GYM Management";
 			sourceTree = "<group>";
@@ -195,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93CE92A1246389BE002875AD /* AddExercise.storyboard in Resources */,
 				93ECB2012433B05400F4EF8E /* LaunchScreen.storyboard in Resources */,
 				93ECB1FE2433B05400F4EF8E /* Assets.xcassets in Resources */,
 				93ECB1F92433B05100F4EF8E /* Main.storyboard in Resources */,
@@ -254,10 +272,12 @@
 				93ECB1F42433B05100F4EF8E /* AppDelegate.swift in Sources */,
 				93CF7233243BB88600C53AED /* ExercisesViewController.swift in Sources */,
 				93ECB1FC2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld in Sources */,
+				93CE92A324638C7E002875AD /* AddExerciseSBViewController.swift in Sources */,
 				93CF7237243BB8F000C53AED /* MyRoutinesViewController.swift in Sources */,
 				93FEA80A244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift in Sources */,
 				931CE0B1244129BA00D2AD96 /* ExerciseInfoViewController.swift in Sources */,
 				93FEA80C24464D3E00EAE2E0 /* RoutinesListViewController.swift in Sources */,
+				93CE92A524639357002875AD /* RoutineInfoViewController.swift in Sources */,
 				93C15AAA243BDF71008B6B0F /* Constants.swift in Sources */,
 				93CF7235243BB8DE00C53AED /* RoutinesViewController.swift in Sources */,
 				93BB036E24630E1D00D2F7C3 /* AddRoutineSBViewController.swift in Sources */,

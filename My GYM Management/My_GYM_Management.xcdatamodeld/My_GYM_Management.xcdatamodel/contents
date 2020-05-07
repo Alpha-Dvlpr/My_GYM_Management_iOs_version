@@ -3,18 +3,27 @@
     <entity name="Exercise" representedClassName="Exercise" syncable="YES" codeGenerationType="class">
         <attribute name="execution" attributeType="String" syncable="YES"/>
         <attribute name="info" attributeType="String" syncable="YES"/>
-        <attribute name="isUserCreated" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="isUserCreated" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="muscles" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Routine" representedClassName="Routine" syncable="YES" codeGenerationType="class">
+        <attribute name="color" attributeType="String" syncable="YES"/>
+        <attribute name="days" attributeType="String" syncable="YES"/>
+        <attribute name="difficulty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="goal" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isUserCreated" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isUserCreated" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="load" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="muscles" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="objective" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repetitions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="series" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Exercise" positionX="-63" positionY="-18" width="128" height="135"/>
-        <element name="Routine" positionX="-63" positionY="27" width="128" height="90"/>
+        <element name="Exercise" positionX="-63" positionY="-18" width="128" height="30"/>
+        <element name="Routine" positionX="-63" positionY="27" width="128" height="30"/>
     </elements>
 </model>

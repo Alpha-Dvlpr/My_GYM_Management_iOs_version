@@ -401,6 +401,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="2pS-x3-F0Y" id="y2y-Ws-W45"/>
+                        <segue destination="IQi-XB-yUb" kind="show" identifier="toRoutineInfo" id="J81-2o-0xv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3Q-wB-Fxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -685,6 +686,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpu-Jn-pin" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1242.4000000000001" y="612.14392803598207"/>
+        </scene>
+        <!--INFO-->
+        <scene sceneID="2An-rU-3wE">
+            <objects>
+                <viewController id="IQi-XB-yUb" customClass="RoutineInfoViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4Lb-Yp-MGy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="giE-Zh-MdV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="INFO" id="Dy0-U9-JUV"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r9F-he-iWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="297" y="-60"/>
         </scene>
     </scenes>
     <resources>
