@@ -22,22 +22,47 @@ class MuscleGroupSelectorViewController: UIViewController {
     }
     
     //MARK: IBActions
+    
+    /**
+     This method sets the value of **'group'** and performs the segur to the next view.
+     
+     - Parameter sender: The sender of the action (In this case UIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func upperPartButtonSelected(_ sender: UIButton) {
         group = "upperPart"
         perform()
     }
     
+    /**
+     This method sets the value of **'group'** and performs the segur to the next view.
+     
+     - Parameter sender: The sender of the action (In this case UIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func lowerPartButtonSelected(_ sender: UIButton) {
         group = "lowerPart"
         perform()
     }
     
+    /**
+     This method sets the value of **'group'** and performs the segur to the next view.
+     
+     - Parameter sender: The sender of the action (In this case UIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func coreButtonSelected(_ sender: UIButton) {
         group = "core"
         perform()
     }
     
     //MARK: Update UI
+    
+    /**
+     This method set all the values on the view. This depends on the values received from the previous segue.
+     
+     - Author: Aarón Granado Amores.
+     */
     func updateUI() {
         var titleToSet: String
         
@@ -59,6 +84,12 @@ class MuscleGroupSelectorViewController: UIViewController {
     }
     
     //MARK: Navigation
+    
+    /**
+     This method creates the segue to the list of predefined routines.
+     
+     - Author: Aarón Granado Amores.
+     */
     func perform() {
         performSegue(withIdentifier: "toRoutinesList", sender: self)
     }

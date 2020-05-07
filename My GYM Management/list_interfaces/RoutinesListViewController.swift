@@ -25,6 +25,12 @@ class RoutinesListViewController: UIViewController {
     }
     
     //MARK: Update UI
+    
+    /**
+     This method sets the values on the view. Those values are set on the previous segue.
+     
+     - Author: Aarón Granado Amores.
+     */
     func updateUI() {
         label.text = "Objective: " + objective + "\nGroup: " + group
     }

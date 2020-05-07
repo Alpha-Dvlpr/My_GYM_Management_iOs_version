@@ -930,6 +930,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="editRoutineOutlet" destination="S2G-qo-AYW" id="UrM-8t-xdC"/>
                         <outlet property="exercisesLabel" destination="i8w-kQ-Shc" id="AoS-9T-3Pi"/>
                         <outlet property="fridayOutlet" destination="Q2J-lu-osl" id="K8u-eZ-qQZ"/>
                         <outlet property="infoLabel" destination="mQl-KP-zdN" id="z8W-UK-Xc6"/>

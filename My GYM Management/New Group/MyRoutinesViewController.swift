@@ -23,11 +23,25 @@ class MyRoutinesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetch()
+        
+        tableView.tableFooterView = UIView()
+    }
+    
+    /**
+     This method searches for the Exercises on CoreData and sorts them by ascending name.
+     
+     ## Important Notes ##
+     1. This method only searches for Routines that have **'isUserCreated'** set as **'true'**.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func fetch() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Routine")
+        let predicate = NSPredicate(format: "isUserCreated == %@", NSNumber(value: true))
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        
-        // Show only the ones with 'isUserCreated' as true
+        fetchRequest.predicate = predicate
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
@@ -37,16 +51,27 @@ class MyRoutinesViewController: UIViewController {
         } catch {
             print(error.localizedDescription)
         }
-        
-        tableView.tableFooterView = UIView()
     }
     
     //MARK: IBActions
+    
+    /**
+     The action for the add button.
+     
+     - Parameter sender: The sender of the action (In this case UIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         showNewRoutineDialog()
     }
     
     //MARK: Alerts
+    
+    /**
+     This method creates a custom alert for adding a new routine to CoreData.
+     
+     - Author: Aarón Granado Amores.
+     */
     func showNewRoutineDialog() {
         let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
         let addRoutineDialog = storyboard.instantiateViewController(withIdentifier: "AddRoutineCustomDialog") as! AddRoutineSBViewController
@@ -60,6 +85,12 @@ class MyRoutinesViewController: UIViewController {
         self.present(addRoutineDialog, animated: true, completion: nil)
     }
     
+    /**
+     This method shows an alert with the message given.
+     
+     - Parameter message: The message to be displayed.
+     - Author: Aarón Granado Amores.
+     */
     func showInfoAlert(message: String) {
         let alertController = UIAlertController(title: "INFO", message: message, preferredStyle: .alert)
         
@@ -111,9 +142,9 @@ extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let exercise = fetchedResultsController.object(at: indexPath) as! Routine
+        let routine = fetchedResultsController.object(at: indexPath) as! Routine
         
-        cell.textLabel?.text = exercise.name
+        cell.textLabel?.text = routine.name
         
         return cell
     }

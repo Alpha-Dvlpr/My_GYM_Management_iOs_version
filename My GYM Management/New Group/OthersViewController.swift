@@ -23,29 +23,66 @@ class OthersViewController: UIViewController {
     }
     
     //MARK: IBActions
+    
+    /**
+      This method sets the action for the privacy button.
+     
+     - Parameter sender: The sender of the action (In this case uIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func privacyButtonPressed(_ sender: UIButton) {
         guard let privacyURL = URL(string: cons.privacyURL) else { return }
         
         UIApplication.shared.open(privacyURL)
     }
     
+    /**
+     This method sets the action for the contact button.
+     
+     - Parameter sender: The sender of the action (In this case uIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func contactButtonPressed(_ sender: UIButton) {
         showMailcomposer()
     }
     
+    /**
+     This method sets the action for the imc calculator button.
+     
+     - Parameter sender: The sender of the action (In this case uIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func imcCalcButtonPressed(_ sender: UIButton) {
         print("Calculating IMC...")
     }
     
+    /**
+     This method sets the action for the gym locator button.
+     
+     - Parameter sender: The sender of the action (In this case uIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func locateGymButtonPressed(_ sender: UIButton) {
         openAppleMaps()
     }
     
+    /**
+     This method sets the action for the update button.
+     
+     - Parameter sender: The sender of the action (In this case uIButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func updateDataButtonPressed(_ sender: UIButton) {
         print("Updating data....")
     }
     
     //MARK: Open Maps
+    
+    /**
+     This method opens Apple Maps if it is available on the user's device to show the locatin near gyms URL.
+     
+     - Author: Aarón Granado Amores.
+     */
     func openAppleMaps() {
         if (UIApplication.shared.canOpenURL(URL(string:"http://maps.apple.com")!)) {
             UIApplication.shared.open(URL(string: cons.appleMapsURL)!)
@@ -55,6 +92,12 @@ class OthersViewController: UIViewController {
     }
     
     //MARK: Helpers
+    
+    /**
+     This method sets all the values to be placed on the email.
+    
+     - Author: Aarón Granado Amores.
+     */
     func showMailcomposer() {
         guard MFMailComposeViewController.canSendMail() else { return }
         let composer = MFMailComposeViewController()
