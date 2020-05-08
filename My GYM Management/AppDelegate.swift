@@ -23,7 +23,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+       
+        let preferences = UserDefaults.standard
+        let currentKey = "hasIntroBeenShown"
+        
+        if preferences.object(forKey: currentKey) == nil {
+            window = UIWindow()
+            window?.makeKeyAndVisible()
+            
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            
+            let pageControl = PageController(collectionViewLayout: layout)
+            
+            window?.rootViewController = pageControl
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainPage = storyboard.instantiateViewController(withIdentifier: "mainPage")
+            let viewController = self.window!.rootViewController
+            
+            viewController?.present(mainPage, animated: true, completion: nil)
+        }
+        
         return true
     }
 
