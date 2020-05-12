@@ -19,29 +19,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="INv-JD-y6w">
-                                <rect key="frame" x="50" y="70" width="275" height="339"/>
+                                <rect key="frame" x="50" y="164" width="275" height="339"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AÑADIR RUTINA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZPr-gV-PAK">
                                         <rect key="frame" x="64" y="16" width="147" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Ith-Nx-wAY"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LWn-kj-kA7">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="LWn-kj-kA7">
                                         <rect key="frame" x="16" y="56" width="243" height="221"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LGC-E9-tHa">
-                                                <rect key="frame" x="0.0" y="0.0" width="243" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Descripción" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0RJ-t8-I15">
-                                                <rect key="frame" x="0.0" y="38" width="243" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Gna-cH-zGh">
+                                                <rect key="frame" x="0.0" y="0.0" width="243" height="68"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LGC-E9-tHa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="243" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Descripción" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0RJ-t8-I15">
+                                                        <rect key="frame" x="0.0" y="38" width="243" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color de la rutina" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-wg-yiS">
                                                 <rect key="frame" x="0.0" y="76" width="243" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -259,8 +267,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="INv-JD-y6w" firstAttribute="centerY" secondItem="ZRP-m0-8Db" secondAttribute="centerY" id="2PJ-iz-Hk3"/>
                             <constraint firstItem="INv-JD-y6w" firstAttribute="centerX" secondItem="ZRP-m0-8Db" secondAttribute="centerX" id="5DF-Zx-hnG"/>
-                            <constraint firstItem="INv-JD-y6w" firstAttribute="top" secondItem="HZw-Oe-2Ud" secondAttribute="top" constant="50" id="zsk-Tr-SFH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HZw-Oe-2Ud"/>
                     </view>

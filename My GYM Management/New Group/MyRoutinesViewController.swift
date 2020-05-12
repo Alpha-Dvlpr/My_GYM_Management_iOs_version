@@ -18,6 +18,7 @@ class MyRoutinesViewController: UIViewController {
     
     //MARK: Variables and constants
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    var addRoutineDialog: AddRoutineSBViewController!
     
     //MARK: Main function
     override func viewDidLoad() {
@@ -26,6 +27,17 @@ class MyRoutinesViewController: UIViewController {
         fetch()
         
         tableView.tableFooterView = UIView()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    //MARK: KeyboardEvents
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            addRoutineDialog.updateConstraints(offsetHeight: keyboardHeight)
+        }
     }
     
     /**
@@ -74,7 +86,7 @@ class MyRoutinesViewController: UIViewController {
      */
     func showNewRoutineDialog() {
         let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
-        let addRoutineDialog = storyboard.instantiateViewController(withIdentifier: "AddRoutineCustomDialog") as! AddRoutineSBViewController
+        addRoutineDialog = storyboard.instantiateViewController(withIdentifier: "AddRoutineCustomDialog") as? AddRoutineSBViewController
         
         addRoutineDialog.providesPresentationContextTransitionStyle = true
         addRoutineDialog.definesPresentationContext = true

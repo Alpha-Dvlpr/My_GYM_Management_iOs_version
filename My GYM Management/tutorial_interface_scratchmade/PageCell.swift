@@ -12,6 +12,7 @@ class PageCell: UICollectionViewCell {
     
     //MARK: Variables and constants
     private var centralStack: UIStackView!
+    private var cons = Constants()
     
     /**
      This variable checks if the page has been set correctly and sets all the received informtion on the
@@ -23,7 +24,7 @@ class PageCell: UICollectionViewCell {
         didSet {
             guard let unwrappedPage = page else { return }
             
-            titleLabel.text = unwrappedPage.titleText
+            titleLabel.text = unwrappedPage.titleText.uppercased()
             descriptionLabel.text = unwrappedPage.descriptionText
         }
     }
@@ -83,6 +84,7 @@ class PageCell: UICollectionViewCell {
         let label = UILabel()
         
         label.textAlignment = .center
+        label.numberOfLines = 2
         label.font = UIFont.boldSystemFont(ofSize: 20)
         
         return label

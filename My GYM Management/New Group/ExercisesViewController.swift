@@ -17,6 +17,7 @@ class ExercisesViewController: UIViewController {
     
     //MARK: Variables and constants
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    var addExerciseDialog: AddExerciseSBViewController!
     
     //MARK: Main function
     override func viewDidLoad() {
@@ -24,6 +25,17 @@ class ExercisesViewController: UIViewController {
         
         fetch()
         tableView.tableFooterView = UIView()
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    //MARK: KeyboardEvents
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            addExerciseDialog.updateConstraints(offsetHeight: keyboardHeight)
+        }
     }
     
     /**
@@ -66,7 +78,7 @@ class ExercisesViewController: UIViewController {
      */
     func showNewExerciseDialog() {
         let storyboard = UIStoryboard(name: "AddExercise", bundle: nil)
-        let addExerciseDialog = storyboard.instantiateViewController(withIdentifier: "AddExerciseCustomDialog") as! AddExerciseSBViewController
+        addExerciseDialog = storyboard.instantiateViewController(withIdentifier: "AddExerciseCustomDialog") as! AddExerciseSBViewController
         
         addExerciseDialog.providesPresentationContextTransitionStyle = true
         addExerciseDialog.definesPresentationContext = true

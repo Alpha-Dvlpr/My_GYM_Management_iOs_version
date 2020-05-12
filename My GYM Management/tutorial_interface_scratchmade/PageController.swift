@@ -8,33 +8,24 @@
 
 import UIKit
 
-class PageController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class PageController: UICollectionViewController {
     
     //MARK: Variables and constants
     private var bottomStack: UIStackView!
+    let cons = Constants()
     
     /**
      This array holds all the pages that will be displayed on the introductory page controller
      
      - Author: Aarón Granado Amores.
      */
-    let pages = [
-        Page(titleText: "My GYM Management",
-             descriptionText: "Gestiona tus entrenamientos y rutinas en casa y en el gimnasio de manera fácil y rápida."),
-        Page(titleText: "Guarda cosas",
-             descriptionText: "Crea tus propias rutinas y ejercicios."),
-        Page(titleText: "Actualiza datos",
-             descriptionText: "Actualiza los datos para recibir las últimas rutinas actualizadas."),
-        Page(titleText: "Comparte",
-             descriptionText: "Comparte las rutinas y ejercicios a través de tus redes sociales."),
-        Page(titleText: "Dale like",
-             descriptionText: "Danos 5 estrellas en el AppStore")
-    ]
+    var pages: [Page] = []
     
     //MARK: Main function
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        createPages()
         addViewsToLayout()
         
         collectionView.backgroundColor = UIColor(red: 179/255, green: 248/255, blue: 255/255, alpha: 1)
@@ -44,48 +35,21 @@ class PageController: UICollectionViewController, UICollectionViewDelegateFlowLa
         collectionView.showsVerticalScrollIndicator = false
     }
     
-    //MARK: Delegates
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
+    //MARK: Pages creation
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return pages.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! PageCell
-        let page = pages[indexPath.item]
+    /**
+     This method fills the pages array with severas new pages depending on the values on the Constants.swift file.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func createPages() {
+        let numberOfPages = cons.titles.count - 1
         
-        cell.page = page
-        
-        return cell
-    }
-    
-    /// This method override makes the pages snap to the edges when the scroll ends.
-    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let x = targetContentOffset.pointee.x
-        
-        pageControl.currentPage = Int(x / view.frame.width)
-    }
-    
-    /// This method override makes the layout work correctly both on portrait and landscape modes.
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(alongsideTransition: { (_) in
-            self.collectionViewLayout.invalidateLayout()
+        for i in 0...numberOfPages {
+            let pageToAdd = Page(titleText: cons.titles[i], descriptionText: cons.descriptions[i])
             
-            if self.pageControl.currentPage == 0 {
-                self.collectionView?.contentOffset = .zero
-            } else {
-                let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
-                
-                self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            }
-        }, completion: nil)
+            pages.append(pageToAdd)
+        }
     }
     
     //MARK: Layout setup
@@ -264,5 +228,51 @@ class PageController: UICollectionViewController, UICollectionViewDelegateFlowLa
         if didSave {
             self.present(mainPage, animated: true, completion: nil)
         }
+    }
+}
+
+extension PageController: UICollectionViewDelegateFlowLayout {
+    //MARK: Delegates
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pages.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! PageCell
+        let page = pages[indexPath.item]
+        
+        cell.page = page
+        
+        return cell
+    }
+    
+    /// This method override makes the pages snap to the edges when the scroll ends.
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        
+        pageControl.currentPage = Int(x / view.frame.width)
+    }
+    
+    /// This method override makes the layout work correctly both on portrait and landscape modes.
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { (_) in
+            self.collectionViewLayout.invalidateLayout()
+            
+            if self.pageControl.currentPage == 0 {
+                self.collectionView?.contentOffset = .zero
+            } else {
+                let indexPath = IndexPath(item: self.pageControl.currentPage, section: 0)
+                
+                self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            }
+        }, completion: nil)
     }
 }

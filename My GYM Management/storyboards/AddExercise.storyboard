@@ -19,15 +19,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5br-4J-vbg">
-                                <rect key="frame" x="36.5" y="70" width="302.5" height="300"/>
+                                <rect key="frame" x="36.5" y="183.5" width="302.5" height="300"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AÑADIR EJERCICIO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZw-Wz-34c">
                                         <rect key="frame" x="64" y="16" width="174.5" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="TfM-KD-zrc"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-hb-Dzp">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-hb-Dzp">
                                         <rect key="frame" x="16" y="56" width="270.5" height="182"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9uD-r4-gRh">
@@ -103,8 +106,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="5br-4J-vbg" firstAttribute="centerY" secondItem="NEP-UU-E5v" secondAttribute="centerY" id="UBa-Km-S2X"/>
                             <constraint firstItem="5br-4J-vbg" firstAttribute="centerX" secondItem="NEP-UU-E5v" secondAttribute="centerX" id="gNH-I6-fhj"/>
-                            <constraint firstItem="5br-4J-vbg" firstAttribute="top" secondItem="Ca2-w2-Bdd" secondAttribute="top" constant="50" id="s5v-Zj-fEx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ca2-w2-Bdd"/>
                     </view>

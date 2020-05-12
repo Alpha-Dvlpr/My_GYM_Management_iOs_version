@@ -47,7 +47,7 @@ class AddExerciseSBViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupView()
-        animateView()
+        //animateView()
     }
     
     //MARK: Helpers
@@ -75,6 +75,23 @@ class AddExerciseSBViewController: UIViewController {
             self.alertView.alpha = 1.0;
             self.alertView.frame.origin.y = self.alertView.frame.origin.y - 50
         })
+    }
+    
+    /**
+     This method sets new constraints to the dialog when the keyboard is open in order to center it on the
+     free space on the screeen
+     
+     - Parameter offsetHeight: The value to be added on the bottom constraint, this is given by the keyboard height.
+     - Author: Aarón Granado Amores.
+     */
+    public func updateConstraints(offsetHeight: CGFloat) {
+        let viewHeight: CGFloat = alertView.bounds.height
+        let screenHeight: CGFloat = UIScreen.main.bounds.height
+        let freeSpace: CGFloat = screenHeight - offsetHeight - viewHeight
+        let constraint: CGFloat = freeSpace / 2
+        
+        alertView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: constraint).isActive = true
+        alertView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -(constraint + offsetHeight)).isActive = true
     }
     
     //MARK: IBActions
