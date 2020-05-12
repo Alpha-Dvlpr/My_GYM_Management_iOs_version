@@ -8,6 +8,7 @@
 
 import UIKit
 import DLRadioButton
+import CoreData
 
 /**
  This protocol connects this alert with the class where it is called.
@@ -99,7 +100,7 @@ class AddRoutineSBViewController: UIViewController{
      - Parameter offsetHeight: The value to be added on the bottom constraint, this is given by the keyboard height.
      - Author: Aarón Granado Amores.
      */
-    public func updateConstraints(offsetHeight: CGFloat) {
+    public func updateRoutinesAlertConstraints(offsetHeight: CGFloat) {
         let viewHeight: CGFloat = alertView.bounds.height
         let screenHeight: CGFloat = UIScreen.main.bounds.height
         let freeSpace: CGFloat = screenHeight - offsetHeight - viewHeight
@@ -145,6 +146,32 @@ class AddRoutineSBViewController: UIViewController{
         daysString += selectedDaysArray[6] ? (daysString.count == 0 ? "SU" : "-SU") : ""
         
         return daysString
+    }
+    
+    /**
+     This method checks if there is a routine with the same name on Core Data.
+     
+     - Parameter name: The name of the routine to be checked.
+     - Returns: Returns **true** if the routine already exists and  **false** if not.
+     - Author: Aarón Granado Amores.
+     */
+    func checkIfRoutineExistsOnCoreData(name: String) -> Bool{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Routine")
+        
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+       
+        do {
+            let result = try AppDelegate.context.fetch(fetchRequest)
+            
+            if result.count != 0 {
+                return true
+            }
+        } catch {
+            print("Error checking routine")
+            return true
+        }
+        
+        return false
     }
     
     //MARK: IBActions
@@ -264,36 +291,38 @@ class AddRoutineSBViewController: UIViewController{
      - Author: Aarón Granado Amores.
      */
     func saveRoutine() {
-        // Check if there's a routine with the same name.
-        
         if nameTextField.text != "" {
-            if !checkIfAnyDayIsSelected() {
-                showInfoAlert(message: "Debes seleccionar al menos un día")
+            if !checkIfRoutineExistsOnCoreData(name: nameTextField.text!) {
+                if !checkIfAnyDayIsSelected() {
+                    showInfoAlert(message: "Debes seleccionar al menos un día")
+                } else {
+                    let routineToSave: Routine = Routine(context: AppDelegate.context)
+                    var checkedColor: String = cons.predefinedRoutineColor
+                    
+                    if redRadioButton.isSelected {
+                        checkedColor = String(cons.routineColorOne)
+                    }
+                    
+                    if greenRadioButton.isSelected {
+                        checkedColor = String(cons.routineColorTwo)
+                    }
+                    
+                    if blueRadioButton.isSelected {
+                        checkedColor = String(cons.routineColorThree)
+                    }
+                    
+                    routineToSave.name = nameTextField.text
+                    routineToSave.color = checkedColor
+                    routineToSave.days = createDaysString()
+                    routineToSave.isUserCreated = true
+                    
+                    if descriptionTextField.text != "" { routineToSave.info = descriptionTextField.text }
+                    
+                    saveToCD()
+                    self.dismiss(animated: true, completion: nil)
+                }
             } else {
-                let routineToSave: Routine = Routine(context: AppDelegate.context)
-                var checkedColor: String = cons.predefinedRoutineColor
-                
-                if redRadioButton.isSelected {
-                    checkedColor = String(cons.routineColorOne)
-                }
-                
-                if greenRadioButton.isSelected {
-                    checkedColor = String(cons.routineColorTwo)
-                }
-                
-                if blueRadioButton.isSelected {
-                    checkedColor = String(cons.routineColorThree)
-                }
-            
-                routineToSave.name = nameTextField.text
-                routineToSave.color = checkedColor
-                routineToSave.days = createDaysString()
-                routineToSave.isUserCreated = true
-                
-                if descriptionTextField.text != "" { routineToSave.info = descriptionTextField.text }
-                
-                saveToCD()
-                self.dismiss(animated: true, completion: nil)
+                showInfoAlert(message: "Ya existe una rutina con el nombre '\(nameTextField.text!)'")
             }
         } else {
             showInfoAlert(message: "Debes introducir un nombre")

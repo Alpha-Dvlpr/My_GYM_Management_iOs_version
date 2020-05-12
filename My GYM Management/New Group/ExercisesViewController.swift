@@ -25,17 +25,6 @@ class ExercisesViewController: UIViewController {
         
         fetch()
         tableView.tableFooterView = UIView()
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-    
-    //MARK: KeyboardEvents
-    @objc func handleKeyboardNotification(notification: NSNotification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            addExerciseDialog.updateConstraints(offsetHeight: keyboardHeight)
-        }
     }
     
     /**
@@ -78,7 +67,7 @@ class ExercisesViewController: UIViewController {
      */
     func showNewExerciseDialog() {
         let storyboard = UIStoryboard(name: "AddExercise", bundle: nil)
-        addExerciseDialog = storyboard.instantiateViewController(withIdentifier: "AddExerciseCustomDialog") as! AddExerciseSBViewController
+        addExerciseDialog = (storyboard.instantiateViewController(withIdentifier: "AddExerciseCustomDialog") as! AddExerciseSBViewController)
         
         addExerciseDialog.providesPresentationContextTransitionStyle = true
         addExerciseDialog.definesPresentationContext = true
@@ -87,6 +76,8 @@ class ExercisesViewController: UIViewController {
         addExerciseDialog.delegate = self
         
         self.present(addExerciseDialog, animated: true, completion: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     /**
@@ -101,6 +92,24 @@ class ExercisesViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: KeyboardEvents
+    
+    /**
+     This method handles the keyboard events, updating the alert constrainnts when the keyboard is opened.
+     
+     - Parameter notification: The notification launched when the keyboard state changes (In this case when
+     it's opened).
+     - Author: Aarón Granado Amores.
+     */
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            addExerciseDialog.updateExecriseAlertConstraints(offsetHeight: keyboardHeight)
+        }
     }
     
     //MARK: Navigation

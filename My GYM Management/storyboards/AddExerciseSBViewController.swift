@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 /**
  This protocol connects this alert with the class where it is called.
@@ -47,7 +48,7 @@ class AddExerciseSBViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupView()
-        //animateView()
+        animateView()
     }
     
     //MARK: Helpers
@@ -84,7 +85,7 @@ class AddExerciseSBViewController: UIViewController {
      - Parameter offsetHeight: The value to be added on the bottom constraint, this is given by the keyboard height.
      - Author: Aarón Granado Amores.
      */
-    public func updateConstraints(offsetHeight: CGFloat) {
+    public func updateExecriseAlertConstraints(offsetHeight: CGFloat) {
         let viewHeight: CGFloat = alertView.bounds.height
         let screenHeight: CGFloat = UIScreen.main.bounds.height
         let freeSpace: CGFloat = screenHeight - offsetHeight - viewHeight
@@ -92,6 +93,32 @@ class AddExerciseSBViewController: UIViewController {
         
         alertView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: constraint).isActive = true
         alertView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -(constraint + offsetHeight)).isActive = true
+    }
+    
+    /**
+     This method checks if there is an exercise with the same name on Core Data.
+     
+     - Parameter name: The name of the execrise to be checked.
+     - Returns: Returns **true** if the exercise already exists and  **false** if not.
+     - Author: Aarón Granado Amores.
+     */
+    func checkIfExerciseExistsOnCoreData(name: String) -> Bool{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Exercise")
+        
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            let result = try AppDelegate.context.fetch(fetchRequest)
+            
+            if result.count != 0 {
+                return true
+            }
+        } catch {
+            print("Error checking routine")
+            return true
+        }
+        
+        return false
     }
     
     //MARK: IBActions
@@ -133,23 +160,29 @@ class AddExerciseSBViewController: UIViewController {
      - Author: Aarón Granado Amores.
      */
     func saveExercise() {
-        // Check if there's an exercise with the same name.
-        
-        if nameTextField.text != "" && infoTextField.text != "" && executionTextField.text != "" {
-            let exerciseToSave: Exercise = Exercise(context: AppDelegate.context)
-            
-            exerciseToSave.name = nameTextField.text
-            exerciseToSave.info = infoTextField.text
-            exerciseToSave.execution = executionTextField.text
-            exerciseToSave.isUserCreated = true
-            
-            if linkTextField.text != "" { exerciseToSave.link = linkTextField.text }
-            if musclesTextField.text != "" { exerciseToSave.muscles = musclesTextField.text }
-            
-            saveToCD()
-            self.dismiss(animated: true, completion: nil)
+        if nameTextField.text != "" {
+            if !checkIfExerciseExistsOnCoreData(name: nameTextField.text!) {
+                if infoTextField.text != "" && executionTextField.text != "" {
+                    let exerciseToSave: Exercise = Exercise(context: AppDelegate.context)
+                    
+                    exerciseToSave.name = nameTextField.text
+                    exerciseToSave.info = infoTextField.text
+                    exerciseToSave.execution = executionTextField.text
+                    exerciseToSave.isUserCreated = true
+                    
+                    if linkTextField.text != "" { exerciseToSave.link = linkTextField.text }
+                    if musclesTextField.text != "" { exerciseToSave.muscles = musclesTextField.text }
+                    
+                    saveToCD()
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    showInfoAlert(message: "Todos los campos con '*' son obligatorios")
+                }
+            } else {
+                showInfoAlert(message: "Ya existe un ejercicio con el nombre '\(nameTextField.text!)'")
+            }
         } else {
-            showInfoAlert(message: "Todos los campos con '*' son obligatorios")
+            showInfoAlert(message: "Debes introducir un nombre")
         }
     }
     

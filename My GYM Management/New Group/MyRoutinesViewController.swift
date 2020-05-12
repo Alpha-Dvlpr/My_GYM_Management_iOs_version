@@ -27,17 +27,6 @@ class MyRoutinesViewController: UIViewController {
         fetch()
         
         tableView.tableFooterView = UIView()
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-    
-    //MARK: KeyboardEvents
-    @objc func handleKeyboardNotification(notification: NSNotification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            addRoutineDialog.updateConstraints(offsetHeight: keyboardHeight)
-        }
     }
     
     /**
@@ -86,7 +75,7 @@ class MyRoutinesViewController: UIViewController {
      */
     func showNewRoutineDialog() {
         let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
-        addRoutineDialog = storyboard.instantiateViewController(withIdentifier: "AddRoutineCustomDialog") as? AddRoutineSBViewController
+        addRoutineDialog = (storyboard.instantiateViewController(withIdentifier: "AddRoutineCustomDialog") as! AddRoutineSBViewController)
         
         addRoutineDialog.providesPresentationContextTransitionStyle = true
         addRoutineDialog.definesPresentationContext = true
@@ -95,6 +84,8 @@ class MyRoutinesViewController: UIViewController {
         addRoutineDialog.delegate = self
         
         self.present(addRoutineDialog, animated: true, completion: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     /**
@@ -109,6 +100,24 @@ class MyRoutinesViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: KeyboardEvents
+    
+    /**
+     This method handles the keyboard events, updating the alert constrainnts when the keyboard is opened.
+     
+     - Parameter notification: The notification launched when the keyboard state changes (In this case when
+     it's opened).
+     - Author: Aarón Granado Amores.
+     */
+    @objc func handleKeyboardNotification(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            addRoutineDialog.updateRoutinesAlertConstraints(offsetHeight: keyboardHeight)
+        }
     }
     
     //MARK: Navigation
