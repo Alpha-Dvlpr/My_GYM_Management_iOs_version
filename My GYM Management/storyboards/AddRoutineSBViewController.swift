@@ -293,9 +293,7 @@ class AddRoutineSBViewController: UIViewController{
     func saveRoutine() {
         if nameTextField.text != "" {
             if !checkIfRoutineExistsOnCoreData(name: nameTextField.text!) {
-                if !checkIfAnyDayIsSelected() {
-                    showInfoAlert(message: "Debes seleccionar al menos un día")
-                } else {
+                if checkIfAnyDayIsSelected() {
                     let routineToSave: Routine = Routine(context: AppDelegate.context)
                     var checkedColor: String = cons.predefinedRoutineColor
                     
@@ -320,6 +318,8 @@ class AddRoutineSBViewController: UIViewController{
                     
                     saveToCD()
                     self.dismiss(animated: true, completion: nil)
+                } else {
+                    showInfoAlert(message: "Debes seleccionar al menos un día")
                 }
             } else {
                 showInfoAlert(message: "Ya existe una rutina con el nombre '\(nameTextField.text!)'")

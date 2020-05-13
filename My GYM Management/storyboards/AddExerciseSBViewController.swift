@@ -114,7 +114,7 @@ class AddExerciseSBViewController: UIViewController {
                 return true
             }
         } catch {
-            print("Error checking routine")
+            print("Error checking exercise")
             return true
         }
         
