@@ -12,11 +12,11 @@ import Foundation
 class RoutineInfoViewController: UIViewController {
 
     //MARK: UI Elements connection
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var objectiveLabel: UILabel!
     @IBOutlet weak var exercisesLabel: UILabel!
     @IBOutlet weak var musclesLabel: UILabel!
-    @IBOutlet weak var isUserCreatedLabel: UILabel!
     @IBOutlet weak var mondayOutlet: UIButton!
     @IBOutlet weak var tuesdayOutlet: UIButton!
     @IBOutlet weak var wednesdayOutlet: UIButton!
@@ -25,28 +25,60 @@ class RoutineInfoViewController: UIViewController {
     @IBOutlet weak var saturdayOutlet: UIButton!
     @IBOutlet weak var sundayOutlet: UIButton!
     @IBOutlet weak var editRoutineOutlet: UIBarButtonItem!
+    @IBOutlet weak var difficultyIndicator: UIBarButtonItem!
     
     //MARK: Variables and constants
     var localRoutine: Routine!
+    var cons = Constants()
     
-    //MARK: Main function
+    //MARK: Main functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
         updateUI()
     }
     
-    //MARK: IBActions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        updateUI()
+    }
+    
+    //MARK: UpdateUI
     
     /**
-     This method sets the action for the edit routine button
+     This method set all the information on the view. This can be when the view is created or after the routine
+     is edited.
      
-     - Parameter sender: The sender of the action (In this case UIButton).
+     ## Important Notes ##
+     1. The edit button is only enabled for user created routines and not for custom ones.
+     
      - Author: Aarón Granado Amores.
      */
-    @IBAction func editRoutinePressed(_ sender: UIBarButtonItem) {
-        showInfoAlert(message: "Próximamente")
+    func updateUI() {
+        if localRoutine != nil {
+            let daysArray: [String] = localRoutine.days?.split(separator: "-").map { String($0) } ?? []
+            let exercisesArray: [String] = localRoutine.exercises?.split(separator: "-").map { String($0) } ?? []
+            let repetitionsArray: [String] = localRoutine.repetitions?.split(separator: "-").map { String($0) } ?? []
+            let seriesArray: [String] = localRoutine.series?.split(separator: "-").map { String($0) } ?? []
+            let loadArray: [String] = localRoutine.load?.split(separator: "-").map { String($0) } ?? []
+            
+            setColorToDifficultyIndicator(difficulty: localRoutine.difficulty ?? "none")
+            nameLabel.text = localRoutine.name
+            infoLabel.text = localRoutine.info ?? "No hay información"
+            setColorToDays(days: daysArray, color: localRoutine.color!)
+            objectiveLabel.text = localRoutine.objective ?? "No hay ningún objetivo definido para esta rutina"
+            setExercises(exercises: exercisesArray, repetitions: repetitionsArray, series: seriesArray, load: loadArray)
+            musclesLabel.text = localRoutine.muscles ?? "No hay músculos implicados en esta rutina"
+            
+            editRoutineOutlet.isEnabled = localRoutine.isUserCreated
+            
+        } else {
+            self.title = "ERROR"
+        }
     }
+    
+    //MARK: IBActions
     
     /**
      This method sets the action for the send routine button
@@ -74,40 +106,6 @@ class RoutineInfoViewController: UIViewController {
         self.present(infoAlert, animated: true, completion: nil)
     }
     
-    //MARK: UpdateUI
-    
-    /**
-     This method set all the information on the view. This can be when the view is created or after the routine
-     is edited.
-     
-     ## Important Notes ##
-     1. The edit button is only enabled for user created routines and not for custom ones.
-     
-     - Author: Aarón Granado Amores.
-     */
-    func updateUI() {
-        if localRoutine != nil {
-            let daysArray: [String] = localRoutine.days?.split(separator: "-").map { String($0) } ?? []
-            let exercisesArray: [String] = localRoutine.exercises?.split(separator: "-").map { String($0) } ?? []
-            let repetitionsArray: [String] = localRoutine.repetitions?.split(separator: "-").map { String($0) } ?? []
-            let seriesArray: [String] = localRoutine.series?.split(separator: "-").map { String($0) } ?? []
-            let loadArray: [String] = localRoutine.load?.split(separator: "-").map { String($0) } ?? []
-            
-            self.title = localRoutine.name?.uppercased()
-            infoLabel.text = localRoutine.info ?? "No hay información"
-            setColorToDays(days: daysArray, color: localRoutine.color!)
-            objectiveLabel.text = localRoutine.objective ?? "No hay ningún objetivo definido para esta rutina"
-            setExercises(exercises: exercisesArray, repetitions: repetitionsArray, series: seriesArray, load: loadArray)
-            musclesLabel.text = localRoutine.muscles ?? "No hay músculos implicados en esta rutina"
-            isUserCreatedLabel.text = String(localRoutine.isUserCreated)
-            
-            editRoutineOutlet.isEnabled = localRoutine.isUserCreated
-            
-        } else {
-            self.title = "ERROR"
-        }
-    }
-    
     //MARK: Helpers
     
     /**
@@ -119,37 +117,56 @@ class RoutineInfoViewController: UIViewController {
      - Author: Aarón Granado Amores.
      */
     func setColorToDays(days: [String], color: String) {
-        if days.count != 0 {
-            for day in days {
-                switch day {
-                case "MO":
-                    mondayOutlet.backgroundColor = UIColor(hexString: color)
-                    mondayOutlet.setTitleColor(UIColor.white, for: .normal)
-                    break
-                case "TU":
-                    tuesdayOutlet.backgroundColor = UIColor(hexString: color)
-                    tuesdayOutlet.setTitleColor(UIColor.white, for: .normal)
-                    break
-                case "WE":
-                    wednesdayOutlet.backgroundColor = UIColor(hexString: color)
-                    wednesdayOutlet.setTitleColor(UIColor.white, for: .normal)
-                case "TH":
-                    thursdayOutlet.backgroundColor = UIColor(hexString: color)
-                    thursdayOutlet.setTitleColor(UIColor.white, for: .normal)
-                case "FR":
-                    fridayOutlet.backgroundColor = UIColor(hexString: color)
-                    fridayOutlet.setTitleColor(UIColor.white, for: .normal)
-                case "SA":
-                    saturdayOutlet.backgroundColor = UIColor(hexString: color)
-                    saturdayOutlet.setTitleColor(UIColor.white, for: .normal)
-                case "SU":
-                    sundayOutlet.backgroundColor = UIColor(hexString: color)
-                    sundayOutlet.setTitleColor(UIColor.white, for: .normal)
-                default:
-                    break
-                }
+        var booleanDays: [Bool] = [false, false, false, false, false, false, false]
+        
+        for day in days {
+            switch day {
+            case "MO":
+                booleanDays[0] = true
+                break
+            case "TU":
+                booleanDays[1] = true
+                break
+            case "WE":
+                booleanDays[2] = true
+                break
+            case "TH":
+                booleanDays[3] = true
+                break
+            case "FR":
+                booleanDays[4] = true
+                break
+            case "SA":
+                booleanDays[5] = true
+                break
+            case "SU":
+                booleanDays[6] = true
+                break
+            default:
+                break
             }
         }
+        
+        mondayOutlet.backgroundColor = booleanDays[0] ? UIColor(hexString: color) : UIColor.white
+        mondayOutlet.setTitleColor(booleanDays[0] ? UIColor.white : UIColor.black, for: .normal)
+        
+        tuesdayOutlet.backgroundColor = booleanDays[1] ? UIColor(hexString: color) : UIColor.white
+        tuesdayOutlet.setTitleColor(booleanDays[1] ? UIColor.white : UIColor.black, for: .normal)
+        
+        wednesdayOutlet.backgroundColor = booleanDays[2] ? UIColor(hexString: color) : UIColor.white
+        wednesdayOutlet.setTitleColor(booleanDays[2] ? UIColor.white : UIColor.black, for: .normal)
+        
+        thursdayOutlet.backgroundColor = booleanDays[3] ? UIColor(hexString: color) : UIColor.white
+        thursdayOutlet.setTitleColor(booleanDays[3] ? UIColor.white : UIColor.black, for: .normal)
+        
+        fridayOutlet.backgroundColor = booleanDays[4] ? UIColor(hexString: color) : UIColor.white
+        fridayOutlet.setTitleColor(booleanDays[4] ? UIColor.white : UIColor.black, for: .normal)
+        
+        saturdayOutlet.backgroundColor = booleanDays[5] ? UIColor(hexString: color) : UIColor.white
+        saturdayOutlet.setTitleColor(booleanDays[5] ? UIColor.white : UIColor.black, for: .normal)
+        
+        sundayOutlet.backgroundColor = booleanDays[6] ? UIColor(hexString: color) : UIColor.white
+        sundayOutlet.setTitleColor(booleanDays[6] ? UIColor.white : UIColor.black, for: .normal)
     }
     
     /**
@@ -182,6 +199,42 @@ class RoutineInfoViewController: UIViewController {
                 
                 exercisesLabel.text = exercisesText
             }
+        }
+    }
+    
+    /**
+     This method places the color into the difficulty indicator depending on the routine difficulty selected
+     when creatin the routine.
+     
+     - Parameter difficulty: The difficulty of the routine.
+     - Author: Aarón Granado Amores.
+     */
+    func setColorToDifficultyIndicator(difficulty: String) {
+        var colorToSet: UIColor
+        
+        switch difficulty {
+        case "difficult":
+            colorToSet = UIColor.init(hexString: cons.difficultyColorOne)
+            break
+        case "medium":
+            colorToSet = UIColor.init(hexString: cons.difficultyColorTwo)
+            break
+        case "easy":
+            colorToSet = UIColor.init(hexString: cons.difficultyColorThree)
+            break
+        default:
+            colorToSet = UIColor.lightGray
+        }
+        
+        difficultyIndicator.tintColor = colorToSet
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEditRoutine" {
+            let infoVC = segue.destination as! EditRoutineTableViewController
+            
+            infoVC.currentRoutine = self.localRoutine
         }
     }
 }

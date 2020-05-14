@@ -53,7 +53,7 @@ class AddExerciseTableViewController: UITableViewController {
                 if exerciseInformationTextField.text != "" && exerciseExecutionTextField.text != "" {
                     let exerciseToSave: Exercise = Exercise(context: AppDelegate.context)
                     
-                    exerciseToSave.name = exerciseNameTextField.text
+                    exerciseToSave.name = exerciseNameTextField.text?.uppercased()
                     exerciseToSave.info = exerciseInformationTextField.text
                     exerciseToSave.execution = exerciseExecutionTextField.text
                     exerciseToSave.isUserCreated = true

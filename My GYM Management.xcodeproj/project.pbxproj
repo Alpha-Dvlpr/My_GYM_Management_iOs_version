@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93010CC2246D839B00FE7855 /* EditExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93010CC1246D839B00FE7855 /* EditExerciseTableViewController.swift */; };
 		931CE0B1244129BA00D2AD96 /* ExerciseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */; };
 		936AB1B1246C638C008B1D92 /* AddExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936AB1B0246C638C008B1D92 /* AddExerciseTableViewController.swift */; };
 		938B16F4246C9D4900CA0BD2 /* AddRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B16F3246C9D4900CA0BD2 /* AddRoutineTableViewController.swift */; };
@@ -21,6 +22,7 @@
 		93CF7235243BB8DE00C53AED /* RoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */; };
 		93CF7237243BB8F000C53AED /* MyRoutinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7236243BB8F000C53AED /* MyRoutinesViewController.swift */; };
 		93CF7239243BB90400C53AED /* OthersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF7238243BB90400C53AED /* OthersViewController.swift */; };
+		93DD068E246DFD0F00FDBD9D /* EditRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DD068D246DFD0F00FDBD9D /* EditRoutineTableViewController.swift */; };
 		93ECB1F42433B05100F4EF8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93ECB1F32433B05100F4EF8E /* AppDelegate.swift */; };
 		93ECB1F92433B05100F4EF8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93ECB1F72433B05100F4EF8E /* Main.storyboard */; };
 		93ECB1FC2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93ECB1FA2433B05100F4EF8E /* My_GYM_Management.xcdatamodeld */; };
@@ -34,6 +36,7 @@
 /* Begin PBXFileReference section */
 		56B709B0FC24C3EC50274E2A /* Pods_My_GYM_Management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_GYM_Management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9088F07192A215ACAAD032 /* Pods-My GYM Management.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My GYM Management.release.xcconfig"; path = "Target Support Files/Pods-My GYM Management/Pods-My GYM Management.release.xcconfig"; sourceTree = "<group>"; };
+		93010CC1246D839B00FE7855 /* EditExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseTableViewController.swift; sourceTree = "<group>"; };
 		931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewController.swift; sourceTree = "<group>"; };
 		936AB1B0246C638C008B1D92 /* AddExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTableViewController.swift; sourceTree = "<group>"; };
 		938B16F3246C9D4900CA0BD2 /* AddRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineTableViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +51,7 @@
 		93CF7234243BB8DE00C53AED /* RoutinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutinesViewController.swift; sourceTree = "<group>"; };
 		93CF7236243BB8F000C53AED /* MyRoutinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRoutinesViewController.swift; sourceTree = "<group>"; };
 		93CF7238243BB90400C53AED /* OthersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersViewController.swift; sourceTree = "<group>"; };
+		93DD068D246DFD0F00FDBD9D /* EditRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoutineTableViewController.swift; sourceTree = "<group>"; };
 		93ECB1F02433B05100F4EF8E /* My GYM Management.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "My GYM Management.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93ECB1F32433B05100F4EF8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93ECB1F82433B05100F4EF8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 			children = (
 				936AB1B0246C638C008B1D92 /* AddExerciseTableViewController.swift */,
 				931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */,
+				93010CC1246D839B00FE7855 /* EditExerciseTableViewController.swift */,
 			);
 			path = exercises;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 				938B16F7246CBFB700CA0BD2 /* AddExerciseSBViewController.swift */,
 				938B16F3246C9D4900CA0BD2 /* AddRoutineTableViewController.swift */,
 				93CE92A424639357002875AD /* RoutineInfoViewController.swift */,
+				93DD068D246DFD0F00FDBD9D /* EditRoutineTableViewController.swift */,
 			);
 			path = routines;
 			sourceTree = "<group>";
@@ -296,7 +302,9 @@
 				93FEA80A244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift in Sources */,
 				931CE0B1244129BA00D2AD96 /* ExerciseInfoViewController.swift in Sources */,
 				93FEA80C24464D3E00EAE2E0 /* RoutinesListViewController.swift in Sources */,
+				93010CC2246D839B00FE7855 /* EditExerciseTableViewController.swift in Sources */,
 				93CE92A524639357002875AD /* RoutineInfoViewController.swift in Sources */,
+				93DD068E246DFD0F00FDBD9D /* EditRoutineTableViewController.swift in Sources */,
 				93C15AAA243BDF71008B6B0F /* Constants.swift in Sources */,
 				93BF03072465AB5C00E3E167 /* PageController.swift in Sources */,
 				93BF03092465B2A200E3E167 /* PageCell.swift in Sources */,

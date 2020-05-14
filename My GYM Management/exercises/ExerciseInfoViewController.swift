@@ -11,18 +11,25 @@ import UIKit
 class ExerciseInfoViewController: UIViewController {
 
     //MARK: UI elements connection
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var executionLabel: UILabel!
     @IBOutlet weak var musclesLabel: UILabel!
-    @IBOutlet weak var openLinkOutlet: UIButton!
+    @IBOutlet weak var openLinkOutlet: UIBarButtonItem!
     @IBOutlet weak var editButtonOutlet: UIBarButtonItem!
     
     //MARK: Variables and constants
     var localExercise: Exercise!
     
-    //MARK: Main function
+    //MARK: Main functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        updateUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
         updateUI()
     }
@@ -35,20 +42,14 @@ class ExerciseInfoViewController: UIViewController {
      - Parameter sender: The sender for the action (In this case UIButton).
      - Author: Aarón Granado Amores.
      */
-    @IBAction func openLinkButtonPressed(_ sender: UIButton) {
-        if let linkURL = URL(string: localExercise.link ?? "https://www.google.es") {
-            UIApplication.shared.open(linkURL)
+    @IBAction func openLinkButtonPressed(_ sender: UIBarButtonItem) {
+        if checkURL(url: localExercise.link ?? "no link") {
+            if let linkURL = URL(string: localExercise.link ?? "https://www.google.es") {
+                UIApplication.shared.open(linkURL)
+            }
+        } else {
+            showInfoAlert(message: "No se puede abrir el enlace.\nPuede que esté mal introducido.")
         }
-    }
-    
-    /**
-     This method sets the action for the edit exercise button.
-     
-     - Parameter sender: The sender for the action (In this case UIButton).
-     - Author: Aarón Granado Amores.
-     */
-    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
-        showInfoAlert(message: "Próximamente")
     }
     
     /**
@@ -59,6 +60,23 @@ class ExerciseInfoViewController: UIViewController {
      */
     @IBAction func sendButtonPressed(_ sender: UIBarButtonItem) {
         showInfoAlert(message: "Próximamente")
+    }
+    
+    //MARK: Check URL
+    
+    /**
+     This method checks if the URL is correct and can be opened by the browser.
+     
+     - Parameter url: The URL to check.
+     - Returns: Returns **true** if the link is correct and **false** if not.
+     - Author: Aarón Granado Amores.
+     */
+    func checkURL(url: String) -> Bool {
+        if url.hasPrefix("http://") || url.hasPrefix("https://") {
+            return true
+        }
+        
+        return false
     }
     
     //MARK: AlertDialog
@@ -87,25 +105,27 @@ class ExerciseInfoViewController: UIViewController {
      */
     func updateUI() {
         if localExercise != nil {
-            self.title = localExercise.name?.uppercased()
-            
+            nameLabel.text = localExercise.name
             infoLabel.text = localExercise.info
             executionLabel.text = localExercise.execution
-            musclesLabel.text = localExercise.muscles == nil ? "No hay músculos" : localExercise.muscles
+            musclesLabel.text = (localExercise.muscles == nil || localExercise.muscles == "") ? "No hay músculos" : localExercise.muscles
             
-            if localExercise.link != nil {
-                openLinkOutlet.setTitle("Abrir", for: .normal)
+            if localExercise.link != nil && localExercise.link != "" {
                 openLinkOutlet.isEnabled = true
             } else {
-                openLinkOutlet.setTitle("N/D", for: .disabled)
                 openLinkOutlet.isEnabled = false
-                openLinkOutlet.setTitleColor(UIColor.gray, for: .disabled)
             }
             
             editButtonOutlet.isEnabled = localExercise.isUserCreated
+        }
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toEditExercise" {
+            let infoVC = segue.destination as! EditExerciseTableViewController
             
-        } else {
-            self.title = "ERROR"
+            infoVC.currentExercise = self.localExercise
         }
     }
 }

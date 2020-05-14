@@ -1,19 +1,17 @@
 //
-//  AddRoutineTableViewController.swift
+//  EditRoutineTableViewController.swift
 //  My GYM Management
 //
-//  Created by Aaron Granado Amores on 13/5/20.
+//  Created by Aaron Granado Amores on 15/5/20.
 //  Copyright © 2020 AlphaDvlpr. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import DLRadioButton
-import CoreData
 
-class AddRoutineTableViewController: UITableViewController {
+class EditRoutineTableViewController: UITableViewController {
 
-    //MARK: UI Elements connection
+    //MARK: UI Elements conection
     @IBOutlet weak var routineNameTextField: UITextField!
     @IBOutlet weak var routineInformationTextField: UITextField!
     @IBOutlet weak var routineObjectiveTextField: UITextField!
@@ -34,7 +32,8 @@ class AddRoutineTableViewController: UITableViewController {
     @IBOutlet weak var sundayCheckbox: UIButton!
     
     //MARK: Variables and constants
-    var cons: Constants = Constants()
+    var currentRoutine: Routine!
+    var cons = Constants()
     var selectedDaysArray: [Bool] = [false, false, false, false, false, false, false]
     var exercisesNames: [String] = []
     var exercisesRepetitions: [String] = []
@@ -42,14 +41,123 @@ class AddRoutineTableViewController: UITableViewController {
     var exercisesLoad: [String] = []
     var addExerciseDialog: AddExerciseSBViewController!
     
-    //MARK: Main function
+    //MARK: Main functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initDaysArray()
+        checkColor()
+        checkDifficulty()
         setupColorsAndNames()
+        initExercisesArrays()
+        loadData()
     }
     
-    //MARK: Setup colors and names.
+    //MARK: Load data
+    
+    /**
+     This method inits the days array depending on the days string on the routine and checks the proper checkbox.
+    
+     - Author: Aarón Granado Amores.
+     */
+    func initDaysArray() {
+        let daysArray: [String] = currentRoutine.days?.split(separator: "-").map { String($0) } ?? []
+        
+        for day in daysArray {
+            switch day {
+            case "MO":
+                mondayCheckbox.isSelected = true
+                selectedDaysArray[0] = true
+                break
+            case "TU":
+                tuesdayCheckbox.isSelected = true
+                selectedDaysArray[1] = true
+                break
+            case "WE":
+                wednesdayCheckbox.isSelected = true
+                selectedDaysArray[2] = true
+                break
+            case "TH":
+                thursdayCheckbox.isSelected = true
+                selectedDaysArray[3] = true
+                break
+            case "FR":
+                fridayCheckbox.isSelected = true
+                selectedDaysArray[4] = true
+                break
+            case "SA":
+                saturdayCheckbox.isSelected = true
+                selectedDaysArray[5] = true
+                break
+            case "SU":
+                sundayCheckbox.isSelected = true
+                selectedDaysArray[6] = true
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    /**
+     This method checks the color radioButton depending on the color stored on the routine.
+    
+     - Author: Aarón Granado Amores.
+     */
+    func checkColor() {
+        let selectedColor = currentRoutine.color
+        
+        switch selectedColor {
+        case cons.routineColorOne:
+            firstColorRadioButton.isSelected = true
+            break
+        case cons.routineColorTwo:
+            secondColorRadioButton.isSelected = true
+            break
+        case cons.routineColorThree:
+            thirdColorRadioButton.isSelected = true
+            break
+        default:
+            break
+        }
+    }
+    
+    /**
+     This method checks the difficulty radioButton depending on the difficulty stored on the routine.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func checkDifficulty() {
+        let selectedDifficulty = currentRoutine.difficulty
+        
+        switch selectedDifficulty {
+        case "difficult":
+            difficultRadioButton.isSelected = true
+            break
+        case "medium":
+            mediumRadioButton.isSelected = true
+            break
+        case "easy":
+            easyRadioButton.isSelected = true
+            break
+        default:
+            break
+        }
+    }
+    
+    /**
+     This method loads all the data from the routine on the view.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func loadData() {
+        if currentRoutine != nil {
+            routineNameTextField.text = currentRoutine.name
+            routineInformationTextField.text = currentRoutine.info
+            routineObjectiveTextField.text = currentRoutine.objective
+            routineMusclesTextField.text = currentRoutine.muscles
+        }
+    }
     
     /**
      This method sets the colors and names for all the radio buttons depending on the values set on
@@ -86,8 +194,37 @@ class AddRoutineTableViewController: UITableViewController {
         easyRadioButton.setTitleColor(UIColor.init(hexString: cons.difficultyColorThree), for: .normal)
     }
     
-    //MARK: IBActions
+    /**
+     This method fills the exercises names, series, repetitions an load arrays and then places the formatted
+     data on the execrises text view.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func initExercisesArrays() {
+        exercisesNames = currentRoutine.exercises?.split(separator: "-").map { String($0) } ?? []
+        exercisesRepetitions = currentRoutine.repetitions?.split(separator: "-").map { String($0) } ?? []
+        exercisesSeries = currentRoutine.series?.split(separator: "-").map { String($0) } ?? []
+        exercisesLoad = currentRoutine.load?.split(separator: "-").map { String($0) } ?? []
+        
+        var exercisesText = ""
+        
+        if exercisesNames[0] != "no exercises" {
+            for position in 0...(exercisesNames.count - 1) {
+                exercisesText += exercisesNames[position] + ": "
+                exercisesText += exercisesSeries[position] + "*"
+                exercisesText += exercisesRepetitions[position] + " (" + exercisesLoad[position] + " KG o seg.)"
+                
+                if position != (exercisesNames.count - 1) {
+                    exercisesText += "\n"
+                }
+            }
+        }
+        
+        routineExercisesTextView.text = exercisesText
+    }
     
+    //MARK: IBActions
+
     /**
      This method sets the action for the add button.
      
@@ -106,6 +243,50 @@ class AddRoutineTableViewController: UITableViewController {
      */
     @IBAction func addExerciseButtonPressed(_ sender: UIButton) {
         showNewExerciseDialog()
+    }
+    
+    /**
+     This method enables or disables a checkbox when it is pressed.
+     
+     - Parameter sender: The sender for the action (In this case UIButton that acts as a checkbox).
+     - Author: Aarón Granado Amores.
+     */
+    @IBAction func changeCheckBoxStatus(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+    }
+    
+    /**
+     This method changes the value of the days array depending on the sender label
+     
+     - Parameter sender: The sender of the action (In this case we know it is UIButton).
+     - Author: Aarón Granado Amores.
+     */
+    @IBAction func changeSelectedDay(_ sender: UIButton) {
+        switch sender.titleLabel?.text {
+        case "L":
+            selectedDaysArray[0] = sender.isSelected
+            break
+        case "M":
+            selectedDaysArray[1] = sender.isSelected
+            break
+        case "X":
+            selectedDaysArray[2] = sender.isSelected
+            break
+        case "J":
+            selectedDaysArray[3] = sender.isSelected
+            break
+        case "V":
+            selectedDaysArray[4] = sender.isSelected
+            break
+        case "S":
+            selectedDaysArray[5] = sender.isSelected
+            break
+        case "D":
+            selectedDaysArray[6] = sender.isSelected
+            break
+        default:
+            break
+        }
     }
     
     /**
@@ -174,50 +355,6 @@ class AddRoutineTableViewController: UITableViewController {
         mediumRadioButton.isSelected = false
     }
     
-    /**
-     This method enables or disables a checkbox when it is pressed.
-     
-     - Parameter sender: The sender for the action (In this case UIButton that acts as a checkbox).
-     - Author: Aarón Granado Amores.
-     */
-    @IBAction func changeCheckBoxStatus(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-    }
-    
-    /**
-     This method changes the value of the days array depending on the sender label
-     
-     - Parameter sender: The sender of the action (In this case we know it is UIButton).
-     - Author: Aarón Granado Amores.
-     */
-    @IBAction func changeSelectedDay(_ sender: UIButton) {
-        switch sender.titleLabel?.text {
-        case "L":
-            selectedDaysArray[0] = sender.isSelected
-            break
-        case "M":
-            selectedDaysArray[1] = sender.isSelected
-            break
-        case "X":
-            selectedDaysArray[2] = sender.isSelected
-            break
-        case "J":
-            selectedDaysArray[3] = sender.isSelected
-            break
-        case "V":
-            selectedDaysArray[4] = sender.isSelected
-            break
-        case "S":
-            selectedDaysArray[5] = sender.isSelected
-            break
-        case "D":
-            selectedDaysArray[6] = sender.isSelected
-            break
-        default:
-            break
-        }
-    }
-    
     //MARK: Save to CD
     
     /**
@@ -232,45 +369,32 @@ class AddRoutineTableViewController: UITableViewController {
      - Author: Aarón Granado Amores.
      */
     func saveRoutine() {
-        if routineNameTextField.text != "" {
-            if !checkIfRoutineExistsOnCoreData(name: routineNameTextField.text!) {
-                if checkIfAnyDayIsSelected() {
-                    let routineToSave: Routine = Routine(context: AppDelegate.context)
-                    var checkedColor: String = cons.predefinedRoutineColor
-                    var checkedDifficulty: String = "none"
-                    
-                    if firstColorRadioButton.isSelected { checkedColor = String(cons.routineColorOne) }
-                    if secondColorRadioButton.isSelected { checkedColor = String(cons.routineColorTwo) }
-                    if thirdColorRadioButton.isSelected { checkedColor = String(cons.routineColorThree) }
-                    if difficultRadioButton.isSelected { checkedDifficulty = "difficult" }
-                    if mediumRadioButton.isSelected { checkedDifficulty = "medium" }
-                    if easyRadioButton.isSelected { checkedDifficulty = "easy" }
-                    
-                    routineToSave.name = routineNameTextField.text?.uppercased()
-                    routineToSave.days = createDaysString()
-                    routineToSave.color = checkedColor
-                    routineToSave.difficulty = checkedDifficulty
-                    routineToSave.exercises = createExercisesNamesString()
-                    routineToSave.series = createExercisesSeriesString()
-                    routineToSave.repetitions = createExercisesRepetitionsString()
-                    routineToSave.load = createExercisesLoadString()
-                    
-                    if routineInformationTextField.text != "" { routineToSave.info = routineInformationTextField.text }
-                    if routineMusclesTextField.text != "" { routineToSave.muscles = routineMusclesTextField.text }
-                    if routineObjectiveTextField.text != "" { routineToSave.objective = routineObjectiveTextField.text}
-                
-                    routineToSave.isUserCreated = true
-                    
-                    saveToCD()
-                    self.dismiss(animated: true, completion: nil)
-                } else {
-                    showInfoAlert(message: "Debes seleccionar al menos un día")
-                }
-            } else {
-                showInfoAlert(message: "Ya existe una rutina con el nombre '\(routineNameTextField.text!)'")
-            }
+        if checkIfAnyDayIsSelected() {
+            var checkedColor: String = cons.predefinedRoutineColor
+            var checkedDifficulty: String = "none"
+            
+            if firstColorRadioButton.isSelected { checkedColor = String(cons.routineColorOne) }
+            if secondColorRadioButton.isSelected { checkedColor = String(cons.routineColorTwo) }
+            if thirdColorRadioButton.isSelected { checkedColor = String(cons.routineColorThree) }
+            if difficultRadioButton.isSelected { checkedDifficulty = "difficult" }
+            if mediumRadioButton.isSelected { checkedDifficulty = "medium" }
+            if easyRadioButton.isSelected { checkedDifficulty = "easy" }
+            
+            currentRoutine.days = createDaysString()
+            currentRoutine.color = checkedColor
+            currentRoutine.difficulty = checkedDifficulty
+            currentRoutine.exercises = createExercisesNamesString()
+            currentRoutine.series = createExercisesSeriesString()
+            currentRoutine.repetitions = createExercisesRepetitionsString()
+            currentRoutine.load = createExercisesLoadString()
+            
+            if routineInformationTextField.text != "" { currentRoutine.info = routineInformationTextField.text }
+            if routineMusclesTextField.text != "" { currentRoutine.muscles = routineMusclesTextField.text }
+            if routineObjectiveTextField.text != "" { currentRoutine.objective = routineObjectiveTextField.text}
+            
+            saveToCD()
         } else {
-            showInfoAlert(message: "Debes introducir un nombre")
+            showInfoAlert(message: "Debes seleccionar al menos un día")
         }
     }
     
@@ -286,67 +410,7 @@ class AddRoutineTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    //MARK: AlertDialog
-    
-    /**
-     This method creates a custom alert for adding a new exercise to the current routine.
-     
-     - Author: Aarón Granado Amores.
-     */
-    func showNewExerciseDialog() {
-        let storyboard = UIStoryboard(name: "AddExercise", bundle: nil)
-        addExerciseDialog = (storyboard.instantiateViewController(withIdentifier: "AddExerciseCustomDialog") as! AddExerciseSBViewController)
-        
-        addExerciseDialog.providesPresentationContextTransitionStyle = true
-        addExerciseDialog.definesPresentationContext = true
-        addExerciseDialog.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        addExerciseDialog.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        addExerciseDialog.delegate = self
-        
-        self.present(addExerciseDialog, animated: true, completion: nil)
-    }
-    
-    /**
-     This method shows an Alert with the given message.
-     
-     - Parameter message: The message to be displayed.
-     - Author: Aarón Granado Amores.
-     */
-    func showInfoAlert(message: String) {
-        let alertController = UIAlertController(title: "INFO", message: message, preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
-    
     //MARK: Helpers
-
-    /**
-     This method checks if there is a routine with the same name on Core Data.
-     
-     - Parameter name: The name of the routine to be checked.
-     - Returns: Returns **true** if the routine already exists and  **false** if not.
-     - Author: Aarón Granado Amores.
-     */
-    func checkIfRoutineExistsOnCoreData(name: String) -> Bool{
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Routine")
-        
-        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
-        
-        do {
-            let result = try AppDelegate.context.fetch(fetchRequest)
-            
-            if result.count != 0 {
-                return true
-            }
-        } catch {
-            print("Error checking routine")
-            return true
-        }
-        
-        return false
-    }
     
     /**
      This method checks if any of the 'checkboxes' for the days is selected.
@@ -486,11 +550,45 @@ class AddRoutineTableViewController: UITableViewController {
         return "no exercises"
     }
     
+    //MARK: AlertDialog
+    
+    /**
+     This method creates a custom alert for adding a new exercise to the current routine.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func showNewExerciseDialog() {
+        let storyboard = UIStoryboard(name: "AddExercise", bundle: nil)
+        addExerciseDialog = (storyboard.instantiateViewController(withIdentifier: "AddExerciseCustomDialog") as! AddExerciseSBViewController)
+        
+        addExerciseDialog.providesPresentationContextTransitionStyle = true
+        addExerciseDialog.definesPresentationContext = true
+        addExerciseDialog.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        addExerciseDialog.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        addExerciseDialog.delegate = self
+        
+        self.present(addExerciseDialog, animated: true, completion: nil)
+    }
+    
+    /**
+     This method shows an Alert with the given message.
+     
+     - Parameter message: The message to be displayed.
+     - Author: Aarón Granado Amores.
+     */
+    func showInfoAlert(message: String) {
+        let alertController = UIAlertController(title: "INFO", message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     // MARK: TableView DataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 3
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 1 ? 5 : 2
     }
@@ -501,42 +599,7 @@ class AddRoutineTableViewController: UITableViewController {
     }
 }
 
-extension UIColor {
-    //MARK: Create custom color from HEX String
-    /**
-     This convenience creates and sets a color from a HEX String given.
-     
-     ## Important Notes ##
-     1. The **'alpha'** value is optional and it's set to **'1.0' by default**.
-     
-     - Parameter hexString: The String containing a HEX color.
-     - Parameter alpha: The opacity to be set on the view.
-     - Author: Aarón Granado Amores.
-     */
-    
-    convenience init(hexString: String) {
-        let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        let scanner = Scanner(string: hexString)
-        
-        if (hexString.hasPrefix("#")) {
-            scanner.scanLocation = 1
-        }
-        
-        var color: UInt32 = 0
-        scanner.scanHexInt32(&color)
-        
-        let mask = 0x000000FF
-        let r = Int(color >> 16) & mask
-        let g = Int(color >> 8) & mask
-        let b = Int(color) & mask
-        let red = CGFloat(r) / 255.0
-        let green = CGFloat(g) / 255.0
-        let blue = CGFloat(b) / 255.0
-        self.init(red: red, green: green, blue: blue, alpha: 1)
-    }
-}
-
-extension AddRoutineTableViewController: CustomExerciseAlertDialogDelegate {
+extension EditRoutineTableViewController: CustomExerciseAlertDialogDelegate {
     //MARK: CustomExerciseAlertDialogDelegate
     func cancelButtonPressed() {}
     
@@ -548,6 +611,13 @@ extension AddRoutineTableViewController: CustomExerciseAlertDialogDelegate {
         newText += repetitions + " (" + load + " KG o sec.)"
         
         routineExercisesTextView.text = newText
+        
+        if exercisesNames[0] == "no exercises" {
+            exercisesNames = []
+            exercisesSeries = []
+            exercisesRepetitions = []
+            exercisesLoad = []
+        }
         
         exercisesNames.append(name)
         exercisesSeries.append(series)

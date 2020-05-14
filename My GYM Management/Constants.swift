@@ -31,16 +31,18 @@ class Constants {
     var appleMapsURL: String = "https://maps.apple.com/?q=gimnasio"
     
     /// The predefined color for the routines if there's no color selected.
-    var predefinedRoutineColor: String = "#3DFFEC"
+    var predefinedRoutineColor: String = "#8052FF"
     
-    /// The first color for the radiobuttons. (Red)
+    /// The colors for the routine color radioButtons and its names.
     var routineColorOne: String = "#FF0000"
-    
-    /// The second color or the radiobuttons. (Green)
     var routineColorTwo: String = "#4F8F00"
-    
-    /// The third color for the radiobuttons. (Blue)
     var routineColorThree: String = "#0000FF"
+    var colorNames: [String] = ["Rojo", "Verde", "Azul"]
+    
+    /// The colors for the routine difficulty radioButtons.
+    var difficultyColorOne: String = "#FF0000"
+    var difficultyColorTwo: String = "#FF9300"
+    var difficultyColorThree: String = "#4F8F00"
     
     /// The titles for the introduction pages.
     var titles: [String] = ["My GYM Management",
