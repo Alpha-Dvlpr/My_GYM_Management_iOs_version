@@ -18,7 +18,6 @@ class MyRoutinesViewController: UIViewController {
     
     //MARK: Variables and constants
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
-    var addRoutineDialog: AddRoutineSBViewController!
     
     //MARK: Main function
     override func viewDidLoad() {
@@ -54,39 +53,7 @@ class MyRoutinesViewController: UIViewController {
         }
     }
     
-    //MARK: IBActions
-    
-    /**
-     The action for the add button.
-     
-     - Parameter sender: The sender of the action (In this case UIButton).
-     - Author: Aarón Granado Amores.
-     */
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        showNewRoutineDialog()
-    }
-    
     //MARK: Alerts
-    
-    /**
-     This method creates a custom alert for adding a new routine to CoreData.
-     
-     - Author: Aarón Granado Amores.
-     */
-    func showNewRoutineDialog() {
-        let storyboard = UIStoryboard(name: "AddRoutine", bundle: nil)
-        addRoutineDialog = (storyboard.instantiateViewController(withIdentifier: "AddRoutineCustomDialog") as! AddRoutineSBViewController)
-        
-        addRoutineDialog.providesPresentationContextTransitionStyle = true
-        addRoutineDialog.definesPresentationContext = true
-        addRoutineDialog.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        addRoutineDialog.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        addRoutineDialog.delegate = self
-        
-        self.present(addRoutineDialog, animated: true, completion: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
     
     /**
      This method shows an alert with the message given.
@@ -102,24 +69,6 @@ class MyRoutinesViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //MARK: KeyboardEvents
-    
-    /**
-     This method handles the keyboard events, updating the alert constrainnts when the keyboard is opened.
-     
-     - Parameter notification: The notification launched when the keyboard state changes (In this case when
-     it's opened).
-     - Author: Aarón Granado Amores.
-     */
-    @objc func handleKeyboardNotification(notification: NSNotification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            addRoutineDialog.updateRoutinesAlertConstraints(offsetHeight: keyboardHeight)
-        }
-    }
-    
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toRoutineInfo" {
@@ -132,7 +81,7 @@ class MyRoutinesViewController: UIViewController {
     }
 }
 
-extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CustomRoutineAlertDialogDelegate {
+extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -183,9 +132,4 @@ extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, 
             print("Unknown type")
         }
     }
-    
-    //MARK: CustomAlertDialogDelegate
-    func cancelButtonPressed() {}
-    
-    func addButtonPressed() {}
 }

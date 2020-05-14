@@ -38,7 +38,7 @@ class AddExerciseTableViewController: UITableViewController {
     //MARK: Save to CoreData
     
     /**
-     This method checks if the information on the alert is correct. It shows an alert if there's an error
+     This method checks if the information on the view is correct. It shows an alert if there's an error
      or missing required data.
      
      ## Important Note ##
@@ -75,7 +75,6 @@ class AddExerciseTableViewController: UITableViewController {
     
     /**
      This method saves the current context of the app to CoreData it also closes the current ViewController.
-     It can be after adding, editing or deleting any element.
      
      - Author: Aarón Granado Amores.
      */
@@ -137,5 +136,10 @@ class AddExerciseTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? 3 : 2
+    }
+    
+    //MARK: TableViewDelegate
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

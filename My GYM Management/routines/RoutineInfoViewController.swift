@@ -165,10 +165,22 @@ class RoutineInfoViewController: UIViewController {
         if exercises.count != repetitions.count || exercises.count != series.count || exercises.count != load.count {
             exercisesLabel.text = "Error al cargar los ejercicios"
         } else {
-            if exercises.count == 0 {
+            if exercises[0] == "no exercises" {
                 exercisesLabel.text = "No hay ejercicios en la rutina"
             } else {
-                exercisesLabel.text = "Mostrando el contenido de los ejercicios"
+                var exercisesText = ""
+                
+                for position in 0...(exercises.count - 1) {
+                    exercisesText += exercises[position] + ": "
+                    exercisesText += series[position] + "*"
+                    exercisesText += repetitions[position] + " (" + load[position] + " KG o seg.)"
+                    
+                    if position != (exercises.count - 1) {
+                        exercisesText += "\n"
+                    }
+                }
+                
+                exercisesLabel.text = exercisesText
             }
         }
     }

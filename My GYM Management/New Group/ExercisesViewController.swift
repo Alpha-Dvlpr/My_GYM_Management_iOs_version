@@ -17,7 +17,6 @@ class ExercisesViewController: UIViewController {
     
     //MARK: Variables and constants
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
-    var addExerciseDialog: AddExerciseSBViewController!
     
     //MARK: Main function
     override func viewDidLoad() {
@@ -46,39 +45,7 @@ class ExercisesViewController: UIViewController {
         }
     }
     
-    //MARK: IBActions
-    
-    /**
-     The action for the add button.
-     
-     - Parameter sender: The sender of the action (In this case UIButton).
-     - Author: Aarón Granado Amores.
-     */
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        showNewExerciseDialog()
-    }
-    
     //MARK: Alerts
-    
-    /**
-     This method creates a custom alert for adding a new exercise to CoreData.
-     
-     - Author: Aarón Granado Amores.
-     */
-    func showNewExerciseDialog() {
-        let storyboard = UIStoryboard(name: "AddExercise", bundle: nil)
-        addExerciseDialog = (storyboard.instantiateViewController(withIdentifier: "AddExerciseCustomDialog") as! AddExerciseSBViewController)
-        
-        addExerciseDialog.providesPresentationContextTransitionStyle = true
-        addExerciseDialog.definesPresentationContext = true
-        addExerciseDialog.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        addExerciseDialog.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        addExerciseDialog.delegate = self
-        
-        self.present(addExerciseDialog, animated: true, completion: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
     
     /**
      This method shows an alert with the message given.
@@ -94,24 +61,6 @@ class ExercisesViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    //MARK: KeyboardEvents
-    
-    /**
-     This method handles the keyboard events, updating the alert constrainnts when the keyboard is opened.
-     
-     - Parameter notification: The notification launched when the keyboard state changes (In this case when
-     it's opened).
-     - Author: Aarón Granado Amores.
-     */
-    @objc func handleKeyboardNotification(notification: NSNotification) {
-        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            
-            addExerciseDialog.updateExecriseAlertConstraints(offsetHeight: keyboardHeight)
-        }
-    }
-    
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toExerciseInfo" {
@@ -124,7 +73,7 @@ class ExercisesViewController: UIViewController {
     }
 }
 
-extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CustomExerciseAlertDialogDelegate {
+extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     //MARK: TableView Delegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -175,9 +124,4 @@ extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, N
             print("Unknown type")
         }
     }
-    
-    //MARK: CustomAlertDialogDelegate
-    func cancelButtonPressed() {}
-    
-    func addButtonPressed() {}
 }

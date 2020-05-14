@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5br-4J-vbg">
-                                <rect key="frame" x="36.5" y="183.5" width="302.5" height="300"/>
+                                <rect key="frame" x="11.5" y="176.5" width="352" height="314"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AÑADIR EJERCICIO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZw-Wz-34c">
-                                        <rect key="frame" x="64" y="16" width="174.5" height="24"/>
+                                        <rect key="frame" x="64" y="16" width="224" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="TfM-KD-zrc"/>
                                         </constraints>
@@ -30,46 +30,49 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-hb-Dzp">
-                                        <rect key="frame" x="16" y="56" width="270.5" height="182"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZV7-hb-Dzp">
+                                        <rect key="frame" x="16" y="56" width="320" height="194"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9uD-r4-gRh">
-                                                <rect key="frame" x="0.0" y="0.0" width="270.5" height="30"/>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scb-EO-9Yb">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="YcQ-so-q1H"/>
+                                                </constraints>
+                                            </pickerView>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Series (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJg-GF-K2W">
+                                                <rect key="frame" x="0.0" y="88" width="320" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="pml-MG-Buj"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Información (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EJg-GF-K2W">
-                                                <rect key="frame" x="0.0" y="38" width="270.5" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Repeticiones (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VC4-dL-cUf">
+                                                <rect key="frame" x="0.0" y="126" width="320" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="QCp-4x-uMZ"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ejecución (*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VC4-dL-cUf">
-                                                <rect key="frame" x="0.0" y="76" width="270.5" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Carga o tiempo [KG o seg.](*)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3kx-fc-yfc">
+                                                <rect key="frame" x="0.0" y="164" width="320" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="TuO-mK-Isz"/>
+                                                </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enlace a YouTube" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3kx-fc-yfc">
-                                                <rect key="frame" x="0.0" y="114" width="270.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                            </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Músculos implicados" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lmn-GJ-Aoc">
-                                                <rect key="frame" x="0.0" y="152" width="270.5" height="30"/>
-                                                <nil key="textColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="enP-ov-5Tn">
-                                        <rect key="frame" x="0.0" y="254" width="302.5" height="38"/>
+                                        <rect key="frame" x="0.0" y="266" width="352" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1l-N9-laF">
-                                                <rect key="frame" x="0.0" y="0.0" width="151" height="38"/>
+                                                <rect key="frame" x="0.0" y="1" width="176" height="38"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
                                                 <state key="normal" title="Cancelar">
                                                     <color key="titleColor" red="1" green="0.1115198537" blue="0.10678885170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -79,7 +82,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KcO-qd-sic">
-                                                <rect key="frame" x="151" y="0.0" width="151.5" height="38"/>
+                                                <rect key="frame" x="176" y="1" width="176" height="38"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
                                                 <state key="normal" title="Añadir"/>
                                                 <connections>
@@ -87,6 +90,9 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="qJ0-sm-hT5"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -113,11 +119,10 @@
                     </view>
                     <connections>
                         <outlet property="alertView" destination="5br-4J-vbg" id="jLd-9B-oKm"/>
-                        <outlet property="executionTextField" destination="VC4-dL-cUf" id="Qpu-Pv-cYh"/>
-                        <outlet property="infoTextField" destination="EJg-GF-K2W" id="K62-gh-JeC"/>
-                        <outlet property="linkTextField" destination="3kx-fc-yfc" id="tJa-Fd-0Nv"/>
-                        <outlet property="musclesTextField" destination="Lmn-GJ-Aoc" id="iIV-tV-VJ0"/>
-                        <outlet property="nameTextField" destination="9uD-r4-gRh" id="agf-rA-bCH"/>
+                        <outlet property="exerciseNamePicker" destination="scb-EO-9Yb" id="Sh3-Pl-XFI"/>
+                        <outlet property="loadTextField" destination="3kx-fc-yfc" id="lZw-2W-hha"/>
+                        <outlet property="repetittionsTextField" destination="VC4-dL-cUf" id="XbM-N1-pq1"/>
+                        <outlet property="seriesTextField" destination="EJg-GF-K2W" id="29O-SJ-PJQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UbN-g8-2Al" userLabel="First Responder" sceneMemberID="firstResponder"/>

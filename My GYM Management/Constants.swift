@@ -33,13 +33,13 @@ class Constants {
     /// The predefined color for the routines if there's no color selected.
     var predefinedRoutineColor: String = "#3DFFEC"
     
-    /// The first color for the radiobuttons.
+    /// The first color for the radiobuttons. (Red)
     var routineColorOne: String = "#FF0000"
     
-    /// The second color or the radiobuttons.
-    var routineColorTwo: String = "#00FF00"
+    /// The second color or the radiobuttons. (Green)
+    var routineColorTwo: String = "#4F8F00"
     
-    /// The third color for the radiobuttons.
+    /// The third color for the radiobuttons. (Blue)
     var routineColorThree: String = "#0000FF"
     
     /// The titles for the introduction pages.
