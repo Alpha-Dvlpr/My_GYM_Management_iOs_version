@@ -559,7 +559,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSP-oN-f7f">
-                                <rect key="frame" x="0.0" y="98" width="375" height="569"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nCO-nq-lEn">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="267.5"/>
@@ -653,7 +653,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QEF-w9-EeJ"/>
                     </view>
-                    <navigationItem key="navigationItem" prompt="INFORMACIÓN DEL EJERCICIO" id="k8z-9g-n1d">
+                    <navigationItem key="navigationItem" id="k8z-9g-n1d">
                         <rightBarButtonItems>
                             <barButtonItem image="send" id="e2g-jM-YcC">
                                 <connections>
@@ -662,7 +662,7 @@
                             </barButtonItem>
                             <barButtonItem systemItem="compose" id="VRh-0N-PwV">
                                 <connections>
-                                    <segue destination="pz1-Sj-STq" kind="show" identifier="toEditExercise" id="jdB-DA-B5p"/>
+                                    <action selector="editButtonPressed:" destination="gBg-EF-Mat" id="fM5-d7-Mlr"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="play_button" id="fCr-Fd-loU">
@@ -689,7 +689,7 @@
         <!--Add Exercise Table View Controller-->
         <scene sceneID="2ux-1i-zAw">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" clearsSelectionOnViewWillAppear="NO" id="kZ9-sw-LOu" customClass="AddExerciseTableViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addEditExercise" hidesBottomBarWhenPushed="YES" clearsSelectionOnViewWillAppear="NO" id="kZ9-sw-LOu" customClass="AddExerciseTableViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="hwB-Cq-Nh0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -824,7 +824,7 @@
                             <outlet property="delegate" destination="kZ9-sw-LOu" id="Wus-Bg-6Zk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" prompt="NUEVO EJERCICIO" id="PaF-eM-fEm">
+                    <navigationItem key="navigationItem" id="PaF-eM-fEm">
                         <barButtonItem key="rightBarButtonItem" title="GUARDAR" id="exu-sf-6Fc">
                             <connections>
                                 <action selector="saveExerciseButtonPressed:" destination="kZ9-sw-LOu" id="3aU-9e-y2v"/>
@@ -1785,166 +1785,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ht1-Jg-h1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1782" y="294"/>
-        </scene>
-        <!--Edit Exercise Table View Controller-->
-        <scene sceneID="iqo-Q8-mbF">
-            <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" clearsSelectionOnViewWillAppear="NO" id="pz1-Sj-STq" customClass="EditExerciseTableViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="IoX-9z-Zx8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <sections>
-                            <tableViewSection headerTitle="Información obligatoria" id="syW-Ld-AxH">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kFr-HZ-gxG">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kFr-HZ-gxG" id="d83-T7-wf8">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre del ejercicio" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5da-C1-oHF">
-                                                    <rect key="frame" x="16" y="8" width="343" height="28"/>
-                                                    <accessibility key="accessibilityConfiguration">
-                                                        <bool key="isElement" value="NO"/>
-                                                    </accessibility>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="5da-C1-oHF" firstAttribute="top" secondItem="d83-T7-wf8" secondAttribute="top" constant="8" id="1f2-7s-YgF"/>
-                                                <constraint firstItem="5da-C1-oHF" firstAttribute="leading" secondItem="d83-T7-wf8" secondAttribute="leading" constant="16" id="cyw-JC-Ggk"/>
-                                                <constraint firstAttribute="bottom" secondItem="5da-C1-oHF" secondAttribute="bottom" constant="8" id="gWm-EX-jND"/>
-                                                <constraint firstAttribute="trailing" secondItem="5da-C1-oHF" secondAttribute="trailing" constant="16" id="xNz-dE-7PX"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="M3U-8a-U9S">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M3U-8a-U9S" id="IBP-un-Ok7">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Información del ejercicio" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ux1-vw-VRL">
-                                                    <rect key="frame" x="16" y="8" width="343" height="28"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Ux1-vw-VRL" secondAttribute="bottom" constant="8" id="J7Y-Sd-tpe"/>
-                                                <constraint firstItem="Ux1-vw-VRL" firstAttribute="top" secondItem="IBP-un-Ok7" secondAttribute="top" constant="8" id="PT7-Ib-ckn"/>
-                                                <constraint firstItem="Ux1-vw-VRL" firstAttribute="leading" secondItem="IBP-un-Ok7" secondAttribute="leading" constant="16" id="RJz-QY-FIj"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ux1-vw-VRL" secondAttribute="trailing" constant="16" id="hMv-vQ-kVc"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="kLa-wc-WGA">
-                                        <rect key="frame" x="0.0" y="143.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kLa-wc-WGA" id="r5r-p2-1ht">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ejecución del ejercicio" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A6b-EO-lJC">
-                                                    <rect key="frame" x="16" y="8" width="343" height="28"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="A6b-EO-lJC" firstAttribute="top" secondItem="r5r-p2-1ht" secondAttribute="top" constant="8" id="6if-Rp-4wq"/>
-                                                <constraint firstItem="A6b-EO-lJC" firstAttribute="leading" secondItem="r5r-p2-1ht" secondAttribute="leading" constant="16" id="7xH-6Y-CZH"/>
-                                                <constraint firstAttribute="trailing" secondItem="A6b-EO-lJC" secondAttribute="trailing" constant="16" id="nG9-lK-fgp"/>
-                                                <constraint firstAttribute="bottom" secondItem="A6b-EO-lJC" secondAttribute="bottom" constant="8" id="zKr-SV-iyx"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Información opcional" id="Luj-E1-57F">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2x5-8C-Db2">
-                                        <rect key="frame" x="0.0" y="243.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2x5-8C-Db2" id="Its-Pq-pQm">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enlace a YouTube" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s1t-Cv-CE9">
-                                                    <rect key="frame" x="16" y="8" width="343" height="28"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="s1t-Cv-CE9" firstAttribute="top" secondItem="Its-Pq-pQm" secondAttribute="top" constant="8" id="6US-kg-uYe"/>
-                                                <constraint firstItem="s1t-Cv-CE9" firstAttribute="leading" secondItem="Its-Pq-pQm" secondAttribute="leading" constant="16" id="v9x-LS-QhY"/>
-                                                <constraint firstAttribute="trailing" secondItem="s1t-Cv-CE9" secondAttribute="trailing" constant="16" id="xEp-qc-Gkh"/>
-                                                <constraint firstAttribute="bottom" secondItem="s1t-Cv-CE9" secondAttribute="bottom" constant="8" id="xUp-2s-zH9"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="BqB-gJ-joA">
-                                        <rect key="frame" x="0.0" y="287.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BqB-gJ-joA" id="deV-4F-NLW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Músculos afectados" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GhT-kV-aoJ">
-                                                    <rect key="frame" x="16" y="8" width="343" height="28"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="GhT-kV-aoJ" firstAttribute="leading" secondItem="deV-4F-NLW" secondAttribute="leading" constant="16" id="AKe-UA-7BS"/>
-                                                <constraint firstAttribute="bottom" secondItem="GhT-kV-aoJ" secondAttribute="bottom" constant="8" id="HiF-iS-hQ3"/>
-                                                <constraint firstAttribute="trailing" secondItem="GhT-kV-aoJ" secondAttribute="trailing" constant="16" id="TDg-bE-yw6"/>
-                                                <constraint firstItem="GhT-kV-aoJ" firstAttribute="top" secondItem="deV-4F-NLW" secondAttribute="top" constant="8" id="Wu8-iO-1ld"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="pz1-Sj-STq" id="Mb9-HY-k7Q"/>
-                            <outlet property="delegate" destination="pz1-Sj-STq" id="p33-81-hTr"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" prompt="EDITAR EJERCICIO" id="4hk-r2-n9a">
-                        <barButtonItem key="rightBarButtonItem" title="GUARDAR" id="u9f-nz-my6">
-                            <connections>
-                                <action selector="saveButtonPressed:" destination="pz1-Sj-STq" id="lYB-Mt-Nj6"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="exerciseExecutionTextField" destination="A6b-EO-lJC" id="TSp-oR-m3b"/>
-                        <outlet property="exerciseInformationTextField" destination="Ux1-vw-VRL" id="CYq-0K-fpt"/>
-                        <outlet property="exerciseLinkTextField" destination="s1t-Cv-CE9" id="c1t-Nf-zfH"/>
-                        <outlet property="exerciseMusclesTextField" destination="GhT-kV-aoJ" id="5RE-Ro-2TV"/>
-                        <outlet property="exerciseNameTextField" destination="5da-C1-oHF" id="aYH-zq-l7n"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="S6k-EO-vUe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1002" y="-1460"/>
         </scene>
         <!--Edit Routine Table View Controller-->
         <scene sceneID="KKR-Ka-rFI">

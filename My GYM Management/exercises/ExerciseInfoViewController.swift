@@ -62,6 +62,15 @@ class ExerciseInfoViewController: UIViewController {
         showInfoAlert(message: "Próximamente")
     }
     
+    
+    @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
+        let infoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addEditExercise") as! AddExerciseTableViewController
+        
+        navigationController?.pushViewController(infoVC, animated: true)
+        infoVC.didCameFromExerciseInfo = true
+        infoVC.exerciseToEdit = self.localExercise
+    }
+    
     //MARK: Check URL
     
     /**
@@ -105,6 +114,7 @@ class ExerciseInfoViewController: UIViewController {
      */
     func updateUI() {
         if localExercise != nil {
+            self.title = "INFO"
             nameLabel.text = localExercise.name
             infoLabel.text = localExercise.info
             executionLabel.text = localExercise.execution
@@ -117,15 +127,6 @@ class ExerciseInfoViewController: UIViewController {
             }
             
             editButtonOutlet.isEnabled = localExercise.isUserCreated
-        }
-    }
-    
-    //MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toEditExercise" {
-            let infoVC = segue.destination as! EditExerciseTableViewController
-            
-            infoVC.currentExercise = self.localExercise
         }
     }
 }

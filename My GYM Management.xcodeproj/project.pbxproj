@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		93010CC2246D839B00FE7855 /* EditExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93010CC1246D839B00FE7855 /* EditExerciseTableViewController.swift */; };
 		931CE0B1244129BA00D2AD96 /* ExerciseInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */; };
 		936AB1B1246C638C008B1D92 /* AddExerciseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936AB1B0246C638C008B1D92 /* AddExerciseTableViewController.swift */; };
 		938B16F4246C9D4900CA0BD2 /* AddRoutineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938B16F3246C9D4900CA0BD2 /* AddRoutineTableViewController.swift */; };
@@ -36,7 +35,6 @@
 /* Begin PBXFileReference section */
 		56B709B0FC24C3EC50274E2A /* Pods_My_GYM_Management.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_My_GYM_Management.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9088F07192A215ACAAD032 /* Pods-My GYM Management.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-My GYM Management.release.xcconfig"; path = "Target Support Files/Pods-My GYM Management/Pods-My GYM Management.release.xcconfig"; sourceTree = "<group>"; };
-		93010CC1246D839B00FE7855 /* EditExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseTableViewController.swift; sourceTree = "<group>"; };
 		931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseInfoViewController.swift; sourceTree = "<group>"; };
 		936AB1B0246C638C008B1D92 /* AddExerciseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseTableViewController.swift; sourceTree = "<group>"; };
 		938B16F3246C9D4900CA0BD2 /* AddRoutineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoutineTableViewController.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 			children = (
 				936AB1B0246C638C008B1D92 /* AddExerciseTableViewController.swift */,
 				931CE0B0244129BA00D2AD96 /* ExerciseInfoViewController.swift */,
-				93010CC1246D839B00FE7855 /* EditExerciseTableViewController.swift */,
 			);
 			path = exercises;
 			sourceTree = "<group>";
@@ -302,7 +299,6 @@
 				93FEA80A244646A000EAE2E0 /* MuscleGroupSelectorViewController.swift in Sources */,
 				931CE0B1244129BA00D2AD96 /* ExerciseInfoViewController.swift in Sources */,
 				93FEA80C24464D3E00EAE2E0 /* RoutinesListViewController.swift in Sources */,
-				93010CC2246D839B00FE7855 /* EditExerciseTableViewController.swift in Sources */,
 				93CE92A524639357002875AD /* RoutineInfoViewController.swift in Sources */,
 				93DD068E246DFD0F00FDBD9D /* EditRoutineTableViewController.swift in Sources */,
 				93C15AAA243BDF71008B6B0F /* Constants.swift in Sources */,

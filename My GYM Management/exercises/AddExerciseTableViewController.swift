@@ -18,9 +18,37 @@ class AddExerciseTableViewController: UITableViewController {
     @IBOutlet weak var exerciseLinkTextField: UITextField!
     @IBOutlet weak var exerciseMusclesTextField: UITextField!
     
+    //MARK: Variables and constants
+    var didCameFromExerciseInfo: Bool = false
+    var exerciseToEdit: Exercise!
+    
     //MARK: Main function
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        initView()
+    }
+    
+    //MARK: Init view
+    
+    
+    /**
+     This method loads the information on the view if it has been called from the exercise information view to edit it.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func initView() {
+        if !didCameFromExerciseInfo {
+            self.title = "NUEVO"
+        } else {
+            self.title = "EDITAR"
+            exerciseNameTextField.isEnabled = false
+            exerciseNameTextField.text = exerciseToEdit.name
+            exerciseInformationTextField.text = exerciseToEdit.info
+            exerciseExecutionTextField.text = exerciseToEdit.execution
+            exerciseLinkTextField.text = exerciseToEdit.link
+            exerciseMusclesTextField.text = exerciseToEdit.muscles
+        }
     }
     
     //MARK: IBActions
@@ -49,28 +77,42 @@ class AddExerciseTableViewController: UITableViewController {
      */
     func saveExercise() {
         if exerciseNameTextField.text != "" {
-            if !checkIfExerciseExistsOnCoreData(name: exerciseNameTextField.text!) {
-                if exerciseInformationTextField.text != "" && exerciseExecutionTextField.text != "" {
-                    let exerciseToSave: Exercise = Exercise(context: AppDelegate.context)
-                    
-                    exerciseToSave.name = exerciseNameTextField.text?.uppercased()
-                    exerciseToSave.info = exerciseInformationTextField.text
-                    exerciseToSave.execution = exerciseExecutionTextField.text
-                    exerciseToSave.isUserCreated = true
-                    
-                    if exerciseLinkTextField.text != "" { exerciseToSave.link = exerciseLinkTextField.text }
-                    if exerciseMusclesTextField.text != "" { exerciseToSave.muscles = exerciseMusclesTextField.text }
-                    
-                    saveToCD()
+            if exerciseInformationTextField.text != "" && exerciseExecutionTextField.text != "" {
+                if didCameFromExerciseInfo {
+                    setExecriseInformation(exercise: exerciseToEdit)
                 } else {
-                    showInfoAlert(message: "Debes completar todos los campos obligatorios")
+                    if !checkIfExerciseExistsOnCoreData(name: exerciseNameTextField.text!) {
+                        setExecriseInformation(exercise: Exercise(context: AppDelegate.context))
+                    } else {
+                        showInfoAlert(message: "Ya existe un ejercicio con el nombre '\(exerciseNameTextField.text!)'")
+                    }
                 }
             } else {
-                showInfoAlert(message: "Ya existe un ejercicio con el nombre '\(exerciseNameTextField.text!)'")
+                showInfoAlert(message: "Debes completar todos los campos obligatorios")
             }
         } else {
             showInfoAlert(message: "Debes introducir un nombre")
         }
+    }
+    
+    
+    /**
+     This method sets the values for all the fields of the exercise and the saves it to CoreData. This can be used to add
+     a new Exercise or to update an existing one.
+     
+     - Parameter exercise: The execrise to be added or edited.
+     - Author: Aarón Granado Amores.
+     */
+    func setExecriseInformation(exercise: Exercise) {
+        exercise.name = exerciseNameTextField.text?.uppercased()
+        exercise.info = exerciseInformationTextField.text
+        exercise.execution = exerciseExecutionTextField.text
+        exercise.isUserCreated = true
+        
+        if exerciseLinkTextField.text != "" { exercise.link = exerciseLinkTextField.text }
+        if exerciseMusclesTextField.text != "" { exercise.muscles = exerciseMusclesTextField.text }
+        
+        saveToCD()
     }
     
     /**
