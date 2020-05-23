@@ -550,7 +550,7 @@
             </objects>
             <point key="canvasLocation" x="-553" y="-1460"/>
         </scene>
-        <!--Exercise Info View Controller-->
+        <!--INFO-->
         <scene sceneID="RlQ-BJ-rYW">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="gBg-EF-Mat" customClass="ExerciseInfoViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
@@ -653,9 +653,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QEF-w9-EeJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="k8z-9g-n1d">
+                    <navigationItem key="navigationItem" title="INFO" id="k8z-9g-n1d">
                         <rightBarButtonItems>
-                            <barButtonItem image="send" id="e2g-jM-YcC">
+                            <barButtonItem systemItem="action" id="e2g-jM-YcC">
                                 <connections>
                                     <action selector="sendButtonPressed:" destination="gBg-EF-Mat" id="K2d-Nc-EBF"/>
                                 </connections>
@@ -684,7 +684,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jXH-hv-NrX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="-1460"/>
+            <point key="canvasLocation" x="1001" y="-1460"/>
         </scene>
         <!--Add Exercise Table View Controller-->
         <scene sceneID="2ux-1i-zAw">
@@ -841,7 +841,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aWy-QR-tXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="-2170"/>
+            <point key="canvasLocation" x="238" y="-1799"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="7MH-DH-TDd">
@@ -941,7 +941,7 @@
             </objects>
             <point key="canvasLocation" x="-1423" y="664"/>
         </scene>
-        <!--Routine Info View Controller-->
+        <!--INFO-->
         <scene sceneID="2An-rU-3wE">
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="IQi-XB-yUb" customClass="RoutineInfoViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
@@ -950,7 +950,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gCi-ZD-x6J">
-                                <rect key="frame" x="0.0" y="98" width="375" height="569"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYU-bn-Bdv">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="404.5"/>
@@ -1185,16 +1185,16 @@
                         <viewLayoutGuide key="safeArea" id="giE-Zh-MdV"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" prompt="INFORMACIÓN DE LA RUTINA" id="Dy0-U9-JUV">
+                    <navigationItem key="navigationItem" title="INFO" id="Dy0-U9-JUV">
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" image="send" id="vaR-fP-FWp">
+                            <barButtonItem systemItem="action" id="vaR-fP-FWp">
                                 <connections>
                                     <action selector="sendRoutinePressed:" destination="IQi-XB-yUb" id="Zyw-TX-12K"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="compose" id="S2G-qo-AYW">
                                 <connections>
-                                    <segue destination="n9e-wi-gL6" kind="show" identifier="toEditRoutine" id="BEG-2m-hK8"/>
+                                    <action selector="editRoutineButtonPressed:" destination="IQi-XB-yUb" id="nLc-Sj-MaN"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem image="circle" style="plain" id="OdU-bp-73Y">
@@ -1222,12 +1222,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r9F-he-iWH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1781.5999999999999" y="-412.44377811094455"/>
+            <point key="canvasLocation" x="1783" y="-411"/>
         </scene>
         <!--Add Routine Table View Controller-->
         <scene sceneID="YFz-75-fyr">
             <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="dKO-Zh-czR" customClass="AddRoutineTableViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="addEditRoutine" hidesBottomBarWhenPushed="YES" id="dKO-Zh-czR" customClass="AddRoutineTableViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="JFV-d8-h0v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1754,7 +1754,7 @@
                             <outlet property="delegate" destination="dKO-Zh-czR" id="W8w-fC-533"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" prompt="NUEVA RUTINA" id="EzB-vp-zgZ">
+                    <navigationItem key="navigationItem" id="EzB-vp-zgZ">
                         <barButtonItem key="rightBarButtonItem" title="GUARDAR" id="vbv-UD-47D">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="dKO-Zh-czR" id="RHF-H6-fZ1"/>
@@ -1784,575 +1784,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ht1-Jg-h1x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1782" y="294"/>
-        </scene>
-        <!--Edit Routine Table View Controller-->
-        <scene sceneID="KKR-Ka-rFI">
-            <objects>
-                <tableViewController hidesBottomBarWhenPushed="YES" id="n9e-wi-gL6" customClass="EditRoutineTableViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="BfG-wp-dca">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <sections>
-                            <tableViewSection headerTitle="INFORMAIÓN OBLIGATORIA" id="3YR-Fj-FYn">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="B5U-mw-gGN">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B5U-mw-gGN" id="Zyh-t6-SuO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre de la rutina" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGJ-s4-tw1">
-                                                    <rect key="frame" x="16" y="8" width="343" height="27.5"/>
-                                                    <accessibility key="accessibilityConfiguration">
-                                                        <bool key="isElement" value="NO"/>
-                                                    </accessibility>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="bGJ-s4-tw1" firstAttribute="leading" secondItem="Zyh-t6-SuO" secondAttribute="leading" constant="16" id="9GW-tq-7OB"/>
-                                                <constraint firstAttribute="bottom" secondItem="bGJ-s4-tw1" secondAttribute="bottom" constant="8" id="O6p-LL-Ozs"/>
-                                                <constraint firstAttribute="trailing" secondItem="bGJ-s4-tw1" secondAttribute="trailing" constant="16" id="aEA-pj-CMo"/>
-                                                <constraint firstItem="bGJ-s4-tw1" firstAttribute="top" secondItem="Zyh-t6-SuO" secondAttribute="top" constant="8" id="vCS-2y-Dc8"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" notEnabled="YES"/>
-                                        </accessibility>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="FlC-h0-HR9">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="80"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FlC-h0-HR9" id="LTA-5s-15t">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tij-MK-3Df">
-                                                    <rect key="frame" x="54" y="10" width="267" height="60"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Días de la semana" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vT-gH-l1b">
-                                                            <rect key="frame" x="8" y="0.0" width="251" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="zAx-aj-NA8"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fdg-5J-3fD">
-                                                            <rect key="frame" x="8" y="30" width="251" height="30"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKN-Gk-FNc">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="29" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="L" image="checkbox_off">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <state key="selected" title="L" image="checkbox_on"/>
-                                                                    <connections>
-                                                                        <action selector="changeCheckBoxStatus:" destination="n9e-wi-gL6" eventType="touchUpInside" id="mqw-OB-clZ"/>
-                                                                        <action selector="changeSelectedDay:" destination="n9e-wi-gL6" eventType="touchUpInside" id="EB9-3Z-ctC"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yr-Lz-Pef">
-                                                                    <rect key="frame" x="37" y="0.0" width="29" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="M" image="checkbox_off">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <state key="selected" title="M" image="checkbox_on"/>
-                                                                    <connections>
-                                                                        <action selector="changeCheckBoxStatus:" destination="n9e-wi-gL6" eventType="touchUpInside" id="3VT-u6-hfV"/>
-                                                                        <action selector="changeSelectedDay:" destination="n9e-wi-gL6" eventType="touchUpInside" id="PdG-R5-kRh"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDT-ne-Mfx">
-                                                                    <rect key="frame" x="74" y="0.0" width="29" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="X" image="checkbox_off">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <state key="selected" title="X" image="checkbox_on"/>
-                                                                    <connections>
-                                                                        <action selector="changeCheckBoxStatus:" destination="n9e-wi-gL6" eventType="touchUpInside" id="QL9-pz-cSw"/>
-                                                                        <action selector="changeSelectedDay:" destination="n9e-wi-gL6" eventType="touchUpInside" id="87i-a6-M9f"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yln-bZ-Lky">
-                                                                    <rect key="frame" x="111" y="0.0" width="29" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="J" image="checkbox_off">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <state key="selected" title="J" image="checkbox_on"/>
-                                                                    <connections>
-                                                                        <action selector="changeCheckBoxStatus:" destination="n9e-wi-gL6" eventType="touchUpInside" id="lda-XW-t6V"/>
-                                                                        <action selector="changeSelectedDay:" destination="n9e-wi-gL6" eventType="touchUpInside" id="BG2-9n-Rne"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxa-RV-Fvq">
-                                                                    <rect key="frame" x="148" y="0.0" width="29" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="V" image="checkbox_off">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <state key="selected" title="V" image="checkbox_on"/>
-                                                                    <connections>
-                                                                        <action selector="changeCheckBoxStatus:" destination="n9e-wi-gL6" eventType="touchUpInside" id="kkc-eA-lhG"/>
-                                                                        <action selector="changeSelectedDay:" destination="n9e-wi-gL6" eventType="touchUpInside" id="hT2-ly-1uj"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNQ-0b-PFw">
-                                                                    <rect key="frame" x="185" y="0.0" width="29" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="S" image="checkbox_off">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <state key="selected" title="S" image="checkbox_on"/>
-                                                                    <connections>
-                                                                        <action selector="changeCheckBoxStatus:" destination="n9e-wi-gL6" eventType="touchUpInside" id="Rww-PI-qz1"/>
-                                                                        <action selector="changeSelectedDay:" destination="n9e-wi-gL6" eventType="touchUpInside" id="5Fs-o1-jQ1"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2f-d4-cw3">
-                                                                    <rect key="frame" x="222" y="0.0" width="29" height="30"/>
-                                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                                                    <state key="normal" title="D" image="checkbox_off">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <state key="selected" title="D" image="checkbox_on"/>
-                                                                    <connections>
-                                                                        <action selector="changeCheckBoxStatus:" destination="n9e-wi-gL6" eventType="touchUpInside" id="RQ3-cZ-rMR"/>
-                                                                        <action selector="changeSelectedDay:" destination="n9e-wi-gL6" eventType="touchUpInside" id="pdy-uB-bcR"/>
-                                                                    </connections>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="4CC-li-QaN"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="6vT-gH-l1b" firstAttribute="leading" secondItem="tij-MK-3Df" secondAttribute="leading" constant="8" id="541-ec-rwB"/>
-                                                        <constraint firstItem="fdg-5J-3fD" firstAttribute="leading" secondItem="tij-MK-3Df" secondAttribute="leading" constant="8" id="Nw9-tn-MBT"/>
-                                                        <constraint firstAttribute="trailing" secondItem="fdg-5J-3fD" secondAttribute="trailing" constant="8" id="Suc-SP-9AY"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6vT-gH-l1b" secondAttribute="trailing" constant="8" id="cPB-LR-EwT"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="tij-MK-3Df" firstAttribute="centerY" secondItem="LTA-5s-15t" secondAttribute="centerY" id="RVL-L4-ShA"/>
-                                                <constraint firstItem="tij-MK-3Df" firstAttribute="centerX" secondItem="LTA-5s-15t" secondAttribute="centerX" id="zp9-fb-jKj"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Información opcional" id="i2n-D5-vYL">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Tj1-kd-Qfb">
-                                        <rect key="frame" x="0.0" y="235.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tj1-kd-Qfb" id="gpg-m8-s0q">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Información de la rutina" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MQz-NG-kHL">
-                                                    <rect key="frame" x="16" y="8" width="343" height="27.5"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="MQz-NG-kHL" secondAttribute="trailing" constant="16" id="0qt-8d-kdF"/>
-                                                <constraint firstItem="MQz-NG-kHL" firstAttribute="leading" secondItem="gpg-m8-s0q" secondAttribute="leading" constant="16" id="81m-xx-Y1w"/>
-                                                <constraint firstItem="MQz-NG-kHL" firstAttribute="top" secondItem="gpg-m8-s0q" secondAttribute="top" constant="8" id="RoQ-PX-aTX"/>
-                                                <constraint firstAttribute="bottom" secondItem="MQz-NG-kHL" secondAttribute="bottom" constant="8" id="wV8-mj-KuB"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="niJ-CQ-hj4">
-                                        <rect key="frame" x="0.0" y="279.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="niJ-CQ-hj4" id="gQt-6H-VRq">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Objetivo de la rutina" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JcR-rW-EI1">
-                                                    <rect key="frame" x="16" y="8" width="343" height="27.5"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="JcR-rW-EI1" secondAttribute="trailing" constant="16" id="3TX-tD-0vJ"/>
-                                                <constraint firstAttribute="bottom" secondItem="JcR-rW-EI1" secondAttribute="bottom" constant="8" id="DSG-HD-DTA"/>
-                                                <constraint firstItem="JcR-rW-EI1" firstAttribute="leading" secondItem="gQt-6H-VRq" secondAttribute="leading" constant="16" id="XgL-Rg-Izg"/>
-                                                <constraint firstItem="JcR-rW-EI1" firstAttribute="top" secondItem="gQt-6H-VRq" secondAttribute="top" constant="8" id="dap-e3-3Ay"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="lQE-dA-JBR">
-                                        <rect key="frame" x="0.0" y="323.5" width="375" height="80"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lQE-dA-JBR" id="aAq-B5-IFK">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="ZX0-fK-whC">
-                                                    <rect key="frame" x="24" y="10" width="327" height="60"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2q-fE-3eL">
-                                                            <rect key="frame" x="8" y="0.0" width="319" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="lGV-4u-NFq"/>
-                                                            </constraints>
-                                                            <attributedString key="attributedText">
-                                                                <fragment content="Color de la rutina (">
-                                                                    <attributes>
-                                                                        <font key="NSFont" metaFont="system" size="15"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content="por defecto">
-                                                                    <attributes>
-                                                                        <color key="NSColor" red="0.50196078431372548" green="0.32156862745098036" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        <font key="NSFont" size="15" name="Arial-BoldMT"/>
-                                                                        <font key="NSOriginalFont" size="15" name="Arial-BoldMT"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                                <fragment content=")">
-                                                                    <attributes>
-                                                                        <font key="NSFont" metaFont="system" size="15"/>
-                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                    </attributes>
-                                                                </fragment>
-                                                            </attributedString>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="H0E-wf-Gj5">
-                                                            <rect key="frame" x="0.0" y="30" width="327" height="30"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTF-Io-nw4" customClass="DLRadioButton">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="98.5" height="30"/>
-                                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                                                    <state key="normal" title="1">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
-                                                                            <real key="value" value="15"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="firstColorRadioButtonPressed:" destination="n9e-wi-gL6" eventType="touchUpInside" id="rNM-G9-EQZ"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fd9-6u-0BP" customClass="DLRadioButton">
-                                                                    <rect key="frame" x="114.5" y="0.0" width="98" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="2">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
-                                                                            <real key="value" value="15"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="secondColorRadioButtonPressed:" destination="n9e-wi-gL6" eventType="touchUpInside" id="VTl-q1-HnC"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXe-pH-1qO" customClass="DLRadioButton">
-                                                                    <rect key="frame" x="228.5" y="0.0" width="98.5" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="3">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
-                                                                            <real key="value" value="15"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="thirdColorRadioButtonPressed:" destination="n9e-wi-gL6" eventType="touchUpInside" id="Vkc-Tj-u2h"/>
-                                                                    </connections>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="UnC-Dh-9VT"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="d2q-fE-3eL" firstAttribute="leading" secondItem="ZX0-fK-whC" secondAttribute="leading" constant="8" id="fsW-JZ-QpU"/>
-                                                        <constraint firstItem="H0E-wf-Gj5" firstAttribute="centerX" secondItem="ZX0-fK-whC" secondAttribute="centerX" id="jM5-XZ-Kk2"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ZX0-fK-whC" firstAttribute="centerY" secondItem="aAq-B5-IFK" secondAttribute="centerY" id="4sY-ST-agR"/>
-                                                <constraint firstAttribute="trailing" secondItem="ZX0-fK-whC" secondAttribute="trailing" constant="24" id="8Kg-Cd-1ST"/>
-                                                <constraint firstItem="ZX0-fK-whC" firstAttribute="leading" secondItem="aAq-B5-IFK" secondAttribute="leading" constant="24" id="Xxk-am-qSu"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="4Ux-T4-5Y9">
-                                        <rect key="frame" x="0.0" y="403.5" width="375" height="80"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Ux-T4-5Y9" id="Ka6-IV-sin">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="QBv-8e-OKv">
-                                                    <rect key="frame" x="24" y="10" width="327" height="60"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dificultad de la rutina" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gb-S2-Wve">
-                                                            <rect key="frame" x="8" y="0.0" width="319" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="w3n-lP-xio"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <stackView opaque="NO" contentMode="center" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bc3-9o-dJi">
-                                                            <rect key="frame" x="0.0" y="30" width="327" height="30"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3A-CE-L0z" customClass="DLRadioButton">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="98.5" height="30"/>
-                                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                                                    <state key="normal" title="Difícil">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
-                                                                            <real key="value" value="15"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="difficultRadioButtonPressed:" destination="n9e-wi-gL6" eventType="touchUpInside" id="GQS-qv-LfL"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twk-4S-uo1" customClass="DLRadioButton">
-                                                                    <rect key="frame" x="114.5" y="0.0" width="98" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="Medio">
-                                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    </state>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
-                                                                            <real key="value" value="15"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="mediumRadioButtonPressed:" destination="n9e-wi-gL6" eventType="touchUpInside" id="Kq4-CU-s2M"/>
-                                                                    </connections>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OuE-Op-qNS" customClass="DLRadioButton">
-                                                                    <rect key="frame" x="228.5" y="0.0" width="98.5" height="30"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <state key="normal" title="Fácil">
-                                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </state>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
-                                                                            <real key="value" value="15"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                    <connections>
-                                                                        <action selector="easyRadioButtonPressed:" destination="n9e-wi-gL6" eventType="touchUpInside" id="7BS-5p-N26"/>
-                                                                    </connections>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="cGG-uc-tjg"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="bc3-9o-dJi" firstAttribute="centerX" secondItem="QBv-8e-OKv" secondAttribute="centerX" id="GoP-Yb-le9"/>
-                                                        <constraint firstItem="0gb-S2-Wve" firstAttribute="leading" secondItem="QBv-8e-OKv" secondAttribute="leading" constant="8" id="Ptp-ml-cnK"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="QBv-8e-OKv" firstAttribute="centerY" secondItem="Ka6-IV-sin" secondAttribute="centerY" id="cZx-If-e7o"/>
-                                                <constraint firstAttribute="trailing" secondItem="QBv-8e-OKv" secondAttribute="trailing" constant="24" id="dTl-sf-skN"/>
-                                                <constraint firstItem="QBv-8e-OKv" firstAttribute="leading" secondItem="Ka6-IV-sin" secondAttribute="leading" constant="24" id="qGx-E6-QCY"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8OO-9u-hLc">
-                                        <rect key="frame" x="0.0" y="483.5" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8OO-9u-hLc" id="iTK-B4-mlx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Músculos implicados" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2CQ-iL-sWr">
-                                                    <rect key="frame" x="16" y="8" width="343" height="27.5"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="2CQ-iL-sWr" firstAttribute="top" secondItem="iTK-B4-mlx" secondAttribute="top" constant="8" id="8KB-Gc-hpP"/>
-                                                <constraint firstAttribute="trailing" secondItem="2CQ-iL-sWr" secondAttribute="trailing" constant="16" id="FL1-Bu-cb9"/>
-                                                <constraint firstItem="2CQ-iL-sWr" firstAttribute="leading" secondItem="iTK-B4-mlx" secondAttribute="leading" constant="16" id="I8G-Gm-FiZ"/>
-                                                <constraint firstAttribute="bottom" secondItem="2CQ-iL-sWr" secondAttribute="bottom" constant="8" id="Ptu-YE-2ki"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Ejercicios de la rutina" id="fpe-WV-INc">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="yBo-qg-bYF">
-                                        <rect key="frame" x="0.0" y="583.5" width="375" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yBo-qg-bYF" id="26x-Vl-NhN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v90-H2-gmh">
-                                                    <rect key="frame" x="105.5" y="11" width="164" height="38"/>
-                                                    <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
-                                                    <state key="normal" title="AÑADIR EJERCICIO">
-                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="addExerciseButtonPressed:" destination="n9e-wi-gL6" eventType="touchUpInside" id="MT3-cf-TOW"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="v90-H2-gmh" firstAttribute="centerX" secondItem="26x-Vl-NhN" secondAttribute="centerX" id="cis-KM-aiq"/>
-                                                <constraint firstItem="v90-H2-gmh" firstAttribute="centerY" secondItem="26x-Vl-NhN" secondAttribute="centerY" id="xmR-Bt-YTX"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="150" id="czu-ZO-pnh">
-                                        <rect key="frame" x="0.0" y="643.5" width="375" height="150"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="czu-ZO-pnh" id="5g1-q2-JOi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9h-cF-wXW">
-                                                    <rect key="frame" x="16" y="8" width="343" height="133.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Y9h-cF-wXW" firstAttribute="leading" secondItem="5g1-q2-JOi" secondAttribute="leading" constant="16" id="Zs0-yt-gzH"/>
-                                                <constraint firstAttribute="bottom" secondItem="Y9h-cF-wXW" secondAttribute="bottom" constant="8" id="bnK-BG-yC2"/>
-                                                <constraint firstItem="Y9h-cF-wXW" firstAttribute="top" secondItem="5g1-q2-JOi" secondAttribute="top" constant="8" id="lTd-2R-CJX"/>
-                                                <constraint firstAttribute="trailing" secondItem="Y9h-cF-wXW" secondAttribute="trailing" constant="16" id="y79-2b-1ce"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="n9e-wi-gL6" id="752-i1-pnx"/>
-                            <outlet property="delegate" destination="n9e-wi-gL6" id="JsI-ra-uqt"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" prompt="EDITAR RUTINA" id="VQS-55-p8P">
-                        <barButtonItem key="rightBarButtonItem" title="GUARDAR" id="JSx-rZ-KQV">
-                            <connections>
-                                <action selector="saveButtonPressed:" destination="n9e-wi-gL6" id="UzY-uv-FFv"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="difficultRadioButton" destination="o3A-CE-L0z" id="DXE-Ay-Pjj"/>
-                        <outlet property="easyRadioButton" destination="OuE-Op-qNS" id="Huc-9P-VOe"/>
-                        <outlet property="firstColorRadioButton" destination="cTF-Io-nw4" id="4pe-eq-HIQ"/>
-                        <outlet property="fridayCheckbox" destination="mxa-RV-Fvq" id="GKS-NW-ioN"/>
-                        <outlet property="mediumRadioButton" destination="Twk-4S-uo1" id="NUV-7H-5oA"/>
-                        <outlet property="mondayCheckbox" destination="NKN-Gk-FNc" id="1xu-WX-ChI"/>
-                        <outlet property="routineExercisesTextView" destination="Y9h-cF-wXW" id="GEk-Aw-X1T"/>
-                        <outlet property="routineInformationTextField" destination="MQz-NG-kHL" id="vEA-gJ-Jje"/>
-                        <outlet property="routineMusclesTextField" destination="2CQ-iL-sWr" id="qRh-mg-Yuf"/>
-                        <outlet property="routineNameTextField" destination="bGJ-s4-tw1" id="NGD-yh-UkL"/>
-                        <outlet property="routineObjectiveTextField" destination="JcR-rW-EI1" id="Aic-7f-c5Z"/>
-                        <outlet property="saturdayCheckbox" destination="SNQ-0b-PFw" id="bjw-jX-6Fv"/>
-                        <outlet property="secondColorRadioButton" destination="fd9-6u-0BP" id="osC-Sd-gto"/>
-                        <outlet property="sundayCheckbox" destination="t2f-d4-cw3" id="hdQ-kp-PRF"/>
-                        <outlet property="thirdColorRadioButton" destination="UXe-pH-1qO" id="ocM-PI-j4a"/>
-                        <outlet property="thursdayCheckbox" destination="Yln-bZ-Lky" id="cho-uZ-lF2"/>
-                        <outlet property="tuesdayCheckbox" destination="2yr-Lz-Pef" id="w51-qV-8QB"/>
-                        <outlet property="wednesdayCheckbox" destination="LDT-ne-Mfx" id="KBU-4l-8bk"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dpR-UU-l1s" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2610" y="-412"/>
+            <point key="canvasLocation" x="2561" y="-36"/>
         </scene>
     </scenes>
     <resources>
@@ -2364,6 +1796,5 @@
         <image name="others" width="25" height="25"/>
         <image name="play_button" width="25" height="25"/>
         <image name="routines" width="25" height="25"/>
-        <image name="send" width="25" height="25"/>
     </resources>
 </document>

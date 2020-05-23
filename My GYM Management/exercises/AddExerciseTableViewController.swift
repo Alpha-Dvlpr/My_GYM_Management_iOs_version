@@ -31,7 +31,6 @@ class AddExerciseTableViewController: UITableViewController {
     
     //MARK: Init view
     
-    
     /**
      This method loads the information on the view if it has been called from the exercise information view to edit it.
      
@@ -76,31 +75,27 @@ class AddExerciseTableViewController: UITableViewController {
      - Author: Aarón Granado Amores.
      */
     func saveExercise() {
-        if exerciseNameTextField.text != "" {
-            if exerciseInformationTextField.text != "" && exerciseExecutionTextField.text != "" {
-                if didCameFromExerciseInfo {
-                    setExecriseInformation(exercise: exerciseToEdit)
-                } else {
-                    if !checkIfExerciseExistsOnCoreData(name: exerciseNameTextField.text!) {
-                        setExecriseInformation(exercise: Exercise(context: AppDelegate.context))
-                    } else {
-                        showInfoAlert(message: "Ya existe un ejercicio con el nombre '\(exerciseNameTextField.text!)'")
-                    }
-                }
+        if exerciseNameTextField.text != "" && exerciseInformationTextField.text != "" && exerciseExecutionTextField.text != "" {
+            if didCameFromExerciseInfo {
+                setExecriseInformation(exercise: exerciseToEdit)
             } else {
-                showInfoAlert(message: "Debes completar todos los campos obligatorios")
+                if !checkIfExerciseExistsOnCoreData(name: exerciseNameTextField.text!) {
+                    setExecriseInformation(exercise: Exercise(context: AppDelegate.context))
+                } else {
+                    showInfoAlert(message: "Ya existe un ejercicio con el nombre '\(exerciseNameTextField.text!)'")
+                }
             }
         } else {
-            showInfoAlert(message: "Debes introducir un nombre")
+            showInfoAlert(message: "Debes completar todos los campos obligatorios")
         }
     }
     
     
     /**
-     This method sets the values for all the fields of the exercise and the saves it to CoreData. This can be used to add
+     This method sets the values for all the fields of the exercise and then saves it to CoreData. This can be used to add
      a new Exercise or to update an existing one.
      
-     - Parameter exercise: The execrise to be added or edited.
+     - Parameter exercise: The exercise to be added or edited.
      - Author: Aarón Granado Amores.
      */
     func setExecriseInformation(exercise: Exercise) {

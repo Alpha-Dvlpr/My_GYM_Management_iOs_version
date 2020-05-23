@@ -41,12 +41,15 @@ class AddRoutineTableViewController: UITableViewController {
     var exercisesSeries: [String] = []
     var exercisesLoad: [String] = []
     var addExerciseDialog: AddExerciseSBViewController!
+    var didCameFromEditRoutine: Bool = false
+    var routineToEdit: Routine!
     
     //MARK: Main function
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupColorsAndNames()
+        initView()
     }
     
     //MARK: Setup colors and names.
@@ -84,6 +87,162 @@ class AddRoutineTableViewController: UITableViewController {
         easyRadioButton.iconColor = UIColor.init(hexString: cons.difficultyColorThree)
         easyRadioButton.indicatorColor = UIColor.init(hexString: cons.difficultyColorThree)
         easyRadioButton.setTitleColor(UIColor.init(hexString: cons.difficultyColorThree), for: .normal)
+    }
+    
+    //MARK: Init view
+    
+    /**
+     This method loads the information on the view if it has been called from the routine information view to edit it.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func initView() {
+        if !didCameFromEditRoutine {
+            self.title = "NUEVA"
+        } else {
+            self.title = "EDITAR"
+            
+            routineNameTextField.isEnabled = false
+            
+            initDaysArray()
+            checkColor()
+            checkDifficulty()
+            initExercisesArrays()
+            loadData()
+        }
+    }
+    
+    /**
+     This method inits the days array depending on the days string on the routine and checks the proper checkbox.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func initDaysArray() {
+        let daysArray: [String] = routineToEdit.days?.split(separator: "-").map { String($0) } ?? []
+        
+        for day in daysArray {
+            switch day {
+            case "MO":
+                mondayCheckbox.isSelected = true
+                selectedDaysArray[0] = true
+                break
+            case "TU":
+                tuesdayCheckbox.isSelected = true
+                selectedDaysArray[1] = true
+                break
+            case "WE":
+                wednesdayCheckbox.isSelected = true
+                selectedDaysArray[2] = true
+                break
+            case "TH":
+                thursdayCheckbox.isSelected = true
+                selectedDaysArray[3] = true
+                break
+            case "FR":
+                fridayCheckbox.isSelected = true
+                selectedDaysArray[4] = true
+                break
+            case "SA":
+                saturdayCheckbox.isSelected = true
+                selectedDaysArray[5] = true
+                break
+            case "SU":
+                sundayCheckbox.isSelected = true
+                selectedDaysArray[6] = true
+                break
+            default:
+                break
+            }
+        }
+    }
+    
+    /**
+     This method checks the color radioButton depending on the color stored on the routine.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func checkColor() {
+        let selectedColor = routineToEdit.color
+        
+        switch selectedColor {
+        case cons.routineColorOne:
+            firstColorRadioButton.isSelected = true
+            break
+        case cons.routineColorTwo:
+            secondColorRadioButton.isSelected = true
+            break
+        case cons.routineColorThree:
+            thirdColorRadioButton.isSelected = true
+            break
+        default:
+            break
+        }
+    }
+    
+    /**
+     This method checks the difficulty radioButton depending on the difficulty stored on the routine.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func checkDifficulty() {
+        let selectedDifficulty = routineToEdit.difficulty
+        
+        switch selectedDifficulty {
+        case "difficult":
+            difficultRadioButton.isSelected = true
+            break
+        case "medium":
+            mediumRadioButton.isSelected = true
+            break
+        case "easy":
+            easyRadioButton.isSelected = true
+            break
+        default:
+            break
+        }
+    }
+    
+    /**
+     This method loads all the data from the routine on the view.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func loadData() {
+        if routineToEdit != nil {
+            routineNameTextField.text = routineToEdit.name
+            routineInformationTextField.text = routineToEdit.info
+            routineObjectiveTextField.text = routineToEdit.objective
+            routineMusclesTextField.text = routineToEdit.muscles
+        }
+    }
+    
+    /**
+     This method fills the exercises names, series, repetitions an load arrays and then places the formatted
+     data on the execrises text view.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func initExercisesArrays() {
+        exercisesNames = routineToEdit.exercises?.split(separator: "-").map { String($0) } ?? []
+        exercisesRepetitions = routineToEdit.repetitions?.split(separator: "-").map { String($0) } ?? []
+        exercisesSeries = routineToEdit.series?.split(separator: "-").map { String($0) } ?? []
+        exercisesLoad = routineToEdit.load?.split(separator: "-").map { String($0) } ?? []
+        
+        var exercisesText = ""
+        
+        if exercisesNames[0] != "no exercises" {
+            for position in 0...(exercisesNames.count - 1) {
+                exercisesText += exercisesNames[position] + ": "
+                exercisesText += exercisesSeries[position] + "*"
+                exercisesText += exercisesRepetitions[position] + " (" + exercisesLoad[position] + " KG o seg.)"
+                
+                if position != (exercisesNames.count - 1) {
+                    exercisesText += "\n"
+                }
+            }
+        }
+        
+        routineExercisesTextView.text = exercisesText
     }
     
     //MARK: IBActions
@@ -233,45 +392,58 @@ class AddRoutineTableViewController: UITableViewController {
      */
     func saveRoutine() {
         if routineNameTextField.text != "" {
-            if !checkIfRoutineExistsOnCoreData(name: routineNameTextField.text!) {
-                if checkIfAnyDayIsSelected() {
-                    let routineToSave: Routine = Routine(context: AppDelegate.context)
-                    var checkedColor: String = cons.predefinedRoutineColor
-                    var checkedDifficulty: String = "none"
-                    
-                    if firstColorRadioButton.isSelected { checkedColor = String(cons.routineColorOne) }
-                    if secondColorRadioButton.isSelected { checkedColor = String(cons.routineColorTwo) }
-                    if thirdColorRadioButton.isSelected { checkedColor = String(cons.routineColorThree) }
-                    if difficultRadioButton.isSelected { checkedDifficulty = "difficult" }
-                    if mediumRadioButton.isSelected { checkedDifficulty = "medium" }
-                    if easyRadioButton.isSelected { checkedDifficulty = "easy" }
-                    
-                    routineToSave.name = routineNameTextField.text?.uppercased()
-                    routineToSave.days = createDaysString()
-                    routineToSave.color = checkedColor
-                    routineToSave.difficulty = checkedDifficulty
-                    routineToSave.exercises = createExercisesNamesString()
-                    routineToSave.series = createExercisesSeriesString()
-                    routineToSave.repetitions = createExercisesRepetitionsString()
-                    routineToSave.load = createExercisesLoadString()
-                    
-                    if routineInformationTextField.text != "" { routineToSave.info = routineInformationTextField.text }
-                    if routineMusclesTextField.text != "" { routineToSave.muscles = routineMusclesTextField.text }
-                    if routineObjectiveTextField.text != "" { routineToSave.objective = routineObjectiveTextField.text}
-                
-                    routineToSave.isUserCreated = true
-                    
-                    saveToCD()
-                    self.dismiss(animated: true, completion: nil)
+            if checkIfAnyDayIsSelected() {
+                if didCameFromEditRoutine {
+                    setRoutineInformation(routine: routineToEdit)
                 } else {
-                    showInfoAlert(message: "Debes seleccionar al menos un día")
+                    if !checkIfRoutineExistsOnCoreData(name: routineNameTextField.text!) {
+                        setRoutineInformation(routine: Routine(context: AppDelegate.context))
+                    } else {
+                        showInfoAlert(message: "Ya existe una rutina con el nombre '\(routineNameTextField.text!)'")
+                    }
                 }
             } else {
-                showInfoAlert(message: "Ya existe una rutina con el nombre '\(routineNameTextField.text!)'")
+                showInfoAlert(message: "Debes seleccionar al menos un día")
             }
         } else {
             showInfoAlert(message: "Debes introducir un nombre")
         }
+    }
+    
+    /**
+     This method sets the values for all the fields of the routine and then saves it to CoreData. This can be used to add
+     a new Rotutien or to update an existing one.
+     
+     - Parameter routien: The routine to be added or edited.
+     - Author: Aarón Granado Amores.
+     */
+    func setRoutineInformation(routine: Routine) {
+        var checkedColor: String = cons.predefinedRoutineColor
+        var checkedDifficulty: String = "none"
+        
+        if firstColorRadioButton.isSelected { checkedColor = String(cons.routineColorOne) }
+        if secondColorRadioButton.isSelected { checkedColor = String(cons.routineColorTwo) }
+        if thirdColorRadioButton.isSelected { checkedColor = String(cons.routineColorThree) }
+        if difficultRadioButton.isSelected { checkedDifficulty = "difficult" }
+        if mediumRadioButton.isSelected { checkedDifficulty = "medium" }
+        if easyRadioButton.isSelected { checkedDifficulty = "easy" }
+        
+        routine.name = routineNameTextField.text?.uppercased()
+        routine.days = createDaysString()
+        routine.color = checkedColor
+        routine.difficulty = checkedDifficulty
+        routine.exercises = createExercisesNamesString()
+        routine.series = createExercisesSeriesString()
+        routine.repetitions = createExercisesRepetitionsString()
+        routine.load = createExercisesLoadString()
+        
+        if routineInformationTextField.text != "" { routine.info = routineInformationTextField.text }
+        if routineMusclesTextField.text != "" { routine.muscles = routineMusclesTextField.text }
+        if routineObjectiveTextField.text != "" { routine.objective = routineObjectiveTextField.text}
+        
+        routine.isUserCreated = true
+        
+        saveToCD()
     }
     
     /**
@@ -543,11 +715,19 @@ extension AddRoutineTableViewController: CustomExerciseAlertDialogDelegate {
     func addButtonPressed(name: String, series: String, repetitions: String, load: String) {
         let currentText = routineExercisesTextView.text ?? ""
         var newText = currentText == "" ? "" : (currentText + "\n")
+        
         newText += name + ": "
         newText += series + "*"
         newText += repetitions + " (" + load + " KG o sec.)"
         
         routineExercisesTextView.text = newText
+        
+        if exercisesNames[0] == "no exercises" {
+            exercisesNames = []
+            exercisesSeries = []
+            exercisesRepetitions = []
+            exercisesLoad = []
+        }
         
         exercisesNames.append(name)
         exercisesSeries.append(series)

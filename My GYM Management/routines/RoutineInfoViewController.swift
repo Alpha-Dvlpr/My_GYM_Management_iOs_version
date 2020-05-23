@@ -90,6 +90,21 @@ class RoutineInfoViewController: UIViewController {
         showInfoAlert(message: "Próximamente")
     }
     
+    /**
+     This method sets the action for the edit routine button. It opens the addRoutineViewController for editing the
+     current routine.
+     
+     - Parameter sender: the sender o the action (In this case UIBarButton).
+     - Author: Aarón Granado Amores.
+     */
+    @IBAction func editRoutineButtonPressed(_ sender: UIBarButtonItem) {
+        let infoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addEditRoutine") as! AddRoutineTableViewController
+        
+        navigationController?.pushViewController(infoVC, animated: true)
+        infoVC.didCameFromEditRoutine = true
+        infoVC.routineToEdit = self.localRoutine
+    }
+    
     //MARK: AlertDialog
     
     /**

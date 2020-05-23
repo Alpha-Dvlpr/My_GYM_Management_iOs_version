@@ -62,7 +62,13 @@ class ExerciseInfoViewController: UIViewController {
         showInfoAlert(message: "Próximamente")
     }
     
-    
+    /**
+     This method sets the action for the edit exercise button. It opens the addExecriseViewController for editing the
+     current exercise.
+     
+     - Parameter sender: the sender o the action (In this case UIBarButton).
+     - Author: Aarón Granado Amores.
+     */
     @IBAction func editButtonPressed(_ sender: UIBarButtonItem) {
         let infoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "addEditExercise") as! AddExerciseTableViewController
         
@@ -114,7 +120,6 @@ class ExerciseInfoViewController: UIViewController {
      */
     func updateUI() {
         if localExercise != nil {
-            self.title = "INFO"
             nameLabel.text = localExercise.name
             infoLabel.text = localExercise.info
             executionLabel.text = localExercise.execution
