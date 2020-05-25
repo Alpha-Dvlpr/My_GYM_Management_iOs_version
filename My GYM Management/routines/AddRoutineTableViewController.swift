@@ -18,7 +18,6 @@ class AddRoutineTableViewController: UITableViewController {
     @IBOutlet weak var routineInformationTextField: UITextField!
     @IBOutlet weak var routineObjectiveTextField: UITextField!
     @IBOutlet weak var routineMusclesTextField: UITextField!
-    @IBOutlet weak var routineExercisesTextView: UITextView!
     @IBOutlet weak var firstColorRadioButton: DLRadioButton!
     @IBOutlet weak var secondColorRadioButton: DLRadioButton!
     @IBOutlet weak var thirdColorRadioButton: DLRadioButton!
@@ -47,6 +46,8 @@ class AddRoutineTableViewController: UITableViewController {
     //MARK: Main function
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: "RoutineExerciseTableViewCell", bundle: nil), forCellReuseIdentifier: "exerciseCell")
         
         setupColorsAndNames()
         initView()
@@ -223,6 +224,7 @@ class AddRoutineTableViewController: UITableViewController {
      - Author: Aarón Granado Amores.
      */
     func initExercisesArrays() {
+        
         exercisesNames = routineToEdit.exercises?.split(separator: "-").map { String($0) } ?? []
         exercisesRepetitions = routineToEdit.repetitions?.split(separator: "-").map { String($0) } ?? []
         exercisesSeries = routineToEdit.series?.split(separator: "-").map { String($0) } ?? []
@@ -231,7 +233,15 @@ class AddRoutineTableViewController: UITableViewController {
         var exercisesText = ""
         
         if exercisesNames[0] != "no exercises" {
+            
+            tableView.beginUpdates()
+            
             for position in 0...(exercisesNames.count - 1) {
+                
+                tableView.insertRows(at: [IndexPath(row: (position + 1), section: 2)], with: .automatic)
+                tableView.reloadData()
+                
+                
                 exercisesText += exercisesNames[position] + ": "
                 exercisesText += exercisesSeries[position] + "*"
                 exercisesText += exercisesRepetitions[position] + " (" + exercisesLoad[position] + " KG o seg.)"
@@ -240,9 +250,9 @@ class AddRoutineTableViewController: UITableViewController {
                     exercisesText += "\n"
                 }
             }
+            
+            tableView.endUpdates()
         }
-        
-        routineExercisesTextView.text = exercisesText
     }
     
     //MARK: IBActions
@@ -660,16 +670,56 @@ class AddRoutineTableViewController: UITableViewController {
     
     // MARK: TableView DataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 1 ? 5 : 2
+        switch section {
+        case 0:
+            return 2
+        case 1:
+            return 5
+        case 2:
+            return 1
+        case 3:
+            return exercisesNames.count == 0 || exercisesNames[0] == "no exercises" ? 0 : exercisesNames.count
+        default:
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 3 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! RoutineExerciseTableViewCell
+            var descriptionText = exercisesSeries[indexPath.row] + " * "
+            
+            descriptionText += exercisesRepetitions[indexPath.row]
+            descriptionText += " (" + exercisesLoad[indexPath.row] + " KG o sec.)"
+            
+            cell.textLabel?.text = exercisesNames[indexPath.row]
+            cell.detailTextLabel?.text = descriptionText
+            
+            return cell
+        }
+        
+        return super.tableView(tableView, cellForRowAt: indexPath)
     }
     
     //MARK: TableViewDelegate
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return indexPath.section == 3 ? true : false
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        exercisesNames.remove(at: indexPath.row)
+        exercisesSeries.remove(at: indexPath.row)
+        exercisesLoad.remove(at: indexPath.row)
+        exercisesRepetitions.remove(at: indexPath.row)
+        tableView.reloadData()
     }
 }
 
@@ -713,15 +763,6 @@ extension AddRoutineTableViewController: CustomExerciseAlertDialogDelegate {
     func cancelButtonPressed() {}
     
     func addButtonPressed(name: String, series: String, repetitions: String, load: String) {
-        let currentText = routineExercisesTextView.text ?? ""
-        var newText = currentText == "" ? "" : (currentText + "\n")
-        
-        newText += name + ": "
-        newText += series + "*"
-        newText += repetitions + " (" + load + " KG o sec.)"
-        
-        routineExercisesTextView.text = newText
-        
         if exercisesNames[0] == "no exercises" {
             exercisesNames = []
             exercisesSeries = []
@@ -733,5 +774,10 @@ extension AddRoutineTableViewController: CustomExerciseAlertDialogDelegate {
         exercisesSeries.append(series)
         exercisesRepetitions.append(repetitions)
         exercisesLoad.append(load)
+        
+        tableView.beginUpdates()
+        tableView.insertRows(at: [IndexPath(row: exercisesNames.count - 1, section: 3)], with: .automatic)
+        tableView.reloadData()
+        tableView.endUpdates()
     }
 }

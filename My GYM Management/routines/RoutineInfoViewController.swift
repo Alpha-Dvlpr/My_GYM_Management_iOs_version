@@ -243,15 +243,6 @@ class RoutineInfoViewController: UIViewController {
         
         difficultyIndicator.tintColor = colorToSet
     }
-    
-    //MARK: Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toEditRoutine" {
-            let infoVC = segue.destination as! EditRoutineTableViewController
-            
-            infoVC.currentRoutine = self.localRoutine
-        }
-    }
 }
 
 extension UIColor {
