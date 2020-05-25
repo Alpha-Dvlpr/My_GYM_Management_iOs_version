@@ -10,48 +10,54 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--AddBMI DataSB View Controller-->
         <scene sceneID="lUZ-m8-YMs">
             <objects>
-                <viewController id="u6O-bM-1cr" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddBMICustomDialog" id="u6O-bM-1cr" customClass="AddBMIDataSBViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z3u-kQ-08N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kn4-W1-m0f">
-                                <rect key="frame" x="75.5" y="222.5" width="224.5" height="222.5"/>
+                                <rect key="frame" x="75.5" y="200.5" width="224.5" height="266"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AÑADIR IMC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x44-M0-eds">
-                                        <rect key="frame" x="64" y="16" width="96.5" height="20.5"/>
+                                        <rect key="frame" x="64" y="16" width="96.5" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="ikB-Zu-L1g"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cOz-pg-j9R">
-                                        <rect key="frame" x="16" y="52.5" width="192.5" height="106"/>
+                                        <rect key="frame" x="16" y="52" width="192.5" height="110"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jSw-Oi-Y7m">
-                                                <rect key="frame" x="0.0" y="0.0" width="192.5" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Edad (años)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jSw-Oi-Y7m">
+                                                <rect key="frame" x="0.0" y="0.0" width="192.5" height="31.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AF6-Cy-8Hk">
-                                                <rect key="frame" x="0.0" y="38" width="192.5" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Peso (KG)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AF6-Cy-8Hk">
+                                                <rect key="frame" x="0.0" y="39.5" width="192.5" height="31"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oql-Ah-zf1">
-                                                <rect key="frame" x="0.0" y="76" width="192.5" height="30"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Altura (cm)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Oql-Ah-zf1">
+                                                <rect key="frame" x="0.0" y="78.5" width="192.5" height="31.5"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="110" id="4Fd-Wc-14R"/>
+                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2rc-HH-WoN">
-                                        <rect key="frame" x="0.0" y="174.5" width="224.5" height="40"/>
+                                        <rect key="frame" x="0.0" y="218" width="224.5" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hDb-MY-c4b">
                                                 <rect key="frame" x="0.0" y="1" width="112" height="38"/>
@@ -59,30 +65,90 @@
                                                 <state key="normal" title="Cancelar">
                                                     <color key="titleColor" red="1" green="0.1115198537" blue="0.10678885170000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="u6O-bM-1cr" eventType="touchUpInside" id="T01-jJ-b4h"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AF3-ng-aDZ">
                                                 <rect key="frame" x="112" y="1" width="112.5" height="38"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
                                                 <state key="normal" title="Añadir"/>
+                                                <connections>
+                                                    <action selector="acceptButtonPressed:" destination="u6O-bM-1cr" eventType="touchUpInside" id="IsK-4A-Cxf"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="RS4-vr-5pL"/>
                                             <constraint firstAttribute="height" constant="40" id="zTm-Mq-jRn"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sOf-hp-Hlx">
+                                        <rect key="frame" x="16" y="170" width="192.5" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xiq-37-IhY" customClass="DLRadioButton">
+                                                <rect key="frame" x="0.0" y="0.0" width="92" height="40"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <state key="normal" title="Hombre">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deselectRadioButton:" destination="u6O-bM-1cr" eventType="touchUpInside" id="wlO-In-CbL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1D2-xn-P8l" customClass="DLRadioButton">
+                                                <rect key="frame" x="100" y="0.0" width="92.5" height="40"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                                <state key="normal" title="Mujer">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="deselectRadioButton:" destination="u6O-bM-1cr" eventType="touchUpInside" id="t4Y-4y-9b4"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="2rg-OA-kUH"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cOz-pg-j9R" secondAttribute="trailing" constant="16" id="50j-FC-Ao6"/>
+                                    <constraint firstItem="sOf-hp-Hlx" firstAttribute="top" secondItem="cOz-pg-j9R" secondAttribute="bottom" constant="8" id="Awf-03-nOF"/>
                                     <constraint firstItem="x44-M0-eds" firstAttribute="leading" secondItem="Kn4-W1-m0f" secondAttribute="leading" constant="64" id="CCS-sj-rL2"/>
                                     <constraint firstItem="cOz-pg-j9R" firstAttribute="top" secondItem="x44-M0-eds" secondAttribute="bottom" constant="16" id="DU0-9M-nmW"/>
                                     <constraint firstItem="cOz-pg-j9R" firstAttribute="leading" secondItem="Kn4-W1-m0f" secondAttribute="leading" constant="16" id="Mjb-wI-E4B"/>
                                     <constraint firstAttribute="trailing" secondItem="x44-M0-eds" secondAttribute="trailing" constant="64" id="Wol-Qq-2Kx"/>
+                                    <constraint firstItem="sOf-hp-Hlx" firstAttribute="leading" secondItem="Kn4-W1-m0f" secondAttribute="leading" constant="16" id="jVM-QI-9Qn"/>
                                     <constraint firstItem="x44-M0-eds" firstAttribute="top" secondItem="Kn4-W1-m0f" secondAttribute="top" constant="16" id="nVn-Ze-WKQ"/>
                                     <constraint firstAttribute="bottom" secondItem="2rc-HH-WoN" secondAttribute="bottom" constant="8" id="npD-8G-iO7"/>
                                     <constraint firstAttribute="trailing" secondItem="2rc-HH-WoN" secondAttribute="trailing" id="r0D-ax-hFa"/>
-                                    <constraint firstItem="2rc-HH-WoN" firstAttribute="top" secondItem="cOz-pg-j9R" secondAttribute="bottom" constant="16" id="rxz-1R-W0K"/>
+                                    <constraint firstItem="2rc-HH-WoN" firstAttribute="top" secondItem="sOf-hp-Hlx" secondAttribute="bottom" constant="8" id="rxz-1R-W0K"/>
                                     <constraint firstItem="2rc-HH-WoN" firstAttribute="leading" secondItem="Kn4-W1-m0f" secondAttribute="leading" id="w8k-kF-KeS"/>
+                                    <constraint firstAttribute="trailing" secondItem="sOf-hp-Hlx" secondAttribute="trailing" constant="16" id="ynK-bh-STt"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -93,6 +159,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="W7T-ps-4ls"/>
                     </view>
+                    <connections>
+                        <outlet property="ageTextField" destination="jSw-Oi-Y7m" id="JTF-9K-QlJ"/>
+                        <outlet property="alertView" destination="Kn4-W1-m0f" id="w0Z-j8-86w"/>
+                        <outlet property="femaleRadioButton" destination="1D2-xn-P8l" id="9FE-cE-9lw"/>
+                        <outlet property="heightTextField" destination="Oql-Ah-zf1" id="LXO-4w-R3i"/>
+                        <outlet property="maleRadioButton" destination="Xiq-37-IhY" id="9kZ-Fa-a4V"/>
+                        <outlet property="weightTextField" destination="AF6-Cy-8Hk" id="jLz-pp-7ar"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wei-tR-n33" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

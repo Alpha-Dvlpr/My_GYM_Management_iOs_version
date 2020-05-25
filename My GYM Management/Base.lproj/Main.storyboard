@@ -299,7 +299,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="imcCalcButtonPressed:" destination="Ml6-2v-N2O" eventType="touchUpInside" id="UbA-rC-z3J"/>
-                                                    <segue destination="5dk-hJ-P0E" kind="show" id="lk7-NX-d2P"/>
+                                                    <segue destination="fWO-ap-t5q" kind="show" id="Hfe-Ho-rVL"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Dr-6n-ojX">
@@ -426,23 +426,65 @@
             <point key="canvasLocation" x="-555" y="663"/>
         </scene>
         <!--IMC-->
-        <scene sceneID="QSv-jZ-eHP">
+        <scene sceneID="48f-vt-tkx">
             <objects>
-                <viewController id="5dk-hJ-P0E" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jFI-FF-dnn">
+                <tableViewController id="fWO-ap-t5q" customClass="BMITableViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Te2-na-bml">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="4Lr-gx-85N"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="IMC" id="Haq-6p-2dm">
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="Nb7-CC-qNu" detailTextLabel="ODn-M5-pPU" style="IBUITableViewCellStyleSubtitle" id="P4R-eL-KxA">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="P4R-eL-KxA" id="44M-s9-PPr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nb7-CC-qNu">
+                                            <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ODn-M5-pPU">
+                                            <rect key="frame" x="16" y="25.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fWO-ap-t5q" id="N5F-bT-gBJ"/>
+                            <outlet property="delegate" destination="fWO-ap-t5q" id="icr-dz-UN7"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="IMC" id="ikG-pp-ied">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="tob-US-fpz"/>
-                            <barButtonItem systemItem="bookmarks" id="7w1-09-BGa"/>
+                            <barButtonItem systemItem="add" id="Tbw-0b-pm6">
+                                <connections>
+                                    <action selector="addBMIBarButtonPressed:" destination="fWO-ap-t5q" id="CNL-yn-OCz"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="bookmarks" id="qFC-JE-uKJ">
+                                <connections>
+                                    <action selector="graphBarButtonPressed:" destination="fWO-ap-t5q" id="qQh-j3-XJb"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7kE-NP-aIM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    <connections>
+                        <outlet property="tableView" destination="Te2-na-bml" id="y9q-uL-FIy"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S8w-Jc-W3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1001" y="663"/>
         </scene>
@@ -1757,14 +1799,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tlZ-g6-9kE">
-                                                    <rect key="frame" x="16" y="5" width="33.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="5" width="33.5" height="20.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h49-WP-NEb">
-                                                    <rect key="frame" x="16" y="25.5" width="33" height="14.5"/>
+                                                    <rect key="frame" x="15" y="25.5" width="33" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
