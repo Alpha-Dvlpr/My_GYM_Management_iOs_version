@@ -1,16 +1,20 @@
 PODS:
   - DLRadioButton (1.4.12)
+  - SwiftCharts (0.6.5)
 
 DEPENDENCIES:
   - DLRadioButton (~> 1.4.12)
+  - SwiftCharts (~> 0.6.1)
 
 SPEC REPOS:
   trunk:
     - DLRadioButton
+    - SwiftCharts
 
 SPEC CHECKSUMS:
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
+  SwiftCharts: 2e755ea292f0b87d3e4b2c1eb5afc080a20cdc15
 
-PODFILE CHECKSUM: 5edfa5982508a11b0475a5515f9ba65e1a47eb16
+PODFILE CHECKSUM: 12804b154589a93003111b8cdf308281e5648ff5
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.2

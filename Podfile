@@ -7,4 +7,5 @@ target 'My GYM Management' do
 
   # Pods for My GYM Management
   pod 'DLRadioButton', '~> 1.4.12'
+  pod 'SwiftCharts', '~> 0.6.1'
 end

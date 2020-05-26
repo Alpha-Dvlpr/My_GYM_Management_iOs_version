@@ -47,16 +47,6 @@ class OthersViewController: UIViewController {
     }
     
     /**
-     This method sets the action for the imc calculator button.
-     
-     - Parameter sender: The sender of the action (In this case uIButton).
-     - Author: Aarón Granado Amores.
-     */
-    @IBAction func imcCalcButtonPressed(_ sender: UIButton) {
-        print("Calculating IMC...")
-    }
-    
-    /**
      This method sets the action for the gym locator button.
      
      - Parameter sender: The sender of the action (In this case uIButton).

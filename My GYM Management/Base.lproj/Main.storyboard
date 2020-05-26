@@ -298,7 +298,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="imcCalcButtonPressed:" destination="Ml6-2v-N2O" eventType="touchUpInside" id="UbA-rC-z3J"/>
                                                     <segue destination="fWO-ap-t5q" kind="show" id="Hfe-Ho-rVL"/>
                                                 </connections>
                                             </button>
@@ -475,18 +474,35 @@
                             </barButtonItem>
                             <barButtonItem systemItem="bookmarks" id="qFC-JE-uKJ">
                                 <connections>
-                                    <action selector="graphBarButtonPressed:" destination="fWO-ap-t5q" id="qQh-j3-XJb"/>
+                                    <segue destination="dno-Sb-eSW" kind="show" identifier="bmiGraph" id="lHd-cl-0vh"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="bmiGraphOutlet" destination="qFC-JE-uKJ" id="uK1-3W-avk"/>
                         <outlet property="tableView" destination="Te2-na-bml" id="y9q-uL-FIy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8w-Jc-W3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1001" y="663"/>
+        </scene>
+        <!--GRÁFICA IMC-->
+        <scene sceneID="iHC-Kd-aQU">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="dno-Sb-eSW" customClass="BMIGraphViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="enY-qh-i5W">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="QqY-Ij-T6l"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="GRÁFICA IMC" id="67n-ca-4aH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9HZ-5C-tXz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1782" y="663"/>
         </scene>
         <!--MIS RUTINAS-->
         <scene sceneID="tjn-qc-GPQ">

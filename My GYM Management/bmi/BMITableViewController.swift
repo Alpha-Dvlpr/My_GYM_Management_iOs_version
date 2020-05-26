@@ -11,6 +11,9 @@ import CoreData
 
 class BMITableViewController: UITableViewController {
     
+    //MARK: UI elements connection
+    @IBOutlet weak var bmiGraphOutlet: UIBarButtonItem!
+    
     //MARK: Variables and constants
     var addBMIDialog: AddBMIDataSBViewController!
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
@@ -32,7 +35,7 @@ class BMITableViewController: UITableViewController {
     func fetch() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BMI")
         
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: AppDelegate.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchedResultsController.delegate = self
         
@@ -46,10 +49,6 @@ class BMITableViewController: UITableViewController {
     //MARK: IBActions
     @IBAction func addBMIBarButtonPressed(_ sender: UIBarButtonItem) {
         showNewBMIAlertDialog()
-    }
-    
-    @IBAction func graphBarButtonPressed(_ sender: UIBarButtonItem) {
-        showInfoAlert(message: "PROXIMAMENTE")
     }
     
     //MARK: Dialogs
@@ -71,24 +70,14 @@ class BMITableViewController: UITableViewController {
         
         self.present(addBMIDialog, animated: true, completion: nil)
     }
-    
-    /**
-     This method shows an alert with the message given.
-     
-     - Parameter message: The message to be displayed.
-     - Author: Aarón Granado Amores.
-     */
-    func showInfoAlert(message: String) {
-        let alertController = UIAlertController(title: "INFO", message: message, preferredStyle: .alert)
-        
-        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
 
     // MARK: TableView DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.sections?[0].numberOfObjects ?? 0
+        let numberOfCells = fetchedResultsController.sections?[0].numberOfObjects ?? 0
+        
+        bmiGraphOutlet.isEnabled = numberOfCells == 0 ? false : true
+        
+        return numberOfCells
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -132,7 +121,7 @@ extension BMITableViewController: CustomBMIAlertDialogDelegate, NSFetchedResults
         let heightInMeters: Double = height / 100
         let squaredHeight: Double = heightInMeters * heightInMeters
         
-        dateFormatter.dateFormat = "dd/MM/yyyy hh:mm"
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         
         bmi.age = Int64(age)
         bmi.height = height
