@@ -11,11 +11,9 @@ import UIKit
 class RoutinesListViewController: UIViewController {
 
     //MARK: UI elements connection
-    @IBOutlet weak var label: UILabel!
     
     //MARK: Variables and constants
     var objective: String!
-    var group: String!
     
     //MARK: Main function
     override func viewDidLoad() {
@@ -32,6 +30,22 @@ class RoutinesListViewController: UIViewController {
      - Author: Aarón Granado Amores.
      */
     func updateUI() {
-        label.text = "Objective: " + objective + "\nGroup: " + group
+        var viewTitle: String = ""
+        
+        switch objective {
+        case "loseWeight":
+            viewTitle = "PERDER PESO"
+            break
+        case "gainMuscle":
+            viewTitle = "GANAR MASA"
+            break
+        case "defineMuscle":
+            viewTitle = "DEFINIR"
+            break
+        default:
+            viewTitle = "ERROR"
+        }
+        
+        self.title = viewTitle
     }
 }

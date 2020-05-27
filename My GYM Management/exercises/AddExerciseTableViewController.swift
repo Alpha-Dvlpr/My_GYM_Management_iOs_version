@@ -144,7 +144,7 @@ class AddExerciseTableViewController: UITableViewController {
      This method checks if there is an exercise with the same name on Core Data.
      
      - Parameter name: The name of the execrise to be checked.
-     - Returns: Returns **true** if the exercise already exists and  **false** if not.
+     - Returns: Returns **true** if the exercise already exists and **false** if not.
      - Author: Aarón Granado Amores.
      */
     func checkIfExerciseExistsOnCoreData(name: String) -> Bool{

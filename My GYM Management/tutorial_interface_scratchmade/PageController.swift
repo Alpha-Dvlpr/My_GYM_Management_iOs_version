@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
+import FirebaseFirestore
 
 class PageController: UICollectionViewController {
     
     //MARK: Variables and constants
     private var bottomStack: UIStackView!
     let cons = Constants()
+    let database = Firestore.firestore()
     
     /**
      This array holds all the pages that will be displayed on the introductory page controller
@@ -173,7 +176,7 @@ class PageController: UICollectionViewController {
         let indexPath = IndexPath(item: nextIndex, section: 0)
         
         if pageControl.currentPage == pages.count - 1 {
-            performSegue()
+            showInfoAlert(message: cons.updateAlertMessage)
         }
         
         pageControl.currentPage = nextIndex
@@ -201,7 +204,191 @@ class PageController: UICollectionViewController {
      - Author: Aarón Granado Amores.
      */
     @objc private func handleSkip() {
-        performSegue()
+        showInfoAlert(message: cons.updateAlertMessage)
+    }
+    
+    //MARK: AlertDialog
+    
+    /**
+     This method shows an Alert with the given message.
+     
+     - Parameter message: The message to be displayed.
+     - Author: Aarón Granado Amores.
+     */
+    func showInfoAlert(message: String) {
+        let alertController = UIAlertController(title: "INFO", message: message, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { (UIAlertAction) in self.performSegue() }))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in self.fetchFromFirebase() }))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: Fetch exercises from Firebase
+    
+    /**
+     This method searches on Firebase for all the data and the saves or updates the values stored on CoreData.
+     
+     - Author: Aarón Granado Amores.
+     */
+    func fetchFromFirebase() {
+        let updateDialog = UIAlertController(title: "ACTUALIZANDO", message: self.cons.firebaseUpdatingMessage, preferredStyle: .alert)
+        
+        self.present(updateDialog, animated: true, completion: nil)
+        
+        database.collection("exercises").getDocuments { (snapshot, error) in
+            if error != nil {
+                self.showInfoAlert(message: self.cons.firebaseErrorMessage)
+            } else {
+                for document in (snapshot?.documents)! {
+                    let name = document.data()["name"] as! String
+                    let exercise = !self.checkIfExerciseExistsOnCoreData(name: name) ?
+                        Exercise(context: AppDelegate.context) : self.getExerciseFromCoreData(name: name)
+                    
+                    exercise.execution = document.data()["execution"] as? String
+                    exercise.info = document.data()["info"] as? String
+                    exercise.isUserCreated = false
+                    exercise.link = document.data()["link"] as? String
+                    exercise.muscles = document.data()["muscles"] as? String
+                    exercise.name = name
+                    
+                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                }
+            }
+        }
+        
+        database.collection("routines").getDocuments { (snapshot, error) in
+            if error != nil {
+                self.showInfoAlert(message: self.cons.firebaseErrorMessage)
+            } else {
+                for document in (snapshot?.documents)! {
+                    let name = document.data()["name"] as! String
+                    let routine = !self.checkIfRoutineExistsOnCoreData(name: name) ?
+                        Routine(context: AppDelegate.context) : self.getRoutineFromCoreData(name: name)
+                    
+                    routine.color = document.data()["color"] as? String
+                    routine.days = document.data()["days"] as? String
+                    routine.difficulty = document.data()["difficulty"] as? String
+                    routine.exercises = document.data()["exercises"] as? String
+                    routine.info = document.data()["info"] as? String
+                    routine.isUserCreated = false
+                    routine.load = document.data()["load"] as? String
+                    routine.muscles = document.data()["muscles"] as? String
+                    routine.name = name
+                    routine.objective = document.data()["objective"] as? String
+                    routine.repetitions = document.data()["repetitions"] as? String
+                    routine.series = document.data()["series"] as? String
+                    
+                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                }
+            }
+        }
+        
+        updateDialog.dismiss(animated: true, completion: nil)
+    }
+    
+    /**
+     This method checks if there is an exercise with the same name on Core Data.
+     
+     - Parameter name: The name of the execrise to be checked.
+     - Returns: Returns **true** if the exercise already exists and **false** if not.
+     - Author: Aarón Granado Amores.
+     */
+    func checkIfExerciseExistsOnCoreData(name: String) -> Bool{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Exercise")
+        
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            let result = try AppDelegate.context.fetch(fetchRequest)
+            
+            if result.count != 0 {
+                return true
+            }
+        } catch {
+            print("Error checking exercise")
+            return true
+        }
+        
+        return false
+    }
+    
+    /**
+     This method gets the exercise with the given name from CoreData to update is values if it exists.
+     
+     - Parameter name: The name of the exercise to be searched.
+     - Returns: Returns the exercise if it exists. If not it returns an empty exercise.
+     - Author: Aarón Granado Amores.
+     */
+    func getExerciseFromCoreData(name: String) -> Exercise {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Exercise")
+        
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            let result = try AppDelegate.context.fetch(fetchRequest)
+            
+            if result.count == 1{
+                return result[0] as! Exercise
+            } else {
+                return Exercise()
+            }
+        } catch {
+            print("Error getting exercise from CoreData")
+            return Exercise()
+        }
+    }
+    
+    /**
+     This method checks if there is a routine with the same name on Core Data.
+     
+     - Parameter name: The name of the routine to be checked.
+     - Returns: Returns **true** if the routine already exists and  **false** if not.
+     - Author: Aarón Granado Amores.
+     */
+    func checkIfRoutineExistsOnCoreData(name: String) -> Bool{
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Routine")
+        
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            let result = try AppDelegate.context.fetch(fetchRequest)
+            
+            if result.count != 0 {
+                return true
+            }
+        } catch {
+            print("Error checking routine")
+            return true
+        }
+        
+        return false
+    }
+    
+    /**
+     This method gets the routine with the given name from CoreData to update is values if it exists.
+     
+     - Parameter name: The name of the routine to be searched.
+     - Returns: Returns the routine if it exists. If not it returns an empty routine.
+     - Author: Aarón Granado Amores.
+     */
+    func getRoutineFromCoreData(name: String) -> Routine {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Routine")
+        
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        
+        do {
+            let result = try AppDelegate.context.fetch(fetchRequest)
+            
+            if result.count == 1{
+                return result[0] as! Routine
+            } else {
+                return Routine()
+            }
+        } catch {
+            print("Error getting routine from CoreData")
+            return Routine()
+        }
     }
     
     //MARK: Segue to Main Layout

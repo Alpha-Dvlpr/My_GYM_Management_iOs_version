@@ -62,14 +62,14 @@ class RoutinesViewController: UIViewController {
      - Author: Aarón Granado Amores.
      */
     func perform() {
-        performSegue(withIdentifier: "toMuscleGroupSelector", sender: self)
+        performSegue(withIdentifier: "toRoutines", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMuscleGroupSelector" {
-            let muscleSelectorVC = segue.destination as! MuscleGroupSelectorViewController
+        if segue.identifier == "toRoutines" {
+            let routineListVC = segue.destination as! RoutinesListViewController
             
-            muscleSelectorVC.objective = objective
+            routineListVC.objective = objective
         }
     }
 }

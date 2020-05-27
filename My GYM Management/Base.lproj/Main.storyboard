@@ -117,125 +117,12 @@
                     <navigationItem key="navigationItem" title="RUTINAS" id="gca-dt-kL6"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
-                        <segue destination="wic-pC-Vg6" kind="show" identifier="toMuscleGroupSelector" id="r25-p7-xBc"/>
+                        <segue destination="3rb-5G-52B" kind="show" identifier="toRoutines" id="fhc-T5-yhV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c08-66-YRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-555" y="-735"/>
-        </scene>
-        <!--MUSCLE SELECTOR-->
-        <scene sceneID="TU3-nH-W2R">
-            <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="wic-pC-Vg6" customClass="MuscleGroupSelectorViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bny-sD-NGz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ugf-as-9VL">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jPM-xs-v9X">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="290"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoW-I8-Pb4">
-                                                <rect key="frame" x="40" y="20" width="240" height="70"/>
-                                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="b6b-sy-nhm"/>
-                                                </constraints>
-                                                <state key="normal" title="TRONCO SUPERIOR">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="upperPartButtonSelected:" destination="wic-pC-Vg6" eventType="touchUpInside" id="Uwb-QZ-xrg"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BLL-U3-3bC">
-                                                <rect key="frame" x="40" y="110" width="240" height="70"/>
-                                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="4t0-b7-aTK"/>
-                                                </constraints>
-                                                <state key="normal" title="TRONCO INFERIOR">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="lowerPartButtonSelected:" destination="wic-pC-Vg6" eventType="touchUpInside" id="cDW-SX-p94"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2bu-5I-6wW">
-                                                <rect key="frame" x="40" y="200" width="240" height="70"/>
-                                                <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="70" id="VQP-vv-Hrh"/>
-                                                </constraints>
-                                                <state key="normal" title="CORE">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="coreButtonSelected:" destination="wic-pC-Vg6" eventType="touchUpInside" id="JsU-93-t4C"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="BLL-U3-3bC" secondAttribute="trailing" constant="40" id="Afh-o6-95s"/>
-                                            <constraint firstItem="2bu-5I-6wW" firstAttribute="top" secondItem="BLL-U3-3bC" secondAttribute="bottom" constant="20" id="K5J-1R-Wch"/>
-                                            <constraint firstAttribute="bottom" secondItem="2bu-5I-6wW" secondAttribute="bottom" constant="20" id="L4T-Xq-BVM"/>
-                                            <constraint firstAttribute="trailing" secondItem="2bu-5I-6wW" secondAttribute="trailing" constant="40" id="L8W-G4-vEE"/>
-                                            <constraint firstItem="BLL-U3-3bC" firstAttribute="top" secondItem="XoW-I8-Pb4" secondAttribute="bottom" constant="20" id="LKL-12-46t"/>
-                                            <constraint firstItem="2bu-5I-6wW" firstAttribute="leading" secondItem="jPM-xs-v9X" secondAttribute="leading" constant="40" id="Vfg-Cm-d3D"/>
-                                            <constraint firstItem="XoW-I8-Pb4" firstAttribute="top" secondItem="jPM-xs-v9X" secondAttribute="top" constant="20" id="aUX-L4-H9D"/>
-                                            <constraint firstItem="XoW-I8-Pb4" firstAttribute="leading" secondItem="jPM-xs-v9X" secondAttribute="leading" constant="40" id="dbe-rV-v02"/>
-                                            <constraint firstAttribute="trailing" secondItem="XoW-I8-Pb4" secondAttribute="trailing" constant="40" id="i0k-P6-Gqf"/>
-                                            <constraint firstItem="BLL-U3-3bC" firstAttribute="leading" secondItem="jPM-xs-v9X" secondAttribute="leading" constant="40" id="wP9-Ku-R6H"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="jPM-xs-v9X" firstAttribute="top" secondItem="Ugf-as-9VL" secondAttribute="top" id="1zc-GK-HwM"/>
-                                    <constraint firstAttribute="bottom" secondItem="jPM-xs-v9X" secondAttribute="bottom" id="5ZB-ZM-yBa"/>
-                                    <constraint firstItem="jPM-xs-v9X" firstAttribute="width" secondItem="Ugf-as-9VL" secondAttribute="width" id="NkT-up-XF5"/>
-                                    <constraint firstItem="jPM-xs-v9X" firstAttribute="leading" secondItem="Ugf-as-9VL" secondAttribute="leading" id="k7s-ar-Ojw"/>
-                                    <constraint firstItem="jPM-xs-v9X" firstAttribute="height" secondItem="Ugf-as-9VL" secondAttribute="height" priority="250" id="v6S-FG-3Tf"/>
-                                    <constraint firstAttribute="trailing" secondItem="jPM-xs-v9X" secondAttribute="trailing" id="wBg-kI-qJQ"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Ugf-as-9VL" firstAttribute="leading" secondItem="JEC-VD-zhx" secondAttribute="leading" id="LGc-Xk-NH6"/>
-                            <constraint firstItem="Ugf-as-9VL" firstAttribute="top" secondItem="JEC-VD-zhx" secondAttribute="top" id="OKd-bG-bfG"/>
-                            <constraint firstItem="JEC-VD-zhx" firstAttribute="bottom" secondItem="Ugf-as-9VL" secondAttribute="bottom" id="ebL-0o-jra"/>
-                            <constraint firstItem="JEC-VD-zhx" firstAttribute="trailing" secondItem="Ugf-as-9VL" secondAttribute="trailing" id="iv6-yp-DXK"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="JEC-VD-zhx"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="MUSCLE SELECTOR" id="W3I-Eo-Udx"/>
-                    <size key="freeformSize" width="320" height="480"/>
-                    <connections>
-                        <segue destination="3rb-5G-52B" kind="show" identifier="toRoutinesList" id="gav-TV-tEP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dr7-Dr-nkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="237" y="-735"/>
+            <point key="canvasLocation" x="206" y="-735"/>
         </scene>
         <!--RUTINAS-->
         <scene sceneID="DJd-wF-VDV">
@@ -244,26 +131,10 @@
                     <view key="view" contentMode="scaleToFill" id="h4u-hX-XEx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0u-1e-w1m">
-                                <rect key="frame" x="16" y="323.5" width="343" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="j0u-1e-w1m" firstAttribute="leading" secondItem="DC2-JI-Kko" secondAttribute="leading" constant="16" id="NZS-MR-R7c"/>
-                            <constraint firstItem="DC2-JI-Kko" firstAttribute="trailing" secondItem="j0u-1e-w1m" secondAttribute="trailing" constant="16" id="Ur1-6M-Eea"/>
-                            <constraint firstItem="j0u-1e-w1m" firstAttribute="centerY" secondItem="h4u-hX-XEx" secondAttribute="centerY" id="imk-wi-6Pb"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DC2-JI-Kko"/>
                     </view>
                     <navigationItem key="navigationItem" title="RUTINAS" id="5Nn-LK-P0H"/>
-                    <connections>
-                        <outlet property="label" destination="j0u-1e-w1m" id="IzQ-j8-jUa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ve1-k6-eG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -307,7 +178,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="EyM-HA-QIP"/>
                                                 </constraints>
-                                                <state key="normal" title="BUSCAR GIMNASIOS (fix)">
+                                                <state key="normal" title="BUSCAR GIMNASIOS">
                                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -416,13 +287,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="OTROS" id="8mS-4a-fc8"/>
                     <size key="freeformSize" width="320" height="568"/>
-                    <connections>
-                        <outlet property="locateGymButonOutlet" destination="7Dr-6n-ojX" id="wmO-Wn-z6H"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XpO-BA-MdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-555" y="663"/>
+            <point key="canvasLocation" x="205" y="663"/>
         </scene>
         <!--IMC-->
         <scene sceneID="48f-vt-tkx">
@@ -943,7 +811,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uvi-qY-1wJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2457" y="158"/>
+            <point key="canvasLocation" x="-1705" y="132"/>
         </scene>
         <!--Mis rutinas-->
         <scene sceneID="6B1-dv-Ftk">
@@ -962,7 +830,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFw-0q-4iG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1423" y="-36"/>
+            <point key="canvasLocation" x="-554" y="-36"/>
         </scene>
         <!--Rutinas-->
         <scene sceneID="SSv-9z-DVy">
@@ -981,7 +849,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DTL-IL-a4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1423" y="-734"/>
+            <point key="canvasLocation" x="-554" y="-734"/>
         </scene>
         <!--Ejercicios-->
         <scene sceneID="fVr-2I-WRu">
@@ -1000,7 +868,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1io-EP-XaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1422" y="-1460"/>
+            <point key="canvasLocation" x="-554" y="-1460"/>
         </scene>
         <!--Otros-->
         <scene sceneID="mU6-4G-zPf">
@@ -1019,7 +887,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpu-Jn-pin" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1423" y="664"/>
+            <point key="canvasLocation" x="-554" y="663"/>
         </scene>
         <!--INFO-->
         <scene sceneID="2An-rU-3wE">
