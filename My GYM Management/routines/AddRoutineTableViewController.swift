@@ -413,10 +413,10 @@ class AddRoutineTableViewController: UITableViewController {
                     }
                 }
             } else {
-                showInfoAlert(message: "Debes seleccionar al menos un día")
+                showInfoAlert(message: cons.userMustSelectOneDay)
             }
         } else {
-            showInfoAlert(message: "Debes introducir un nombre")
+            showInfoAlert(message: cons.userMustTypeAName)
         }
     }
     

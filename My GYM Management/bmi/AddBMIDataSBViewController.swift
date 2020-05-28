@@ -47,6 +47,7 @@ class AddBMIDataSBViewController: UIViewController {
 
     //MARK: Variables and constants
     var delegate: CustomBMIAlertDialogDelegate?
+    var cons = Constants()
     
     //MARK: Main functions
     override func viewDidLoad() {
@@ -149,14 +150,11 @@ class AddBMIDataSBViewController: UIViewController {
             if !maleRadioButton.isSelected && !femaleRadioButton.isSelected {
                 showInfoAlert(message: "Debes seleccionar un género")
             } else {
-                delegate?.acceptButtonPressed(age: Int(ageTextField.text!)!,
-                                              height: Double(heightTextField.text!)!,
-                                              weight: Double(weightTextField.text!)!,
-                                              sex: maleRadioButton.isSelected ? "male" : "female")
+                delegate?.acceptButtonPressed(age: Int(ageTextField.text!)!, height: Double(heightTextField.text!)!, weight: Double(weightTextField.text!)!, sex: maleRadioButton.isSelected ? "male" : "female")
                 self.dismiss(animated: true, completion: nil)
             }
         } else {
-            showInfoAlert(message: "Debes completar toda la información")
+            showInfoAlert(message: cons.allFieldsAreCompulsory)
         }
     }
     

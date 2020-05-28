@@ -117,28 +117,12 @@
                     <navigationItem key="navigationItem" title="RUTINAS" id="gca-dt-kL6"/>
                     <size key="freeformSize" width="320" height="480"/>
                     <connections>
-                        <segue destination="3rb-5G-52B" kind="show" identifier="toRoutines" id="fhc-T5-yhV"/>
+                        <segue destination="GDo-2W-ztq" kind="show" identifier="toRoutines" id="9Kz-9q-H1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c08-66-YRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="206" y="-735"/>
-        </scene>
-        <!--RUTINAS-->
-        <scene sceneID="DJd-wF-VDV">
-            <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="3rb-5G-52B" customClass="RoutinesListViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="h4u-hX-XEx">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="DC2-JI-Kko"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="RUTINAS" id="5Nn-LK-P0H"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ve1-k6-eG0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1001" y="-735"/>
         </scene>
         <!--OTROS-->
         <scene sceneID="EuE-3M-eo0">
@@ -1739,6 +1723,63 @@
             </objects>
             <point key="canvasLocation" x="2561" y="-36"/>
         </scene>
+        <!--RUTINAS-->
+        <scene sceneID="3u2-AQ-VY8">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="GDo-2W-ztq" customClass="RoutinesListViewController" customModule="My_GYM_Management" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C22-WI-AVx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1MH-99-bon">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="Y5c-99-IO5" style="IBUITableViewCellStyleDefault" id="bdv-B4-k4g">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bdv-B4-k4g" id="5hU-Kq-cZO">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y5c-99-IO5">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GDo-2W-ztq" id="yaI-f2-bhS"/>
+                                    <outlet property="delegate" destination="GDo-2W-ztq" id="cJY-Ag-nPf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.70125610449999998" green="0.97116994540000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1MH-99-bon" firstAttribute="leading" secondItem="uRy-al-c5Q" secondAttribute="leading" id="QMU-aW-8af"/>
+                            <constraint firstItem="uRy-al-c5Q" firstAttribute="bottom" secondItem="1MH-99-bon" secondAttribute="bottom" id="Zug-Z7-uau"/>
+                            <constraint firstItem="1MH-99-bon" firstAttribute="top" secondItem="uRy-al-c5Q" secondAttribute="top" id="dob-yB-357"/>
+                            <constraint firstItem="uRy-al-c5Q" firstAttribute="trailing" secondItem="1MH-99-bon" secondAttribute="trailing" id="gK8-9h-NMq"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uRy-al-c5Q"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="RUTINAS" id="Jah-XW-OaK"/>
+                    <connections>
+                        <outlet property="tableView" destination="1MH-99-bon" id="fkG-pm-MAh"/>
+                        <segue destination="IQi-XB-yUb" kind="show" identifier="toRoutineInfo" id="i6I-cd-sfE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsE-IY-2Rm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1001" y="-734"/>
+        </scene>
     </scenes>
     <resources>
         <image name="checkbox_off" width="16" height="16"/>
@@ -1750,4 +1791,7 @@
         <image name="play_button" width="25" height="25"/>
         <image name="routines" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="i6I-cd-sfE"/>
+    </inferredMetricsTieBreakers>
 </document>

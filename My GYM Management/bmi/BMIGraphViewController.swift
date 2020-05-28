@@ -37,7 +37,7 @@ class BMIGraphViewController: UIViewController {
         
         fetch.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch,managedObjectContext: AppDelegate.context, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetch, managedObjectContext: AppDelegate.context, sectionNameKeyPath: nil, cacheName: nil)
         
         do {
             try fetchedResultsController.performFetch()
@@ -51,7 +51,7 @@ class BMIGraphViewController: UIViewController {
             for position in 0...(numberOfResults - 1) {
                 let bmi = fetchedResultsController.object(at: IndexPath(row: position, section: 0)) as! BMI
                 
-                bmiChartData.append((Double(position), bmi.calculatedBMI))
+                bmiChartData.append((Double(position),bmi.calculatedBMI))
             }
         }
     }
@@ -66,13 +66,7 @@ class BMIGraphViewController: UIViewController {
         let chartConfig = ChartConfigXY(xAxisConfig: ChartAxisConfig(from: 0, to: Double(bmiChartData.count - 1), by: 1),
                                         yAxisConfig: ChartAxisConfig(from: 0, to: 60, by: 10))
         let chartFrame = CGRect(x: 16, y: topBarHeight + 16, width: view.frame.width - 32, height: view.frame.height - topBarHeight - 32)
-        let chart = LineChart(frame: chartFrame,
-                              chartConfig: chartConfig,
-                              xTitle: "",
-                              yTitle: "Valor IMC",
-                              lines: [(chartPoints: bmiChartData,
-                                       color: UIColor.blue)]
-        )
+        let chart = LineChart(frame: chartFrame, chartConfig: chartConfig, xTitle: "", yTitle: "Valor IMC", lines: [(chartPoints: bmiChartData, color: UIColor.blue)])
         
         self.view.addSubview(chart.view)
         self.chartView = chart

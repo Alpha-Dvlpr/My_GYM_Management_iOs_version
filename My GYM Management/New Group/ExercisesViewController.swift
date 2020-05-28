@@ -17,6 +17,7 @@ class ExercisesViewController: UIViewController {
     
     //MARK: Variables and constants
     var fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>!
+    var cons  = Constants()
     
     //MARK: Main function
     override func viewDidLoad() {
@@ -92,7 +93,7 @@ extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, N
             AppDelegate.context.delete(exerciseToDelete)
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
         } else {
-            showInfoAlert(message: "No puedes eliminar un ejercicio predefinido")
+            showInfoAlert(message: cons.cannotDeletedPredefinedExercise)
             tableView.reloadData()
         }
     }

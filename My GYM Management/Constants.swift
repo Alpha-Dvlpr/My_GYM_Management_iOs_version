@@ -33,7 +33,7 @@ class Constants {
     var difficultyColorTwo: String = "#FF9300"
     var difficultyColorThree: String = "#4F8F00"
     
-    // The titles for the introduction pages.
+    // The titles and descriptions for the introduction pages.
     var titles: [String] = ["My GYM Management",
                             "Guarda tus propias rutinas y ejercicios",
                             "Rutinas predefinidas en la nube",
@@ -41,8 +41,6 @@ class Constants {
                             "Localiza gimnasios",
                             "Comparte con tus amigos",
                             "Danos 5 estrellas en el App Store"]
-    
-    // The descriptions for the introduction pages.
     var descriptions: [String] = ["Gestiona tus entrenamientos y rutinas en casa y en el gimnasio de manera fácil y rápida y desde cualquier lugar.\n¡Incluso sin conexión a internet!",
                                   "Crea tus propias rutinas y ejercicios de manera fácil.\nTambién tendrás la opción de editarlas en cualquier momento.",
                                   "Actualiza los datos de la app desde la sección 'Otros' para recibir una gran selección de rutinas y ejercicios actualizados y en constante crecimiento.",
@@ -55,4 +53,15 @@ class Constants {
     var firebaseErrorMessage: String = "Ha ocurrido un error obteniendo los nuevos datos, prueba a revisar tu conexión a internet e inténtalo de nuevo."
     var updateAlertMessage: String = "¿Desea descargar ahora todos los ejercicios y rutinas predefinidos?\nPuede realizar esta acción en cualquier momento desde la ventana 'Otros'."
     var firebaseUpdatingMessage: String = "Actualizando datos, por favor espere."
+    
+    // Alert Dialogs and new Exercises/Routines texts.
+    var allFieldsAreCompulsory: String = "Debes completar todos los campos obligatorios."
+    var linkError: String = "No se puede abrir el enlace.\nPuede que esté mal introducido."
+    var cannotDeletedPredefinedExercise: String = "No puedes eliminar un ejercicio predefinido"
+    var userMustAddOrUpdate: String = "Debes añadir algún ejercicio o actualizar la aplicación desde la pestaña 'Otros' para obtener todos los ejercicios y rutinas predefinidos desde la nube."
+    var userMustSelectOneDay: String = "Debes seleccionar al menos un día"
+    var userMustTypeAName: String = "Debes introducir un nombre"
+    var noObjective: String = "No hay ningún objetivo definido para esta rutina"
+    var noMuscles: String = "No hay músculos implicados en esta rutina"
+    var noInfo: String = "No hay información"
 }

@@ -233,12 +233,13 @@ class PageController: UICollectionViewController {
      */
     func fetchFromFirebase() {
         let updateDialog = UIAlertController(title: "ACTUALIZANDO", message: self.cons.firebaseUpdatingMessage, preferredStyle: .alert)
+        var didAnyErrorHappened: Bool = false
         
         self.present(updateDialog, animated: true, completion: nil)
         
         database.collection("exercises").getDocuments { (snapshot, error) in
             if error != nil {
-                self.showInfoAlert(message: self.cons.firebaseErrorMessage)
+                didAnyErrorHappened = true
             } else {
                 for document in (snapshot?.documents)! {
                     let name = document.data()["name"] as! String
@@ -259,7 +260,7 @@ class PageController: UICollectionViewController {
         
         database.collection("routines").getDocuments { (snapshot, error) in
             if error != nil {
-                self.showInfoAlert(message: self.cons.firebaseErrorMessage)
+                didAnyErrorHappened = true
             } else {
                 for document in (snapshot?.documents)! {
                     let name = document.data()["name"] as! String
@@ -282,6 +283,10 @@ class PageController: UICollectionViewController {
                     (UIApplication.shared.delegate as! AppDelegate).saveContext()
                 }
             }
+        }
+        
+        if didAnyErrorHappened {
+            self.showInfoAlert(message: self.cons.firebaseErrorMessage)
         }
         
         updateDialog.dismiss(animated: true, completion: nil)

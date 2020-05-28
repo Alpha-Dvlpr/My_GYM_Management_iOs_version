@@ -21,6 +21,7 @@ class AddExerciseTableViewController: UITableViewController {
     //MARK: Variables and constants
     var didCameFromExerciseInfo: Bool = false
     var exerciseToEdit: Exercise!
+    var cons = Constants()
     
     //MARK: Main function
     override func viewDidLoad() {
@@ -86,7 +87,7 @@ class AddExerciseTableViewController: UITableViewController {
                 }
             }
         } else {
-            showInfoAlert(message: "Debes completar todos los campos obligatorios")
+            showInfoAlert(message: cons.allFieldsAreCompulsory)
         }
     }
     
@@ -131,7 +132,7 @@ class AddExerciseTableViewController: UITableViewController {
      - Author: Aarón Granado Amores.
      */
     func showInfoAlert(message: String) {
-        let alertController = UIAlertController(title: "INFO", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "INFO",message: message, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         

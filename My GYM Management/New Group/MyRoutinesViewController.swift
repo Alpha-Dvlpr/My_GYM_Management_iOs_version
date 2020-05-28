@@ -9,7 +9,6 @@
 import UIKit
 import MessageUI
 import CoreData
-import DLRadioButton
 
 class MyRoutinesViewController: UIViewController {
     
@@ -24,12 +23,11 @@ class MyRoutinesViewController: UIViewController {
         super.viewDidLoad()
         
         fetch()
-        
         tableView.tableFooterView = UIView()
     }
     
     /**
-     This method searches for the Exercises on CoreData and sorts them by ascending name.
+     This method searches for the Routines on CoreData and sorts them by ascending name.
      
      ## Important Notes ##
      1. This method only searches for Routines that have **'isUserCreated'** set as **'true'**.
@@ -96,13 +94,9 @@ extension MyRoutinesViewController: UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let routineToDelete = fetchedResultsController.object(at: indexPath) as! Routine
         
-        if routineToDelete.isUserCreated == true {
-            AppDelegate.context.delete(routineToDelete)
-            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        } else {
-            showInfoAlert(message: "No puedes eliminar una rutina predefinida")
-            tableView.reloadData()
-        }
+        AppDelegate.context.delete(routineToDelete)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        tableView.reloadData()
     }
     
     //MARK: TableView DataSource

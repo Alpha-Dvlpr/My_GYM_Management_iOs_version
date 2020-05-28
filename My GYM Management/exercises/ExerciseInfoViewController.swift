@@ -20,6 +20,7 @@ class ExerciseInfoViewController: UIViewController {
     
     //MARK: Variables and constants
     var localExercise: Exercise!
+    var cons = Constants()
     
     //MARK: Main functions
     override func viewDidLoad() {
@@ -48,7 +49,7 @@ class ExerciseInfoViewController: UIViewController {
                 UIApplication.shared.open(linkURL)
             }
         } else {
-            showInfoAlert(message: "No se puede abrir el enlace.\nPuede que esté mal introducido.")
+            showInfoAlert(message: cons.linkError)
         }
     }
     

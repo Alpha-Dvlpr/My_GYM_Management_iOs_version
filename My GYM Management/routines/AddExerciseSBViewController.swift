@@ -47,6 +47,7 @@ class AddExerciseSBViewController: UIViewController {
     var delegate: CustomExerciseAlertDialogDelegate?
     var exercisesNames: [String] = []
     var selectedExercise: String?
+    var cons = Constants()
     
     //MARK: Main functions
     override func viewDidLoad() {
@@ -185,16 +186,13 @@ class AddExerciseSBViewController: UIViewController {
     func saveExercise() {
         if selectedExercise != "add" {
             if seriesTextField.text != "" && repetittionsTextField.text != "" && loadTextField.text != "" {
-                delegate?.addButtonPressed(name: selectedExercise!,
-                                           series: seriesTextField.text!,
-                                           repetitions: repetittionsTextField.text!,
-                                           load: loadTextField.text!)
+                delegate?.addButtonPressed(name: selectedExercise!, series: seriesTextField.text!, repetitions: repetittionsTextField.text!, load: loadTextField.text!)
                 self.dismiss(animated: true, completion: nil)
             } else {
-                showInfoAlert(message: "Todos los campos con '*' son obligatorios")
+                showInfoAlert(message: cons.allFieldsAreCompulsory)
             }
         } else {
-            showInfoAlert(message: "Debes añadir algún ejercicio o actualizar la aplicación desde la pestaña 'Otros' para obtener todos los ejercicios y rutinas predefinidos desde la nube.")
+            showInfoAlert(message: cons.userMustAddOrUpdate)
         }
     }
     

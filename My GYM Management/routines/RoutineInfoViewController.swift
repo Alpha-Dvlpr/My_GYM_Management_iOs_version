@@ -65,17 +65,44 @@ class RoutineInfoViewController: UIViewController {
             
             setColorToDifficultyIndicator(difficulty: localRoutine.difficulty ?? "none")
             nameLabel.text = localRoutine.name
-            infoLabel.text = localRoutine.info ?? "No hay información"
+            infoLabel.text = localRoutine.info ?? cons.noInfo
             setColorToDays(days: daysArray, color: localRoutine.color!)
-            objectiveLabel.text = localRoutine.objective ?? "No hay ningún objetivo definido para esta rutina"
+            setObjectiveToLabel(objective: localRoutine.objective ?? "none")
             setExercises(exercises: exercisesArray, repetitions: repetitionsArray, series: seriesArray, load: loadArray)
-            musclesLabel.text = localRoutine.muscles ?? "No hay músculos implicados en esta rutina"
+            musclesLabel.text = localRoutine.muscles ?? cons.noMuscles
             
             editRoutineOutlet.isEnabled = localRoutine.isUserCreated
             
         } else {
             self.title = "ERROR"
         }
+    }
+    
+    /**
+     This methd sets the value for the objective label based on the value given. This is used mainly for predefined
+     routines, but also for user created ones checking if there is something or not.
+     
+     - Parameter objective: The objective to be checked and placed on the label.
+     - Author: Aarón Granado Amores.
+     */
+    func setObjectiveToLabel(objective: String) {
+        var text: String = ""
+        
+        switch objective {
+        case "loseWeight":
+            text = "Perder peso"
+            break
+        case "gainMuscle":
+            text = "Ganar masa muscular"
+            break
+        case "defineMuscle":
+            text = "Definir musculatura"
+            break
+        default:
+            text = objective == "none" ? cons.noObjective : objective
+        }
+        
+        objectiveLabel.text = text
     }
     
     //MARK: IBActions
