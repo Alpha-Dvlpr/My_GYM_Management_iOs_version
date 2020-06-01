@@ -233,13 +233,16 @@ class PageController: UICollectionViewController {
      */
     func fetchFromFirebase() {
         let updateDialog = UIAlertController(title: "ACTUALIZANDO", message: self.cons.firebaseUpdatingMessage, preferredStyle: .alert)
-        var didAnyErrorHappened: Bool = false
         
         self.present(updateDialog, animated: true, completion: nil)
-        
+        self.fetchExercises()
+        updateDialog.dismiss(animated: true, completion: nil)
+    }
+    
+    func fetchExercises() {
         database.collection("exercises").getDocuments { (snapshot, error) in
             if error != nil {
-                didAnyErrorHappened = true
+                self.fetchRoutines()
             } else {
                 for document in (snapshot?.documents)! {
                     let name = document.data()["name"] as! String
@@ -255,12 +258,16 @@ class PageController: UICollectionViewController {
                     
                     (UIApplication.shared.delegate as! AppDelegate).saveContext()
                 }
+                
+                self.fetchRoutines()
             }
         }
-        
+    }
+    
+    func fetchRoutines() {
         database.collection("routines").getDocuments { (snapshot, error) in
             if error != nil {
-                didAnyErrorHappened = true
+                self.performSegue()
             } else {
                 for document in (snapshot?.documents)! {
                     let name = document.data()["name"] as! String
@@ -282,14 +289,10 @@ class PageController: UICollectionViewController {
                     
                     (UIApplication.shared.delegate as! AppDelegate).saveContext()
                 }
+                
+                self.performSegue()
             }
         }
-        
-        if didAnyErrorHappened {
-            self.showInfoAlert(message: self.cons.firebaseErrorMessage)
-        }
-        
-        updateDialog.dismiss(animated: true, completion: nil)
     }
     
     /**
@@ -419,6 +422,8 @@ class PageController: UICollectionViewController {
         
         if didSave {
             self.present(mainPage, animated: true, completion: nil)
+        } else {
+            print("Error saving to preferences")
         }
     }
 }
