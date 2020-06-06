@@ -108,6 +108,7 @@ extension ExercisesViewController: UITableViewDelegate, UITableViewDataSource, N
         let exercise = fetchedResultsController.object(at: indexPath) as! Exercise
         
         cell.textLabel?.text = exercise.name
+        cell.detailTextLabel?.text = exercise.isUserCreated ? "Ejercicio propio" : "Ejercicio predefinido"
         
         return cell
     }

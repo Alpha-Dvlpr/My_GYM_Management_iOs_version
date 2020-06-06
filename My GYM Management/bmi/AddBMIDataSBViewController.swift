@@ -103,7 +103,7 @@ class AddBMIDataSBViewController: UIViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            updateExerciseAlertConstraints(offsetHeight: keyboardHeight)
+            updateBMIAlertConstraints(offsetHeight: keyboardHeight)
         }
     }
     
@@ -114,7 +114,7 @@ class AddBMIDataSBViewController: UIViewController {
      - Parameter offsetHeight: The value to be added on the bottom constraint, this is given by the keyboard height.
      - Author: Aarón Granado Amores.
      */
-    public func updateExerciseAlertConstraints(offsetHeight: CGFloat) {
+    public func updateBMIAlertConstraints(offsetHeight: CGFloat) {
         let viewHeight: CGFloat = alertView.bounds.height
         let screenHeight: CGFloat = UIScreen.main.bounds.height
         let freeSpace: CGFloat = screenHeight - offsetHeight - viewHeight
@@ -145,6 +145,13 @@ class AddBMIDataSBViewController: UIViewController {
     }
     
     //MARK: Save BMI
+    
+    /**
+     This method checks if all the inforamtion on the dialog is correct. If there is any erorr it shows
+     an alert and if everything is ok it calls the delegate accept button function.
+     
+     - Author: Aarón Granado Amores.
+     */
     func saveBMI() {
         if ageTextField.text != "" && heightTextField.text != "" && weightTextField.text != "" {
             if !maleRadioButton.isSelected && !femaleRadioButton.isSelected {

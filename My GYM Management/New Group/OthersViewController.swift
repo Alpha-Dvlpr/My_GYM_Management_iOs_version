@@ -100,7 +100,7 @@ class OthersViewController: UIViewController {
     
     /**
      This method searches on Firebase for all the data and the saves or updates the values stored on CoreData.
-
+     
      - Author: Aarón Granado Amores.
      */
     func fetchFromFirebase() {

@@ -75,7 +75,7 @@ class BMITableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfCells = fetchedResultsController.sections?[0].numberOfObjects ?? 0
         
-        bmiGraphOutlet.isEnabled = numberOfCells == 0 ? false : true
+        bmiGraphOutlet.isEnabled = numberOfCells <= 1 ? false : true
         
         return numberOfCells
     }

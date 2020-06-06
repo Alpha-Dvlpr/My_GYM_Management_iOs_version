@@ -16,12 +16,6 @@ class PageController: UICollectionViewController {
     private var bottomStack: UIStackView!
     let cons = Constants()
     let database = Firestore.firestore()
-    
-    /**
-     This array holds all the pages that will be displayed on the introductory page controller
-     
-     - Author: Aarón Granado Amores.
-     */
     var pages: [Page] = []
     
     //MARK: Main function
@@ -63,7 +57,7 @@ class PageController: UICollectionViewController {
      - Author: Aarón Granado Amores.
      */
     func addViewsToLayout() {
-        bottomStack = UIStackView(arrangedSubviews: [prevButton, pageControl, nextButton])
+        bottomStack = UIStackView(arrangedSubviews: [pageControl, nextButton])
         
         bottomStack.translatesAutoresizingMaskIntoConstraints = false
         bottomStack.distribution = .fillEqually
@@ -91,24 +85,6 @@ class PageController: UICollectionViewController {
     }
     
     //MARK: UI Elements
-    
-    /**
-     Custom button for going forward on the page controller.
-     
-     - Author: Aarón Granado Amores.
-     */
-    private let prevButton: UIButton = {
-        let button = UIButton()
-        let attributedTitle = NSMutableAttributedString(string: "ANTERIOR", attributes: [
-            NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15),
-            NSAttributedString.Key.foregroundColor : UIColor.darkGray]
-        )
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
-        button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
-        
-        return button
-    }()
     
     /**
      Custom button for going backwards on the page controller.
@@ -184,20 +160,6 @@ class PageController: UICollectionViewController {
     }
     
     /**
-     This method handles the event caused by the prev button press action. This makes the page controller
-     go one page backwards until the first one.
-     
-     - Author: Aarón Granado Amores.
-     */
-    @objc private func handlePrev() {
-        let prevIndex = max(pageControl.currentPage - 1, 0)
-        let indexPath = IndexPath(item: prevIndex, section: 0)
-        
-        pageControl.currentPage = prevIndex
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    }
-    
-    /**
      This method handles the event caused by the skip button press action. This performs a segue to the main
      page.
      
@@ -216,7 +178,7 @@ class PageController: UICollectionViewController {
      - Author: Aarón Granado Amores.
      */
     func showInfoAlert(message: String) {
-        let alertController = UIAlertController(title: "INFO", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "¿ACTUALIZAR DATOS?", message: message, preferredStyle: .alert)
         
         alertController.addAction(UIAlertAction(title: "Cancelar", style: .destructive, handler: { (UIAlertAction) in self.performSegue() }))
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in self.fetchFromFirebase() }))
@@ -239,6 +201,12 @@ class PageController: UICollectionViewController {
         updateDialog.dismiss(animated: true, completion: nil)
     }
     
+    
+    /**
+     This method fetched all the exercises from Firebase and saves them to coreData.
+     
+     - Author: Aarón Granado Amores.
+     */
     func fetchExercises() {
         database.collection("exercises").getDocuments { (snapshot, error) in
             if error != nil {
@@ -264,6 +232,12 @@ class PageController: UICollectionViewController {
         }
     }
     
+    
+    /**
+     This method fetches the routines from Firebase and saves them to CoreData.
+     
+     - Author: Aarón Granado Amores.
+     */
     func fetchRoutines() {
         database.collection("routines").getDocuments { (snapshot, error) in
             if error != nil {
@@ -302,7 +276,7 @@ class PageController: UICollectionViewController {
      - Returns: Returns **true** if the exercise already exists and **false** if not.
      - Author: Aarón Granado Amores.
      */
-    func checkIfExerciseExistsOnCoreData(name: String) -> Bool{
+    func checkIfExerciseExistsOnCoreData(name: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Exercise")
         
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
@@ -354,7 +328,7 @@ class PageController: UICollectionViewController {
      - Returns: Returns **true** if the routine already exists and  **false** if not.
      - Author: Aarón Granado Amores.
      */
-    func checkIfRoutineExistsOnCoreData(name: String) -> Bool{
+    func checkIfRoutineExistsOnCoreData(name: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Routine")
         
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
@@ -388,7 +362,7 @@ class PageController: UICollectionViewController {
         do {
             let result = try AppDelegate.context.fetch(fetchRequest)
             
-            if result.count == 1{
+            if result.count == 1 {
                 return result[0] as! Routine
             } else {
                 return Routine()
@@ -410,7 +384,7 @@ class PageController: UICollectionViewController {
      
      - Author: Aarón Granado Amores.
      */
-    func performSegue(){
+    func performSegue() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let mainPage = storyboard.instantiateViewController(withIdentifier: "mainPage")
         let preferences = UserDefaults.standard

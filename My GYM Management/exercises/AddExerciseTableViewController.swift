@@ -148,7 +148,7 @@ class AddExerciseTableViewController: UITableViewController {
      - Returns: Returns **true** if the exercise already exists and **false** if not.
      - Author: Aarón Granado Amores.
      */
-    func checkIfExerciseExistsOnCoreData(name: String) -> Bool{
+    func checkIfExerciseExistsOnCoreData(name: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Exercise")
         
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)

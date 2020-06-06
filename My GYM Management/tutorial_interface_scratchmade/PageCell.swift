@@ -73,7 +73,7 @@ class PageCell: UICollectionViewCell {
         centralStack.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -32).isActive = true
     }
     
-    //MARK: UI Elemnts
+    //MARK: UI Elements
     
     /**
      Custom label for showin the title of the page.

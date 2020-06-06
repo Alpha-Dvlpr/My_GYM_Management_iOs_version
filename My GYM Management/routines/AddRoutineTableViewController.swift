@@ -224,7 +224,6 @@ class AddRoutineTableViewController: UITableViewController {
      - Author: Aarón Granado Amores.
      */
     func initExercisesArrays() {
-        
         exercisesNames = routineToEdit.exercises?.split(separator: "-").map { String($0) } ?? []
         exercisesRepetitions = routineToEdit.repetitions?.split(separator: "-").map { String($0) } ?? []
         exercisesSeries = routineToEdit.series?.split(separator: "-").map { String($0) } ?? []
@@ -233,7 +232,6 @@ class AddRoutineTableViewController: UITableViewController {
         var exercisesText = ""
         
         if exercisesNames[0] != "no exercises" {
-            
             tableView.beginUpdates()
             
             for position in 0...(exercisesNames.count - 1) {
@@ -511,7 +509,7 @@ class AddRoutineTableViewController: UITableViewController {
      - Returns: Returns **true** if the routine already exists and  **false** if not.
      - Author: Aarón Granado Amores.
      */
-    func checkIfRoutineExistsOnCoreData(name: String) -> Bool{
+    func checkIfRoutineExistsOnCoreData(name: String) -> Bool {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Routine")
         
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
@@ -763,13 +761,6 @@ extension AddRoutineTableViewController: CustomExerciseAlertDialogDelegate {
     func cancelButtonPressed() {}
     
     func addButtonPressed(name: String, series: String, repetitions: String, load: String) {
-        if exercisesNames[0] == "no exercises" {
-            exercisesNames = []
-            exercisesSeries = []
-            exercisesRepetitions = []
-            exercisesLoad = []
-        }
-        
         exercisesNames.append(name)
         exercisesSeries.append(series)
         exercisesRepetitions.append(repetitions)
